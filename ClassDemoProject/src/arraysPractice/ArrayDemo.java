@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class ArrayDemo {
 	
 	private int ar[] = {2,5,77,45,90,345,3323,78,67,55,23};
-	// private int holderArray[]=new int[20];
+	private int holderArray[]=new int[20];
 	private int populatedCount = 0;
 	private int insertionValue = 12;
 	private int insertionPosition = 4;
