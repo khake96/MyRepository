@@ -20,6 +20,11 @@ public class Login {
 		this.password = password;
 	}
 	
+	public String toString(char[] password) {
+		String pWord = new String(password);
+		return pWord;		
+	}
+	
 	public String getUserName() {
 		return userName;
 	}

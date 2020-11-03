@@ -13,6 +13,11 @@ public class Account {
 		this.accountNo = accountNo;
 		this.balance = balance;
 	}
+	
+	public Account getAccount(int accountNumber) {
+		Account account = new Account();
+		return account;
+	}
 
 	public Account() {
 		super();

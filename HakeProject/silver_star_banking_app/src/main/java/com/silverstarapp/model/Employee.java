@@ -1,28 +1,37 @@
 package com.silverstarapp.model;
 
-public class Emploee {
+import com.silverstarapp.dao.employee.EmployeeDAO;
+import com.silverstarapp.dao.impl.employee.EmpoloyeeDaoImpl;
+import com.silverstarapp.exception.BusinessException;
+
+public class Employee {
+	
+	EmployeeDAO employeeDAO = new EmpoloyeeDaoImpl();
+
 	
 	private int id;
 	private String firstName;
 	private String lastName;
-	private long contact;
-	private String userName;
-	private char[] password;
+	private String contact;
 	
-	public Emploee(int id, String firstName, String lastName, long contact, String userName, char[] password) {
+	public Employee (int id, String firstName, String lastName, String contact) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.contact = contact;
-		this.userName = userName;
-		this.password = password;
 	}
 	
-	public Emploee() {
+	public Employee() {
 		super();	
 		// TODO Auto-generated constructor stub
 	}
+	
+//	public Employee setEmployee(int employeeID) throws BusinessException {
+//		// pass login to DAO to fill from DB
+//		employee = employeeDAO.setEmployee(employeeID);		
+//		return employee;
+//	}
 
 
 	public String getFirstName() {
@@ -45,35 +54,17 @@ public class Emploee {
 	}
 
 
-	public long getContact() {
+	public String getContact() {
 		return contact;
 	}
 
+	public void setId(int id) {
+		this.id = id;
+	}
 
-	public void setContact(long contact) {
+	public void setContact(String contact) {
 		this.contact = contact;
 	}
-
-
-	public String getUserName() {
-		return userName;
-	}
-
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-
-	public char[] getPassword() {
-		return password;
-	}
-
-
-	public void setPassword(char[] password) {
-		this.password = password;
-	}
-
 
 	public int getId() {
 		return id;
@@ -84,8 +75,7 @@ public class Emploee {
 	public String toString() {
 		return "Employee [Employee ID = " + id + ", First Name = "
 	    + firstName + " Last Name = " + lastName + " Contact = " 
-		+ contact + " User Name = " + userName + " Password = " 
-	    + " *protected*]";
+		+ contact + "]";
 	}
 	
 	
