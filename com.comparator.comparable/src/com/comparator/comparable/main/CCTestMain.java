@@ -64,9 +64,9 @@ public class CCTestMain {
 		AccountByBalance byBalance = new AccountByBalance();
 		Collections.sort(list, byBalance);
 		Formatter fmt3 = new Formatter();
-		fmt.format("%15s %15s %15s %15s\n", "Account ID", "Balance", "First Name", "Last Name");
+		fmt3.format("%15s %15s %15s %15s\n", "Account ID", "Balance", "First Name", "Last Name");
 		StringBuffer output3 = new StringBuffer();
-		output3.append("Sorted by Account balance: " 
+		output3.append("Sorted by Account balance: \n" 
 				+ "-----------------------------------------------------------------------\n");
 		for (Account account: list) {
 				 fmt3.format("%15s %15s %15s %15s\n", account.getAccountID(), usd.format(account.getBalance()), account.getFirstName(), account.getLastName());
