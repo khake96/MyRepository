@@ -1,24 +1,38 @@
 package com.silverstarapp.model;
 
-import com.silverstarapp.exception.BusinessException;
+/* This Login class file contains the data required for a Silver
+ * Star Banking employee or customer login. The data for each instance
+ *  is stored in the database.
+ */
 
 public class Login {
 	
 	private String userName;
-	private char[] password;
+	private String password;
 	
 	
 	
 	public Login() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
-	public Login(String userName, char[] password) {
+	public Login(String userName, String password) {
 		super();
 		this.userName = userName;
 		this.password = password;
 	}
+	
+	// Provided so that test cases can be run comparing objects
+	@Override
+    public boolean equals(Object obj){
+        Login x = (Login) obj;
+        boolean status = false;
+        if(this.userName.equals(x.userName) 
+                && this.password.equals(x.password) ){
+            status = true;
+        }
+        return status;
+    }
 	
 	public String toString(char[] password) {
 		String pWord = new String(password);
@@ -31,18 +45,11 @@ public class Login {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public char[] getPassword() {
+	public String getPassword() {
 		return password;
 	}
-	public void setPassword(char[] password) {
+	public void setPassword(String password) {
 		this.password = password;
-	}
-	
-	public boolean isBusinessValid() throws BusinessException {
-		boolean result = false;
-		if(userName!=null && password.length>0)
-			result = true;	
-	return result;
 	}
 
 }

@@ -1,6 +1,9 @@
 package com.silverstarapp.model;
 
-import java.util.Arrays;
+/* This User class file contains the data required for a Silver
+ * Star Banking user. The data for each instance is stored in
+ * the database.
+ */
 
 public class User {
 	
@@ -9,11 +12,11 @@ public class User {
 	private String lastName;
 	private long contact;
 	private String userName;
-	private char[] password;
+	private String password;
 	private Address address;
 	
 	
-	public User(int id, String firstName, String lastName, long contact, String userName, char[] password,
+	public User(int id, String firstName, String lastName, long contact, String userName, String password,
 			Address address) {
 		super();
 		this.id = id;
@@ -25,12 +28,22 @@ public class User {
 		this.address = address;
 	}
 
-
 	public User() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-
+	
+	// Provided so that test cases can be run comparing objects
+	@Override
+    public boolean equals(Object obj){
+        User x = (User) obj;
+        boolean status = false;
+        if(this.id == x.id
+                && this.firstName.equals(x.firstName) 
+                && this.lastName.equals(x.lastName) ){
+            status = true;
+        }
+        return status;
+    }
 
 	public int getId() {
 		return id;
@@ -82,12 +95,12 @@ public class User {
 	}
 
 
-	public char[] getPassword() {
+	public String getPassword() {
 		return password;
 	}
 
 
-	public void setPassword(char[] password) {
+	public void setPassword(String password) {
 		this.password = password;
 	}
 
@@ -101,18 +114,10 @@ public class User {
 		this.address = address;
 	}
 
-
 	@Override
 	public String toString() {
 		return "User [User ID= " + id + ", First Name= " + firstName + ", Last Name= " + lastName + ", Contact= " + contact
 				+ ", User Name= " + userName + ", Password= *protected*" + ", Address=" + address + "]";
-	}
-	
-	public boolean isBusinessValid(User user) {
-		boolean result = false;
-		if(!user.userName.equals(null)||user.password.length!=0);
-		result = true;
-		return result;
 	}
 
 	

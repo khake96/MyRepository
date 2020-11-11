@@ -1,8 +1,12 @@
 package com.silverstarapp.model;
 
-import com.silverstarapp.dao.employee.EmployeeDAO;
-import com.silverstarapp.dao.impl.employee.EmpoloyeeDaoImpl;
-import com.silverstarapp.exception.BusinessException;
+import com.silverstarapp.dao.EmployeeDAO;
+import com.silverstarapp.dao.impl.EmpoloyeeDaoImpl;
+
+/* This Employee class file contains the data required for a Silver
+ * Star Banking employee. The data for each instance is stored in
+ * the database.
+ */
 
 public class Employee {
 	
@@ -24,15 +28,20 @@ public class Employee {
 	
 	public Employee() {
 		super();	
-		// TODO Auto-generated constructor stub
 	}
 	
-//	public Employee setEmployee(int employeeID) throws BusinessException {
-//		// pass login to DAO to fill from DB
-//		employee = employeeDAO.setEmployee(employeeID);		
-//		return employee;
-//	}
-
+	// Provided so that test cases can be run comparing objects
+	@Override
+    public boolean equals(Object obj){
+        Employee x = (Employee) obj;
+        boolean status = false;
+        if(this.id == x.id
+                && this.firstName.equals(x.firstName) 
+                && this.lastName.equals(x.lastName) ){
+            status = true;
+        }
+        return status;
+    }
 
 	public String getFirstName() {
 		return firstName;

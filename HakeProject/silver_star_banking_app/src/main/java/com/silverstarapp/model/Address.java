@@ -1,5 +1,10 @@
 package com.silverstarapp.model;
 
+/* This Address class file contains the data required for a Silver
+ * Star Banking customer address. The data for each transaction is stored in
+ * the database.
+ */
+
 public class Address {
 	
 	private int houseNo;
@@ -11,10 +16,7 @@ public class Address {
 
 	
 	public Address() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
-
 
 	public Address(int houseNo, String streetName, String secondLine, String city, String state, String zip) {
 		super();
@@ -25,6 +27,19 @@ public class Address {
 		this.state = state;
 		this.zip = zip;
 	}
+	
+	// Provided so that test cases can be run comparing objects
+	@Override
+    public boolean equals(Object obj){
+        Address x = (Address) obj;
+        boolean status = false;
+        if(this.houseNo == x.houseNo
+                && this.streetName.equals(x.streetName) 
+                && this.city.equals(x.city) ){
+            status = true;
+        }
+        return status;
+    }
 
 
 	public int getHouseNo() {
@@ -89,8 +104,8 @@ public class Address {
 
 	@Override
 	public String toString() {
-		return houseNo + streetName + "\n "
-				+ secondLine + "/n " +
+		return houseNo +" "+ streetName + "\n "
+				+ secondLine + "\n " +
 				city + ", " + state + ", " + zip;
 	}
 	

@@ -1,13 +1,13 @@
 package com.silverstarapp.service;
 
+/* This Service level UserAction interface file contains the requirements for a Silver
+ * Star Banking user useage. The implementation is found in the corresponding Impl class.
+ */
+
 import com.silverstarapp.exception.BusinessException;
-import com.silverstarapp.model.RegistrationApplication;
+import com.silverstarapp.model.Customer;
 import com.silverstarapp.model.User;
 
 public interface UserActions {
-	
-	public RegistrationApplication newRegistrationApplication(User user) throws BusinessException;
-	public RegistrationApplication viewRegistrationApplicationStatus(RegistrationApplication application) throws BusinessException;
-	public boolean login(String username, char[] password) throws BusinessException;
-	// no need to login (auto-creates a customer account)
+	public Customer newRegistrationApplication(User user) throws BusinessException;
 }

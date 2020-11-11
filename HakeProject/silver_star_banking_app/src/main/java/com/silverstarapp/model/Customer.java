@@ -1,7 +1,9 @@
 package com.silverstarapp.model;
 
-import java.util.Arrays;
-import java.util.List;
+/* This Customer class file contains the data required for a Silver
+ * Star Banking customer. The data for each instance is stored in
+ * the database.
+ */
 
 public class Customer {
 
@@ -18,15 +20,26 @@ public class Customer {
 		this.lastName = lastName;
 		this.contact = contact;
 	}
+	
+	// Provided so that test cases can be run comparing customer objects
+	@Override
+    public boolean equals(Object obj){
+        Customer customer = (Customer) obj;
+        boolean status = false;
+        if(this.id == customer.id
+                && this.firstName.equals(customer.firstName) 
+                && this.lastName.equals(customer.lastName) ){
+            status = true;
+        }
+        return status;
+    }
 
 	public Customer() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	public Customer setCustomer(Login login) {
 		Customer customer = new Customer();
-		// pass login to DAO to get customer
 		return customer;
 	}
 

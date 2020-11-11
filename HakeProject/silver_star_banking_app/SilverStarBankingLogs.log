@@ -1,0 +1,939 @@
+com.silverstarapp.main.SilverStarAppMain        12-11-20 03:16:28
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:16:28
+       com.silverstarapp.main.SilverStarAppMain        Choose Option Below - Please enter digit 1, 2, or 3     12-11-20 03:16:28
+       com.silverstarapp.main.SilverStarAppMain        ===================================================== 
+     12-11-20 03:16:28
+       com.silverstarapp.main.SilverStarAppMain        1  -  Customer Login     12-11-20 03:16:28
+       com.silverstarapp.main.SilverStarAppMain        2  -  Employee Login     12-11-20 03:16:28
+       com.silverstarapp.main.SilverStarAppMain        3  -  Create a Silver Star User Account     12-11-20 03:16:28
+       com.silverstarapp.main.SilverStarAppMain        
+Enter 0 to exit the app.     12-11-20 03:16:28
+       com.silverstarapp.main.SilverStarAppMain   User selection: 3     12-11-20 03:17:15
+       com.silverstarapp.main.SilverStarAppMain   
+
+     Please Enter all required data. Follow entry with *Enter*
+     ============================================================= 
+
+    1) First Name (required):      12-11-20 03:17:15
+       com.silverstarapp.main.SilverStarAppMain   First name entered: Kevin     12-11-20 03:17:25
+       com.silverstarapp.main.SilverStarAppMain       2) Last Name (required):      12-11-20 03:17:25
+       com.silverstarapp.main.SilverStarAppMain   Last name entered: Hake     12-11-20 03:17:27
+       com.silverstarapp.main.SilverStarAppMain       3) Silver Star Username (required):      12-11-20 03:17:27
+       com.silverstarapp.main.SilverStarAppMain   User name entered: khake     12-11-20 03:17:30
+       com.silverstarapp.main.SilverStarAppMain       4) Silver Star Password (required):      12-11-20 03:17:30
+       com.silverstarapp.main.SilverStarAppMain   Password entered: password     12-11-20 03:17:33
+       com.silverstarapp.main.SilverStarAppMain       5) Phone contact eg. +11231234567 (optional):      12-11-20 03:17:33
+       com.silverstarapp.main.SilverStarAppMain   Contact entered: 7894561234     12-11-20 03:17:56
+       com.silverstarapp.main.SilverStarAppMain       6) House Number (required):      12-11-20 03:17:56
+       com.silverstarapp.main.SilverStarAppMain   House number entered: 253     12-11-20 03:22:58
+       com.silverstarapp.main.SilverStarAppMain       7) Street Name (required):      12-11-20 03:22:58
+       com.silverstarapp.main.SilverStarAppMain   Street name entered: Jason Street     12-11-20 03:23:02
+       com.silverstarapp.main.SilverStarAppMain       8) Second Address Line (optional):      12-11-20 03:23:02
+       com.silverstarapp.main.SilverStarAppMain   Second address line entered:      12-11-20 03:23:04
+       com.silverstarapp.main.SilverStarAppMain       9) City (required):      12-11-20 03:23:04
+       com.silverstarapp.main.SilverStarAppMain   City entered: Orlando     12-11-20 03:23:09
+       com.silverstarapp.main.SilverStarAppMain       10) State eg. TN (required):      12-11-20 03:23:09
+       com.silverstarapp.main.SilverStarAppMain   State entered: TN     12-11-20 03:23:10
+       com.silverstarapp.main.SilverStarAppMain       11) ZIP code (required):      12-11-20 03:23:10
+       com.silverstarapp.main.SilverStarAppMain   Zip entered: 33650     12-11-20 03:23:15
+       com.silverstarapp.main.SilverStarAppMain   User DAO isUniqueUserName prepared statement: SELECT username FROM silver_star_banking.customerlogins WHERE username = 'khake'     12-11-20 03:23:16
+       com.silverstarapp.main.SilverStarAppMain   User DAO isUniqueUserName prepared statement: SELECT username FROM silver_star_banking.customerlogins WHERE username = 'khake'     12-11-20 03:23:16
+       com.silverstarapp.main.SilverStarAppMain   User DAO createNewCustomer prepared statement: INSERT INTO silver_star_banking.customers (customer_id, firstname, lastname, contact) VALUES (default,'Kevin','Hake',7894561234)     12-11-20 03:23:16
+       com.silverstarapp.main.SilverStarAppMain   User DAO GetLatest_Customer_ID prepared statement: SELECT max(silver_star_banking.customers.customer_id) as customer_id FROM silver_star_banking.customers     12-11-20 03:23:16
+       com.silverstarapp.main.SilverStarAppMain   User DAO CUstomerLoginTableInsert prepared statement: INSERT INTO silver_star_banking.customerlogins (username, pword, customer_id) VALUES ('khake','password',10)     12-11-20 03:23:16
+       com.silverstarapp.main.SilverStarAppMain   User DAO AddressTableInsert prepared statement: INSERT INTO silver_star_banking.addresses (address_id, houseno, streetname, secondline, city, state, zip) VALUES (default,253,'Jason Street','','Orlando','TN','33650')     12-11-20 03:23:16
+       com.silverstarapp.main.SilverStarAppMain   User creation success!     12-11-20 03:23:16
+       com.silverstarapp.main.SilverStarAppMain   User DAO getLatestAddress prepared statement: SELECT max(silver_star_banking.addresses.address_id) as address_id FROM silver_star_banking.addresses     12-11-20 03:23:17
+       com.silverstarapp.main.SilverStarAppMain   User DAO customer_address_link_insert prepared statement: INSERT INTO silver_star_banking.customeraddresslink (customer_id, address_id) VALUES (10,500007)     12-11-20 03:23:17
+       com.silverstarapp.main.SilverStarAppMain   Customer Link Table update complete!     12-11-20 03:23:17
+       com.silverstarapp.main.SilverStarAppMain   Welcome to Silver Star Banking! You are nowa customer! Your customer ID number is: 10     12-11-20 03:23:17
+       com.silverstarapp.main.SilverStarAppMain   Please log in again to apply for an account!     12-11-20 03:23:17
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:23:17
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:23:17
+       com.silverstarapp.main.SilverStarAppMain        Choose Option Below - Please enter digit 1, 2, or 3     12-11-20 03:23:17
+       com.silverstarapp.main.SilverStarAppMain        ===================================================== 
+     12-11-20 03:23:17
+       com.silverstarapp.main.SilverStarAppMain        1  -  Customer Login     12-11-20 03:23:17
+       com.silverstarapp.main.SilverStarAppMain        2  -  Employee Login     12-11-20 03:23:17
+       com.silverstarapp.main.SilverStarAppMain        3  -  Create a Silver Star User Account     12-11-20 03:23:17
+       com.silverstarapp.main.SilverStarAppMain        
+Enter 0 to exit the app.     12-11-20 03:23:17
+       com.silverstarapp.main.SilverStarAppMain   User selection: 3     12-11-20 03:23:43
+       com.silverstarapp.main.SilverStarAppMain   
+
+     Please Enter all required data. Follow entry with *Enter*
+     ============================================================= 
+
+    1) First Name (required):      12-11-20 03:23:43
+       com.silverstarapp.main.SilverStarAppMain   First name entered: George     12-11-20 03:23:48
+       com.silverstarapp.main.SilverStarAppMain       2) Last Name (required):      12-11-20 03:23:48
+       com.silverstarapp.main.SilverStarAppMain   Last name entered: Watson     12-11-20 03:23:50
+       com.silverstarapp.main.SilverStarAppMain       3) Silver Star Username (required):      12-11-20 03:23:50
+       com.silverstarapp.main.SilverStarAppMain   User name entered: George     12-11-20 03:23:55
+       com.silverstarapp.main.SilverStarAppMain       4) Silver Star Password (required):      12-11-20 03:23:55
+       com.silverstarapp.main.SilverStarAppMain   Password entered: password     12-11-20 03:23:57
+       com.silverstarapp.main.SilverStarAppMain       5) Phone contact eg. +11231234567 (optional):      12-11-20 03:23:57
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:26:22
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:26:22
+       com.silverstarapp.main.SilverStarAppMain        Choose Option Below - Please enter digit 1, 2, or 3     12-11-20 03:26:22
+       com.silverstarapp.main.SilverStarAppMain        ===================================================== 
+     12-11-20 03:26:22
+       com.silverstarapp.main.SilverStarAppMain        1  -  Customer Login     12-11-20 03:26:22
+       com.silverstarapp.main.SilverStarAppMain        2  -  Employee Login     12-11-20 03:26:22
+       com.silverstarapp.main.SilverStarAppMain        3  -  Create a Silver Star User Account     12-11-20 03:26:22
+       com.silverstarapp.main.SilverStarAppMain        
+Enter 0 to exit the app.     12-11-20 03:26:22
+       com.silverstarapp.main.SilverStarAppMain   User selection: 3     12-11-20 03:26:25
+       com.silverstarapp.main.SilverStarAppMain   
+
+     Please Enter all required data. Follow entry with *Enter*
+     ============================================================= 
+
+    1) First Name (required):      12-11-20 03:26:25
+       com.silverstarapp.main.SilverStarAppMain   First name entered: Kevin     12-11-20 03:26:28
+       com.silverstarapp.main.SilverStarAppMain       2) Last Name (required):      12-11-20 03:26:28
+       com.silverstarapp.main.SilverStarAppMain   Last name entered: Pkwopk     12-11-20 03:26:29
+       com.silverstarapp.main.SilverStarAppMain       3) Silver Star Username (required):      12-11-20 03:26:29
+       com.silverstarapp.main.SilverStarAppMain   User name entered: wokd     12-11-20 03:26:32
+       com.silverstarapp.main.SilverStarAppMain       4) Silver Star Password (required):      12-11-20 03:26:32
+       com.silverstarapp.main.SilverStarAppMain   Password entered: opkw     12-11-20 03:26:33
+       com.silverstarapp.main.SilverStarAppMain       5) Phone contact eg. 1231234567 (optional):      12-11-20 03:26:33
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:35:40
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:35:40
+       com.silverstarapp.main.SilverStarAppMain        Choose Option Below - Please enter digit 1, 2, or 3     12-11-20 03:35:40
+       com.silverstarapp.main.SilverStarAppMain        ===================================================== 
+     12-11-20 03:35:40
+       com.silverstarapp.main.SilverStarAppMain        1  -  Customer Login     12-11-20 03:35:40
+       com.silverstarapp.main.SilverStarAppMain        2  -  Employee Login     12-11-20 03:35:40
+       com.silverstarapp.main.SilverStarAppMain        3  -  Create a Silver Star User Account     12-11-20 03:35:40
+       com.silverstarapp.main.SilverStarAppMain        
+Enter 0 to exit the app.     12-11-20 03:35:40
+       com.silverstarapp.main.SilverStarAppMain   User selection: 3     12-11-20 03:35:57
+       com.silverstarapp.main.SilverStarAppMain   
+
+     Please Enter all required data. Follow entry with *Enter*
+     ============================================================= 
+
+    1) First Name (required):      12-11-20 03:35:57
+       com.silverstarapp.main.SilverStarAppMain   First name entered:      12-11-20 03:36:00
+       com.silverstarapp.main.SilverStarAppMain       2) Last Name (required):      12-11-20 03:36:00
+       com.silverstarapp.main.SilverStarAppMain   Last name entered:      12-11-20 03:36:01
+       com.silverstarapp.main.SilverStarAppMain       3) Silver Star Username (required):      12-11-20 03:36:01
+       com.silverstarapp.main.SilverStarAppMain   User name entered:      12-11-20 03:36:01
+       com.silverstarapp.main.SilverStarAppMain       4) Silver Star Password (required):      12-11-20 03:36:01
+       com.silverstarapp.main.SilverStarAppMain   Password entered:      12-11-20 03:36:01
+       com.silverstarapp.main.SilverStarAppMain       5) Phone contact eg. 1231234567 (optional):      12-11-20 03:36:01
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:37:31
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:37:31
+       com.silverstarapp.main.SilverStarAppMain        Choose Option Below - Please enter digit 1, 2, or 3     12-11-20 03:37:31
+       com.silverstarapp.main.SilverStarAppMain        ===================================================== 
+     12-11-20 03:37:31
+       com.silverstarapp.main.SilverStarAppMain        1  -  Customer Login     12-11-20 03:37:31
+       com.silverstarapp.main.SilverStarAppMain        2  -  Employee Login     12-11-20 03:37:31
+       com.silverstarapp.main.SilverStarAppMain        3  -  Create a Silver Star User Account     12-11-20 03:37:31
+       com.silverstarapp.main.SilverStarAppMain        
+Enter 0 to exit the app.     12-11-20 03:37:31
+       com.silverstarapp.main.SilverStarAppMain   User selection: 3     12-11-20 03:37:34
+       com.silverstarapp.main.SilverStarAppMain   
+
+     Please Enter all required data. Follow entry with *Enter*
+     ============================================================= 
+
+    1) First Name (required):      12-11-20 03:37:34
+       com.silverstarapp.main.SilverStarAppMain   First name entered:      12-11-20 03:37:35
+       com.silverstarapp.main.SilverStarAppMain       2) Last Name (required):      12-11-20 03:37:35
+       com.silverstarapp.main.SilverStarAppMain   Last name entered:      12-11-20 03:37:35
+       com.silverstarapp.main.SilverStarAppMain       3) Silver Star Username (required):      12-11-20 03:37:35
+       com.silverstarapp.main.SilverStarAppMain   User name entered:      12-11-20 03:37:35
+       com.silverstarapp.main.SilverStarAppMain       4) Silver Star Password (required):      12-11-20 03:37:35
+       com.silverstarapp.main.SilverStarAppMain   Password entered:      12-11-20 03:37:36
+       com.silverstarapp.main.SilverStarAppMain       5) Phone contact eg. 1231234567 (optional):      12-11-20 03:37:36
+       com.silverstarapp.main.SilverStarAppMain   For input string: ""     12-11-20 03:37:36
+       com.silverstarapp.main.SilverStarAppMain   Contact entered:      12-11-20 03:37:36
+       com.silverstarapp.main.SilverStarAppMain       6) House Number (required):      12-11-20 03:37:36
+       com.silverstarapp.main.SilverStarAppMain   For input string: ""     12-11-20 03:37:36
+       com.silverstarapp.main.SilverStarAppMain   Error creating new address. Please try again.     12-11-20 03:37:36
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:37:36
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:37:36
+       com.silverstarapp.main.SilverStarAppMain        Choose Option Below - Please enter digit 1, 2, or 3     12-11-20 03:37:36
+       com.silverstarapp.main.SilverStarAppMain        ===================================================== 
+     12-11-20 03:37:36
+       com.silverstarapp.main.SilverStarAppMain        1  -  Customer Login     12-11-20 03:37:36
+       com.silverstarapp.main.SilverStarAppMain        2  -  Employee Login     12-11-20 03:37:36
+       com.silverstarapp.main.SilverStarAppMain        3  -  Create a Silver Star User Account     12-11-20 03:37:36
+       com.silverstarapp.main.SilverStarAppMain        
+Enter 0 to exit the app.     12-11-20 03:37:36
+       com.silverstarapp.main.SilverStarAppMain   User selection: 3     12-11-20 03:38:15
+       com.silverstarapp.main.SilverStarAppMain   
+
+     Please Enter all required data. Follow entry with *Enter*
+     ============================================================= 
+
+    1) First Name (required):      12-11-20 03:38:15
+       com.silverstarapp.main.SilverStarAppMain   First name entered: George     12-11-20 03:38:23
+       com.silverstarapp.main.SilverStarAppMain       2) Last Name (required):      12-11-20 03:38:23
+       com.silverstarapp.main.SilverStarAppMain   Last name entered: Wishywashy     12-11-20 03:38:26
+       com.silverstarapp.main.SilverStarAppMain       3) Silver Star Username (required):      12-11-20 03:38:26
+       com.silverstarapp.main.SilverStarAppMain   User name entered: George     12-11-20 03:38:29
+       com.silverstarapp.main.SilverStarAppMain       4) Silver Star Password (required):      12-11-20 03:38:29
+       com.silverstarapp.main.SilverStarAppMain   Password entered: password     12-11-20 03:38:31
+       com.silverstarapp.main.SilverStarAppMain       5) Phone contact eg. 1231234567 (optional):      12-11-20 03:38:31
+       com.silverstarapp.main.SilverStarAppMain   Contact entered: 5896987485     12-11-20 03:38:36
+       com.silverstarapp.main.SilverStarAppMain       6) House Number (required):      12-11-20 03:38:36
+       com.silverstarapp.main.SilverStarAppMain   House number entered: 582     12-11-20 03:38:39
+       com.silverstarapp.main.SilverStarAppMain       7) Street Name (required):      12-11-20 03:38:39
+       com.silverstarapp.main.SilverStarAppMain   Street name entered: Jelly Bean Way     12-11-20 03:38:45
+       com.silverstarapp.main.SilverStarAppMain       8) Second Address Line (optional):      12-11-20 03:38:45
+       com.silverstarapp.main.SilverStarAppMain   Second address line entered:      12-11-20 03:38:46
+       com.silverstarapp.main.SilverStarAppMain       9) City (required):      12-11-20 03:38:46
+       com.silverstarapp.main.SilverStarAppMain   City entered: Johnson City     12-11-20 03:38:53
+       com.silverstarapp.main.SilverStarAppMain       10) State eg. TN (required):      12-11-20 03:38:53
+       com.silverstarapp.main.SilverStarAppMain   State entered: TN     12-11-20 03:38:54
+       com.silverstarapp.main.SilverStarAppMain       11) ZIP code (required):      12-11-20 03:38:54
+       com.silverstarapp.main.SilverStarAppMain   Zip entered: 98567     12-11-20 03:38:58
+       com.silverstarapp.main.SilverStarAppMain   User DAO isUniqueUserName prepared statement: SELECT username FROM silver_star_banking.customerlogins WHERE username = 'George'     12-11-20 03:38:58
+       com.silverstarapp.main.SilverStarAppMain   User DAO isUniqueUserName prepared statement: SELECT username FROM silver_star_banking.customerlogins WHERE username = 'George'     12-11-20 03:38:58
+       com.silverstarapp.main.SilverStarAppMain   User DAO createNewCustomer prepared statement: INSERT INTO silver_star_banking.customers (customer_id, firstname, lastname, contact) VALUES (default,'George','Wishywashy',5896987485)     12-11-20 03:38:58
+       com.silverstarapp.main.SilverStarAppMain   User DAO GetLatest_Customer_ID prepared statement: SELECT max(silver_star_banking.customers.customer_id) as customer_id FROM silver_star_banking.customers     12-11-20 03:38:59
+       com.silverstarapp.main.SilverStarAppMain   User DAO CUstomerLoginTableInsert prepared statement: INSERT INTO silver_star_banking.customerlogins (username, pword, customer_id) VALUES ('George','password',11)     12-11-20 03:38:59
+       com.silverstarapp.main.SilverStarAppMain   User DAO AddressTableInsert prepared statement: INSERT INTO silver_star_banking.addresses (address_id, houseno, streetname, secondline, city, state, zip) VALUES (default,582,'Jelly Bean Way','','Johnson City','TN','98567')     12-11-20 03:38:59
+       com.silverstarapp.main.SilverStarAppMain   User creation success!     12-11-20 03:38:59
+       com.silverstarapp.main.SilverStarAppMain   User DAO getLatestAddress prepared statement: SELECT max(silver_star_banking.addresses.address_id) as address_id FROM silver_star_banking.addresses     12-11-20 03:38:59
+       com.silverstarapp.main.SilverStarAppMain   User DAO customer_address_link_insert prepared statement: INSERT INTO silver_star_banking.customeraddresslink (customer_id, address_id) VALUES (11,500008)     12-11-20 03:38:59
+       com.silverstarapp.main.SilverStarAppMain   Customer Link Table update complete!     12-11-20 03:38:59
+       com.silverstarapp.main.SilverStarAppMain   Welcome to Silver Star Banking! You are nowa customer! Your customer ID number is: 11     12-11-20 03:38:59
+       com.silverstarapp.main.SilverStarAppMain   Please log in again to apply for an account!     12-11-20 03:38:59
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:38:59
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:38:59
+       com.silverstarapp.main.SilverStarAppMain        Choose Option Below - Please enter digit 1, 2, or 3     12-11-20 03:38:59
+       com.silverstarapp.main.SilverStarAppMain        ===================================================== 
+     12-11-20 03:38:59
+       com.silverstarapp.main.SilverStarAppMain        1  -  Customer Login     12-11-20 03:38:59
+       com.silverstarapp.main.SilverStarAppMain        2  -  Employee Login     12-11-20 03:38:59
+       com.silverstarapp.main.SilverStarAppMain        3  -  Create a Silver Star User Account     12-11-20 03:38:59
+       com.silverstarapp.main.SilverStarAppMain        
+Enter 0 to exit the app.     12-11-20 03:38:59
+       com.silverstarapp.main.SilverStarAppMain   User selection: 1     12-11-20 03:39:17
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:39:17
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:39:17
+       com.silverstarapp.main.SilverStarAppMain        Please Login:     12-11-20 03:39:17
+       com.silverstarapp.main.SilverStarAppMain        ===================================================== 
+     12-11-20 03:39:17
+       com.silverstarapp.main.SilverStarAppMain        To return to the root menu please press Enter with no value.     12-11-20 03:39:17
+       com.silverstarapp.main.SilverStarAppMain   Please enter User Name:      12-11-20 03:39:17
+       com.silverstarapp.main.SilverStarAppMain   User name: George     12-11-20 03:39:20
+       com.silverstarapp.main.SilverStarAppMain   
+Please enter password:      12-11-20 03:39:20
+       com.silverstarapp.main.SilverStarAppMain   User password: password     12-11-20 03:39:21
+       com.silverstarapp.main.SilverStarAppMain   User DAO customerLogin preparedStatement: SELECT customer_id FROM silver_star_banking.customerlogins WHERE username = 'George' and pword = 'password' .     12-11-20 03:39:21
+       com.silverstarapp.main.SilverStarAppMain   User DAO setCustomer preparedStatement: SELECT customer_id, firstName, lastName, contact FROM silver_star_banking.customers WHERE customer_id = 11.     12-11-20 03:39:21
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:39:22
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:39:22
+       com.silverstarapp.main.SilverStarAppMain        Welcome George     12-11-20 03:39:22
+       com.silverstarapp.main.SilverStarAppMain        Choose Option Below - Please enter single digit 1-5      12-11-20 03:39:22
+       com.silverstarapp.main.SilverStarAppMain        ===================================================== 
+     12-11-20 03:39:22
+       com.silverstarapp.main.SilverStarAppMain        1  -  View Account Balance     12-11-20 03:39:22
+       com.silverstarapp.main.SilverStarAppMain        2  -  Deposit Funds     12-11-20 03:39:22
+       com.silverstarapp.main.SilverStarAppMain        3  -  Withdraw Funds     12-11-20 03:39:22
+       com.silverstarapp.main.SilverStarAppMain        4  -  Transfer Funds     12-11-20 03:39:22
+       com.silverstarapp.main.SilverStarAppMain        5  -  Apply for a new Account     12-11-20 03:39:22
+       com.silverstarapp.main.SilverStarAppMain        
+Enter 0 to return to main menu.     12-11-20 03:39:22
+       com.silverstarapp.main.SilverStarAppMain   User selection: 5     12-11-20 03:39:29
+       com.silverstarapp.main.SilverStarAppMain   
+Please enter intial balance amount:      12-11-20 03:39:29
+       com.silverstarapp.main.SilverStarAppMain   Starting balance entered: 500.01     12-11-20 03:39:39
+       com.silverstarapp.main.SilverStarAppMain   
+Please enter gross yearly income:      12-11-20 03:39:39
+       com.silverstarapp.main.SilverStarAppMain   Income amount entered: 56000.0     12-11-20 03:39:45
+       com.silverstarapp.main.SilverStarAppMain   
+Please enter yearly expenses:      12-11-20 03:39:45
+       com.silverstarapp.main.SilverStarAppMain   Expenses amount entered: 47000.0     12-11-20 03:39:47
+       com.silverstarapp.main.SilverStarAppMain   User DAO makeApplication preparedStatement: INSERT INTO silver_star_banking.accountapplications (account_appl_id, customer_id, startingbalance, incomeGross, expenses) VALUES (default, 11, 500.01, 56000.0, 47000.0).     12-11-20 03:39:47
+       com.silverstarapp.main.SilverStarAppMain   User DAO viewLatestAccountApplication preparedStatement: SELECT account_appl_id, customer_id, startingbalance, incomegross, expenses 			FROM silver_star_banking.accountapplications 			ORDER BY account_appl_id DESC.     12-11-20 03:39:47
+       com.silverstarapp.main.SilverStarAppMain   
+Application is successful.     12-11-20 03:39:47
+       com.silverstarapp.main.SilverStarAppMain   Your application id is: 700025     12-11-20 03:39:47
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:39:47
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:39:47
+       com.silverstarapp.main.SilverStarAppMain        Welcome George     12-11-20 03:39:47
+       com.silverstarapp.main.SilverStarAppMain        Choose Option Below - Please enter single digit 1-5      12-11-20 03:39:47
+       com.silverstarapp.main.SilverStarAppMain        ===================================================== 
+     12-11-20 03:39:47
+       com.silverstarapp.main.SilverStarAppMain        1  -  View Account Balance     12-11-20 03:39:47
+       com.silverstarapp.main.SilverStarAppMain        2  -  Deposit Funds     12-11-20 03:39:47
+       com.silverstarapp.main.SilverStarAppMain        3  -  Withdraw Funds     12-11-20 03:39:47
+       com.silverstarapp.main.SilverStarAppMain        4  -  Transfer Funds     12-11-20 03:39:47
+       com.silverstarapp.main.SilverStarAppMain        5  -  Apply for a new Account     12-11-20 03:39:47
+       com.silverstarapp.main.SilverStarAppMain        
+Enter 0 to return to main menu.     12-11-20 03:39:47
+       com.silverstarapp.main.SilverStarAppMain   User selection: 0     12-11-20 03:39:55
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:39:55
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:39:55
+       com.silverstarapp.main.SilverStarAppMain        Choose Option Below - Please enter digit 1, 2, or 3     12-11-20 03:39:55
+       com.silverstarapp.main.SilverStarAppMain        ===================================================== 
+     12-11-20 03:39:55
+       com.silverstarapp.main.SilverStarAppMain        1  -  Customer Login     12-11-20 03:39:55
+       com.silverstarapp.main.SilverStarAppMain        2  -  Employee Login     12-11-20 03:39:55
+       com.silverstarapp.main.SilverStarAppMain        3  -  Create a Silver Star User Account     12-11-20 03:39:55
+       com.silverstarapp.main.SilverStarAppMain        
+Enter 0 to exit the app.     12-11-20 03:39:55
+       com.silverstarapp.main.SilverStarAppMain   User selection: 2     12-11-20 03:39:58
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:39:58
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:39:58
+       com.silverstarapp.main.SilverStarAppMain        Please Login:     12-11-20 03:39:58
+       com.silverstarapp.main.SilverStarAppMain        ===================================================== 
+     12-11-20 03:39:58
+       com.silverstarapp.main.SilverStarAppMain        To return to the root menu please press Enter with no value.     12-11-20 03:39:58
+       com.silverstarapp.main.SilverStarAppMain   Please enter User Name:      12-11-20 03:39:58
+       com.silverstarapp.main.SilverStarAppMain   User name: Allen     12-11-20 03:40:00
+       com.silverstarapp.main.SilverStarAppMain   
+Please enter password:      12-11-20 03:40:00
+       com.silverstarapp.main.SilverStarAppMain   User password: password     12-11-20 03:40:02
+       com.silverstarapp.main.SilverStarAppMain   Employee DAO employeeLogin preparedStatement: SELECT employee_id FROM silver_star_banking.employeelogins WHERE username = 'Allen' and pword = 'password'.     12-11-20 03:40:02
+       com.silverstarapp.main.SilverStarAppMain   Employee DAO setEmployee preparedStatement: SELECT employee_id, firstName, lastName, contact FROM silver_star_banking.employees WHERE employee_id = 1002.     12-11-20 03:40:02
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:40:02
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:40:02
+       com.silverstarapp.main.SilverStarAppMain        Welcome Allen     12-11-20 03:40:02
+       com.silverstarapp.main.SilverStarAppMain        Choose Option Below - Please enter digit 1, 2, or 3     12-11-20 03:40:02
+       com.silverstarapp.main.SilverStarAppMain        ===================================================== 
+     12-11-20 03:40:02
+       com.silverstarapp.main.SilverStarAppMain        1  -  View Account Applications     12-11-20 03:40:02
+       com.silverstarapp.main.SilverStarAppMain        2  -  Approve Account Application     12-11-20 03:40:02
+       com.silverstarapp.main.SilverStarAppMain        3  -  View Customer Account     12-11-20 03:40:02
+       com.silverstarapp.main.SilverStarAppMain        
+Enter 0 to return to main menu.     12-11-20 03:40:02
+       com.silverstarapp.main.SilverStarAppMain   User selection: 1     12-11-20 03:40:06
+       com.silverstarapp.main.SilverStarAppMain   Employee DAO getAllApplications preparedStatement: select account_appl_id, customer_id, startingbalance, incomegross, expenses from silver_star_banking.accountapplications order by startingbalance desc.     12-11-20 03:40:06
+       com.silverstarapp.main.SilverStarAppMain   Account applications: 
+-----------------------------------------------------------------------
+      Application ID     Starting Balance         Gross Income             Expenses          Customer ID
+              700016              $800.00           $50,000.00           $20,000.00                    2
+              700013              $600.00           $56,000.00           $34,000.00                    1
+              700015              $600.00          $150,000.00              $654.00                    1
+              700017              $600.00           $60,000.00            $6,000.00                    2
+              700004              $560.00           $36,000.00           $34,000.00                    4
+              700018              $560.00           $89,000.00           $56,000.00                    9
+              700025              $500.01           $56,000.00           $47,000.00                   11
+     12-11-20 03:40:06
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:40:06
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:40:06
+       com.silverstarapp.main.SilverStarAppMain        Welcome Allen     12-11-20 03:40:06
+       com.silverstarapp.main.SilverStarAppMain        Choose Option Below - Please enter digit 1, 2, or 3     12-11-20 03:40:06
+       com.silverstarapp.main.SilverStarAppMain        ===================================================== 
+     12-11-20 03:40:06
+       com.silverstarapp.main.SilverStarAppMain        1  -  View Account Applications     12-11-20 03:40:06
+       com.silverstarapp.main.SilverStarAppMain        2  -  Approve Account Application     12-11-20 03:40:06
+       com.silverstarapp.main.SilverStarAppMain        3  -  View Customer Account     12-11-20 03:40:06
+       com.silverstarapp.main.SilverStarAppMain        
+Enter 0 to return to main menu.     12-11-20 03:40:06
+       com.silverstarapp.main.SilverStarAppMain   User selection: 2     12-11-20 03:40:20
+       com.silverstarapp.main.SilverStarAppMain   
+Please enter account application number:      12-11-20 03:40:20
+       com.silverstarapp.main.SilverStarAppMain   Application account number entered: 700025     12-11-20 03:40:26
+       com.silverstarapp.main.SilverStarAppMain   
+Please enter 0 to deny and 1 to approve:      12-11-20 03:40:26
+       com.silverstarapp.main.SilverStarAppMain   Approval / Disapproval entered: 0     12-11-20 03:40:28
+       com.silverstarapp.main.SilverStarAppMain   Employee DAO deletAccountApplication preparedStatement: DELETE FROM silver_star_banking.accountapplications WHERE account_appl_id = 700025.     12-11-20 03:40:28
+       com.silverstarapp.main.SilverStarAppMain   Account application denied. Application ID: 700025     12-11-20 03:40:28
+       com.silverstarapp.main.SilverStarAppMain   
+Application ID 700025 successfully denied.     12-11-20 03:40:28
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:40:28
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:40:28
+       com.silverstarapp.main.SilverStarAppMain        Welcome Allen     12-11-20 03:40:28
+       com.silverstarapp.main.SilverStarAppMain        Choose Option Below - Please enter digit 1, 2, or 3     12-11-20 03:40:28
+       com.silverstarapp.main.SilverStarAppMain        ===================================================== 
+     12-11-20 03:40:28
+       com.silverstarapp.main.SilverStarAppMain        1  -  View Account Applications     12-11-20 03:40:28
+       com.silverstarapp.main.SilverStarAppMain        2  -  Approve Account Application     12-11-20 03:40:28
+       com.silverstarapp.main.SilverStarAppMain        3  -  View Customer Account     12-11-20 03:40:28
+       com.silverstarapp.main.SilverStarAppMain        
+Enter 0 to return to main menu.     12-11-20 03:40:28
+       com.silverstarapp.main.SilverStarAppMain   User selection: 1     12-11-20 03:40:35
+       com.silverstarapp.main.SilverStarAppMain   Employee DAO getAllApplications preparedStatement: select account_appl_id, customer_id, startingbalance, incomegross, expenses from silver_star_banking.accountapplications order by startingbalance desc.     12-11-20 03:40:35
+       com.silverstarapp.main.SilverStarAppMain   Account applications: 
+-----------------------------------------------------------------------
+      Application ID     Starting Balance         Gross Income             Expenses          Customer ID
+              700016              $800.00           $50,000.00           $20,000.00                    2
+              700013              $600.00           $56,000.00           $34,000.00                    1
+              700015              $600.00          $150,000.00              $654.00                    1
+              700017              $600.00           $60,000.00            $6,000.00                    2
+              700004              $560.00           $36,000.00           $34,000.00                    4
+              700018              $560.00           $89,000.00           $56,000.00                    9
+     12-11-20 03:40:35
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:40:35
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:40:35
+       com.silverstarapp.main.SilverStarAppMain        Welcome Allen     12-11-20 03:40:35
+       com.silverstarapp.main.SilverStarAppMain        Choose Option Below - Please enter digit 1, 2, or 3     12-11-20 03:40:35
+       com.silverstarapp.main.SilverStarAppMain        ===================================================== 
+     12-11-20 03:40:35
+       com.silverstarapp.main.SilverStarAppMain        1  -  View Account Applications     12-11-20 03:40:35
+       com.silverstarapp.main.SilverStarAppMain        2  -  Approve Account Application     12-11-20 03:40:35
+       com.silverstarapp.main.SilverStarAppMain        3  -  View Customer Account     12-11-20 03:40:35
+       com.silverstarapp.main.SilverStarAppMain        
+Enter 0 to return to main menu.     12-11-20 03:40:35
+       com.silverstarapp.main.SilverStarAppMain   User selection: 2     12-11-20 03:40:45
+       com.silverstarapp.main.SilverStarAppMain   
+Please enter account application number:      12-11-20 03:40:45
+       com.silverstarapp.main.SilverStarAppMain   Application account number entered: 700016     12-11-20 03:40:50
+       com.silverstarapp.main.SilverStarAppMain   
+Please enter 0 to deny and 1 to approve:      12-11-20 03:40:50
+       com.silverstarapp.main.SilverStarAppMain   Approval / Disapproval entered: 1     12-11-20 03:40:52
+       com.silverstarapp.main.SilverStarAppMain   Employee DAO approveApplication preparedStatement: SELECT startingBalance, customer_id FROM silver_star_banking.accountapplications where account_appl_id = 700016.     12-11-20 03:40:52
+       com.silverstarapp.main.SilverStarAppMain   Employee DAO createNewAccount preparedStatement: INSERT INTO silver_star_banking.accounts(account_id, balance, approveddate, lastmodifieddate) VALUES (default, 800.0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP).     12-11-20 03:40:52
+       com.silverstarapp.main.SilverStarAppMain   Employee DAO getLatestAccount preparedStatement: SELECT max(silver_star_banking.accounts.account_id) as account_id FROM silver_star_banking.accounts.     12-11-20 03:40:52
+       com.silverstarapp.main.SilverStarAppMain   Employee DAO createNewUserAccount preparedStatement: INSERT INTO silver_star_banking.customeraccountlink (customer_id, account_id) VALUES (2, 100027).     12-11-20 03:40:52
+       com.silverstarapp.main.SilverStarAppMain   Employee DAO createNewAccountHistory preparedStatement: INSERT INTO silver_star_banking.accounthistory (transaction_id,account_id,transaction_value, transaction_time, balance) VALUES (default, 100027, 800.0, now(), 800.0).     12-11-20 03:40:52
+       com.silverstarapp.main.SilverStarAppMain   Employee DAO deleteAccountApplication preparedStatement: DELETE FROM silver_star_banking.accountapplications WHERE account_appl_id = 700016.     12-11-20 03:40:53
+       com.silverstarapp.main.SilverStarAppMain   
+Application ID 700016 successfully approved.     12-11-20 03:40:53
+       com.silverstarapp.main.SilverStarAppMain   Employee DAO getLatestAccount preparedStatement: SELECT max(silver_star_banking.accounts.account_id) as account_id FROM silver_star_banking.accounts.     12-11-20 03:40:53
+       com.silverstarapp.main.SilverStarAppMain   New acccount number is: 100027     12-11-20 03:40:53
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:40:53
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:40:53
+       com.silverstarapp.main.SilverStarAppMain        Welcome Allen     12-11-20 03:40:53
+       com.silverstarapp.main.SilverStarAppMain        Choose Option Below - Please enter digit 1, 2, or 3     12-11-20 03:40:53
+       com.silverstarapp.main.SilverStarAppMain        ===================================================== 
+     12-11-20 03:40:53
+       com.silverstarapp.main.SilverStarAppMain        1  -  View Account Applications     12-11-20 03:40:53
+       com.silverstarapp.main.SilverStarAppMain        2  -  Approve Account Application     12-11-20 03:40:53
+       com.silverstarapp.main.SilverStarAppMain        3  -  View Customer Account     12-11-20 03:40:53
+       com.silverstarapp.main.SilverStarAppMain        
+Enter 0 to return to main menu.     12-11-20 03:40:53
+       com.silverstarapp.main.SilverStarAppMain   User selection: 3     12-11-20 03:41:02
+       com.silverstarapp.main.SilverStarAppMain   
+Please enter account number:      12-11-20 03:41:02
+       com.silverstarapp.main.SilverStarAppMain   Account number entered: 100027     12-11-20 03:41:05
+       com.silverstarapp.main.SilverStarAppMain   Employee DAO viewCustomerAccount preparedStatement: SELECT transaction_value, balance, transaction_time from silver_star_banking.accounthistory WHERE account_id = 100027.     12-11-20 03:41:05
+       com.silverstarapp.main.SilverStarAppMain   User DAO getAccountNoID preparedStatement: SELECT balance, approveddate, lastmodifieddate FROM silver_star_banking.accounts where account_id = 100027.     12-11-20 03:41:05
+       com.silverstarapp.main.SilverStarAppMain   
+Requested Account: 
+Account number: 100027            Account Approval Date: Thursday 12.11.2020 03:40:52
+-----------------------------------------------------------------------
+          Debit          Credit         Balance                    Transaction Time
+                        $800.00         $800.00        Thursday 12.11.2020 03:40:52
+     12-11-20 03:41:05
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:41:05
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:41:05
+       com.silverstarapp.main.SilverStarAppMain        Welcome Allen     12-11-20 03:41:05
+       com.silverstarapp.main.SilverStarAppMain        Choose Option Below - Please enter digit 1, 2, or 3     12-11-20 03:41:05
+       com.silverstarapp.main.SilverStarAppMain        ===================================================== 
+     12-11-20 03:41:05
+       com.silverstarapp.main.SilverStarAppMain        1  -  View Account Applications     12-11-20 03:41:05
+       com.silverstarapp.main.SilverStarAppMain        2  -  Approve Account Application     12-11-20 03:41:05
+       com.silverstarapp.main.SilverStarAppMain        3  -  View Customer Account     12-11-20 03:41:05
+       com.silverstarapp.main.SilverStarAppMain        
+Enter 0 to return to main menu.     12-11-20 03:41:05
+       com.silverstarapp.main.SilverStarAppMain   User selection: 3     12-11-20 03:41:24
+       com.silverstarapp.main.SilverStarAppMain   
+Please enter account number:      12-11-20 03:41:24
+       com.silverstarapp.main.SilverStarAppMain   Account number entered: 100005     12-11-20 03:41:30
+       com.silverstarapp.main.SilverStarAppMain   Employee DAO viewCustomerAccount preparedStatement: SELECT transaction_value, balance, transaction_time from silver_star_banking.accounthistory WHERE account_id = 100005.     12-11-20 03:41:30
+       com.silverstarapp.main.SilverStarAppMain   User DAO getAccountNoID preparedStatement: SELECT balance, approveddate, lastmodifieddate FROM silver_star_banking.accounts where account_id = 100005.     12-11-20 03:41:30
+       com.silverstarapp.main.SilverStarAppMain   
+Requested Account: 
+Account number: 100005            Account Approval Date: Tuesday 10.11.2020 09:13:59
+-----------------------------------------------------------------------
+          Debit          Credit         Balance                    Transaction Time
+                         $25.30           $0.00         Tuesday 10.11.2020 02:02:06
+                         $50.00         $698.31         Tuesday 10.11.2020 09:16:29
+       ($50.00)                         $698.31         Tuesday 10.11.2020 09:17:28
+                        $250.00         $698.31         Tuesday 10.11.2020 09:17:51
+                         $62.00       $1,010.31         Tuesday 10.11.2020 09:21:59
+                         $50.00       $1,060.31       Wednesday 11.11.2020 05:16:56
+                         $50.00       $1,110.31        Thursday 12.11.2020 01:37:21
+     12-11-20 03:41:30
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:41:30
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:41:30
+       com.silverstarapp.main.SilverStarAppMain        Welcome Allen     12-11-20 03:41:30
+       com.silverstarapp.main.SilverStarAppMain        Choose Option Below - Please enter digit 1, 2, or 3     12-11-20 03:41:30
+       com.silverstarapp.main.SilverStarAppMain        ===================================================== 
+     12-11-20 03:41:30
+       com.silverstarapp.main.SilverStarAppMain        1  -  View Account Applications     12-11-20 03:41:30
+       com.silverstarapp.main.SilverStarAppMain        2  -  Approve Account Application     12-11-20 03:41:30
+       com.silverstarapp.main.SilverStarAppMain        3  -  View Customer Account     12-11-20 03:41:30
+       com.silverstarapp.main.SilverStarAppMain        
+Enter 0 to return to main menu.     12-11-20 03:41:30
+       com.silverstarapp.main.SilverStarAppMain   User selection: 0     12-11-20 03:43:52
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:43:52
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:43:52
+       com.silverstarapp.main.SilverStarAppMain        Choose Option Below - Please enter digit 1, 2, or 3     12-11-20 03:43:52
+       com.silverstarapp.main.SilverStarAppMain        ===================================================== 
+     12-11-20 03:43:52
+       com.silverstarapp.main.SilverStarAppMain        1  -  Customer Login     12-11-20 03:43:52
+       com.silverstarapp.main.SilverStarAppMain        2  -  Employee Login     12-11-20 03:43:52
+       com.silverstarapp.main.SilverStarAppMain        3  -  Create a Silver Star User Account     12-11-20 03:43:52
+       com.silverstarapp.main.SilverStarAppMain        
+Enter 0 to exit the app.     12-11-20 03:43:52
+       com.silverstarapp.main.SilverStarAppMain   User selection: 1     12-11-20 03:43:54
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:43:54
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:43:54
+       com.silverstarapp.main.SilverStarAppMain        Please Login:     12-11-20 03:43:54
+       com.silverstarapp.main.SilverStarAppMain        ===================================================== 
+     12-11-20 03:43:54
+       com.silverstarapp.main.SilverStarAppMain        To return to the root menu please press Enter with no value.     12-11-20 03:43:54
+       com.silverstarapp.main.SilverStarAppMain   Please enter User Name:      12-11-20 03:43:54
+       com.silverstarapp.main.SilverStarAppMain   User name: Tim     12-11-20 03:45:50
+       com.silverstarapp.main.SilverStarAppMain   
+Please enter password:      12-11-20 03:45:50
+       com.silverstarapp.main.SilverStarAppMain   User password: password     12-11-20 03:45:52
+       com.silverstarapp.main.SilverStarAppMain   User DAO customerLogin preparedStatement: SELECT customer_id FROM silver_star_banking.customerlogins WHERE username = 'Tim' and pword = 'password' .     12-11-20 03:45:52
+       com.silverstarapp.main.SilverStarAppMain   User DAO setCustomer preparedStatement: SELECT customer_id, firstName, lastName, contact FROM silver_star_banking.customers WHERE customer_id = 5.     12-11-20 03:45:52
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:45:52
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:45:52
+       com.silverstarapp.main.SilverStarAppMain        Welcome Tim     12-11-20 03:45:52
+       com.silverstarapp.main.SilverStarAppMain        Choose Option Below - Please enter single digit 1-5      12-11-20 03:45:52
+       com.silverstarapp.main.SilverStarAppMain        ===================================================== 
+     12-11-20 03:45:52
+       com.silverstarapp.main.SilverStarAppMain        1  -  View Account Balance     12-11-20 03:45:52
+       com.silverstarapp.main.SilverStarAppMain        2  -  Deposit Funds     12-11-20 03:45:52
+       com.silverstarapp.main.SilverStarAppMain        3  -  Withdraw Funds     12-11-20 03:45:52
+       com.silverstarapp.main.SilverStarAppMain        4  -  Transfer Funds     12-11-20 03:45:52
+       com.silverstarapp.main.SilverStarAppMain        5  -  Apply for a new Account     12-11-20 03:45:52
+       com.silverstarapp.main.SilverStarAppMain        
+Enter 0 to return to main menu.     12-11-20 03:45:52
+       com.silverstarapp.main.SilverStarAppMain   User selection: 1     12-11-20 03:45:57
+       com.silverstarapp.main.SilverStarAppMain   
+Please enter account number:      12-11-20 03:45:57
+       com.silverstarapp.main.SilverStarAppMain   Account number entered: 100002     12-11-20 03:46:02
+       com.silverstarapp.main.SilverStarAppMain   Is customer account evaluated TRUE.     12-11-20 03:46:03
+       com.silverstarapp.main.SilverStarAppMain   Is customer account evaluated TRUE.     12-11-20 03:46:03
+       com.silverstarapp.main.SilverStarAppMain   Is customer account evaluated FALSE.     12-11-20 03:46:03
+       com.silverstarapp.main.SilverStarAppMain   
+Customer ID: 5 does not own account number: 100002     12-11-20 03:46:03
+       com.silverstarapp.main.SilverStarAppMain   Cannot complete transaction.     12-11-20 03:46:03
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:46:03
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:46:03
+       com.silverstarapp.main.SilverStarAppMain        Welcome Tim     12-11-20 03:46:03
+       com.silverstarapp.main.SilverStarAppMain        Choose Option Below - Please enter single digit 1-5      12-11-20 03:46:03
+       com.silverstarapp.main.SilverStarAppMain        ===================================================== 
+     12-11-20 03:46:03
+       com.silverstarapp.main.SilverStarAppMain        1  -  View Account Balance     12-11-20 03:46:03
+       com.silverstarapp.main.SilverStarAppMain        2  -  Deposit Funds     12-11-20 03:46:03
+       com.silverstarapp.main.SilverStarAppMain        3  -  Withdraw Funds     12-11-20 03:46:03
+       com.silverstarapp.main.SilverStarAppMain        4  -  Transfer Funds     12-11-20 03:46:03
+       com.silverstarapp.main.SilverStarAppMain        5  -  Apply for a new Account     12-11-20 03:46:03
+       com.silverstarapp.main.SilverStarAppMain        
+Enter 0 to return to main menu.     12-11-20 03:46:03
+       com.silverstarapp.main.SilverStarAppMain   User selection: 2     12-11-20 03:46:10
+       com.silverstarapp.main.SilverStarAppMain   
+Please enter account number:      12-11-20 03:46:10
+       com.silverstarapp.main.SilverStarAppMain   Account number entered: 100002     12-11-20 03:46:15
+       com.silverstarapp.main.SilverStarAppMain   
+Please enter deposit amount:      12-11-20 03:46:15
+       com.silverstarapp.main.SilverStarAppMain   Deposit amount entered: 58.0     12-11-20 03:46:17
+       com.silverstarapp.main.SilverStarAppMain   User DAO getAccountNoID preparedStatement: SELECT balance, approveddate, lastmodifieddate FROM silver_star_banking.accounts where account_id = 100002.     12-11-20 03:46:17
+       com.silverstarapp.main.SilverStarAppMain   User DAO depositAccount preparedStatement: UPDATE silver_star_banking.accounts SET balance = balance + 58.0 WHERE account_id = 100002.     12-11-20 03:46:17
+       com.silverstarapp.main.SilverStarAppMain   User DAO getAccountNoID preparedStatement: SELECT balance, approveddate, lastmodifieddate FROM silver_star_banking.accounts where account_id = 100002.     12-11-20 03:46:17
+       com.silverstarapp.main.SilverStarAppMain   User DAO setModifiedDate preparedStatement: UPDATE silver_star_banking.accounts  SET lastModifiedDate = now()  WHERE account_id = 100002.     12-11-20 03:46:18
+       com.silverstarapp.main.SilverStarAppMain   User DAO setAccountHistory preparedStatement:  INSERT INTO silver_star_banking.accounthistory (transaction_id, account_id, transaction_value, balance, transaction_time) values (default, 100002, 58.0, 1443.67, now()).     12-11-20 03:46:18
+       com.silverstarapp.main.SilverStarAppMain   User DAO setModifiedDate preparedStatement: UPDATE silver_star_banking.accounts  SET lastModifiedDate = now()  WHERE account_id = 100002.     12-11-20 03:46:18
+       com.silverstarapp.main.SilverStarAppMain   User DAO getAccountNoID preparedStatement: SELECT balance, approveddate, lastmodifieddate FROM silver_star_banking.accounts where account_id = 100002.     12-11-20 03:46:18
+       com.silverstarapp.main.SilverStarAppMain   Successful deposit into account number 100002     12-11-20 03:46:18
+       com.silverstarapp.main.SilverStarAppMain   Current balance is: $1,443.67     12-11-20 03:46:18
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:46:18
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:46:18
+       com.silverstarapp.main.SilverStarAppMain        Welcome Tim     12-11-20 03:46:18
+       com.silverstarapp.main.SilverStarAppMain        Choose Option Below - Please enter single digit 1-5      12-11-20 03:46:18
+       com.silverstarapp.main.SilverStarAppMain        ===================================================== 
+     12-11-20 03:46:18
+       com.silverstarapp.main.SilverStarAppMain        1  -  View Account Balance     12-11-20 03:46:18
+       com.silverstarapp.main.SilverStarAppMain        2  -  Deposit Funds     12-11-20 03:46:18
+       com.silverstarapp.main.SilverStarAppMain        3  -  Withdraw Funds     12-11-20 03:46:18
+       com.silverstarapp.main.SilverStarAppMain        4  -  Transfer Funds     12-11-20 03:46:18
+       com.silverstarapp.main.SilverStarAppMain        5  -  Apply for a new Account     12-11-20 03:46:18
+       com.silverstarapp.main.SilverStarAppMain        
+Enter 0 to return to main menu.     12-11-20 03:46:18
+       com.silverstarapp.main.SilverStarAppMain   User selection: 2     12-11-20 03:46:30
+       com.silverstarapp.main.SilverStarAppMain   
+Please enter account number:      12-11-20 03:46:30
+       com.silverstarapp.main.SilverStarAppMain   Account number entered: 100003     12-11-20 03:46:39
+       com.silverstarapp.main.SilverStarAppMain   
+Please enter deposit amount:      12-11-20 03:46:39
+       com.silverstarapp.main.SilverStarAppMain   Deposit amount entered: 56.0     12-11-20 03:46:42
+       com.silverstarapp.main.SilverStarAppMain   User DAO getAccountNoID preparedStatement: SELECT balance, approveddate, lastmodifieddate FROM silver_star_banking.accounts where account_id = 100003.     12-11-20 03:46:42
+       com.silverstarapp.main.SilverStarAppMain   User DAO depositAccount preparedStatement: UPDATE silver_star_banking.accounts SET balance = balance + 56.0 WHERE account_id = 100003.     12-11-20 03:46:42
+       com.silverstarapp.main.SilverStarAppMain   User DAO getAccountNoID preparedStatement: SELECT balance, approveddate, lastmodifieddate FROM silver_star_banking.accounts where account_id = 100003.     12-11-20 03:46:43
+       com.silverstarapp.main.SilverStarAppMain   User DAO setModifiedDate preparedStatement: UPDATE silver_star_banking.accounts  SET lastModifiedDate = now()  WHERE account_id = 100003.     12-11-20 03:46:43
+       com.silverstarapp.main.SilverStarAppMain   User DAO setAccountHistory preparedStatement:  INSERT INTO silver_star_banking.accounthistory (transaction_id, account_id, transaction_value, balance, transaction_time) values (default, 100003, 56.0, 2217.5, now()).     12-11-20 03:46:43
+       com.silverstarapp.main.SilverStarAppMain   User DAO setModifiedDate preparedStatement: UPDATE silver_star_banking.accounts  SET lastModifiedDate = now()  WHERE account_id = 100003.     12-11-20 03:46:43
+       com.silverstarapp.main.SilverStarAppMain   User DAO getAccountNoID preparedStatement: SELECT balance, approveddate, lastmodifieddate FROM silver_star_banking.accounts where account_id = 100003.     12-11-20 03:46:43
+       com.silverstarapp.main.SilverStarAppMain   Successful deposit into account number 100003     12-11-20 03:46:43
+       com.silverstarapp.main.SilverStarAppMain   Current balance is: $2,217.50     12-11-20 03:46:43
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:46:43
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:46:43
+       com.silverstarapp.main.SilverStarAppMain        Welcome Tim     12-11-20 03:46:43
+       com.silverstarapp.main.SilverStarAppMain        Choose Option Below - Please enter single digit 1-5      12-11-20 03:46:43
+       com.silverstarapp.main.SilverStarAppMain        ===================================================== 
+     12-11-20 03:46:43
+       com.silverstarapp.main.SilverStarAppMain        1  -  View Account Balance     12-11-20 03:46:43
+       com.silverstarapp.main.SilverStarAppMain        2  -  Deposit Funds     12-11-20 03:46:43
+       com.silverstarapp.main.SilverStarAppMain        3  -  Withdraw Funds     12-11-20 03:46:43
+       com.silverstarapp.main.SilverStarAppMain        4  -  Transfer Funds     12-11-20 03:46:43
+       com.silverstarapp.main.SilverStarAppMain        5  -  Apply for a new Account     12-11-20 03:46:43
+       com.silverstarapp.main.SilverStarAppMain        
+Enter 0 to return to main menu.     12-11-20 03:46:43
+       com.silverstarapp.main.SilverStarAppMain   User selection: 3     12-11-20 03:46:52
+       com.silverstarapp.main.SilverStarAppMain   
+Please enter account number:      12-11-20 03:46:52
+       com.silverstarapp.main.SilverStarAppMain   Account number entered: 100019     12-11-20 03:46:56
+       com.silverstarapp.main.SilverStarAppMain   
+Please enter withdraw amount:      12-11-20 03:46:56
+       com.silverstarapp.main.SilverStarAppMain   User DAO getAccountNoID preparedStatement: SELECT balance, approveddate, lastmodifieddate FROM silver_star_banking.accounts where account_id = 100019.     12-11-20 03:46:59
+       com.silverstarapp.main.SilverStarAppMain   Is customer account evaluated TRUE.     12-11-20 03:46:59
+       com.silverstarapp.main.SilverStarAppMain   Is customer account evaluated TRUE.     12-11-20 03:46:59
+       com.silverstarapp.main.SilverStarAppMain   Is customer account evaluated FALSE.     12-11-20 03:46:59
+       com.silverstarapp.main.SilverStarAppMain   User DAO debitAccount preparedStatement: UPDATE silver_star_banking.accounts SET balance = balance - 56.23 WHERE account_id = 100019.     12-11-20 03:47:00
+       com.silverstarapp.main.SilverStarAppMain   Is customer account evaluated TRUE.     12-11-20 03:47:00
+       com.silverstarapp.main.SilverStarAppMain   Is customer account evaluated TRUE.     12-11-20 03:47:00
+       com.silverstarapp.main.SilverStarAppMain   Is customer account evaluated FALSE.     12-11-20 03:47:00
+       com.silverstarapp.main.SilverStarAppMain   User DAO getAccount preparedStatement: SELECT balance, approveddate, lastmodifieddate FROM silver_star_banking.accounts where account_id = 100019.     12-11-20 03:47:00
+       com.silverstarapp.main.SilverStarAppMain   User DAO setAccountHistory preparedStatement:  INSERT INTO silver_star_banking.accounthistory (transaction_id, account_id, transaction_value, balance, transaction_time) values (default, 100019, -56.23, 374.27, now()).     12-11-20 03:47:00
+       com.silverstarapp.main.SilverStarAppMain   User DAO setModifiedDate preparedStatement: UPDATE silver_star_banking.accounts  SET lastModifiedDate = now()  WHERE account_id = 100019.     12-11-20 03:47:00
+       com.silverstarapp.main.SilverStarAppMain   Is customer account evaluated TRUE.     12-11-20 03:47:00
+       com.silverstarapp.main.SilverStarAppMain   Is customer account evaluated TRUE.     12-11-20 03:47:00
+       com.silverstarapp.main.SilverStarAppMain   Is customer account evaluated FALSE.     12-11-20 03:47:00
+       com.silverstarapp.main.SilverStarAppMain   User DAO getAccount preparedStatement: SELECT balance, approveddate, lastmodifieddate FROM silver_star_banking.accounts where account_id = 100019.     12-11-20 03:47:00
+       com.silverstarapp.main.SilverStarAppMain   
+Account debit successful.     12-11-20 03:47:00
+       com.silverstarapp.main.SilverStarAppMain   Your new balance for account number 100019 is $374.27     12-11-20 03:47:00
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:47:00
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:47:00
+       com.silverstarapp.main.SilverStarAppMain        Welcome Tim     12-11-20 03:47:00
+       com.silverstarapp.main.SilverStarAppMain        Choose Option Below - Please enter single digit 1-5      12-11-20 03:47:00
+       com.silverstarapp.main.SilverStarAppMain        ===================================================== 
+     12-11-20 03:47:00
+       com.silverstarapp.main.SilverStarAppMain        1  -  View Account Balance     12-11-20 03:47:00
+       com.silverstarapp.main.SilverStarAppMain        2  -  Deposit Funds     12-11-20 03:47:00
+       com.silverstarapp.main.SilverStarAppMain        3  -  Withdraw Funds     12-11-20 03:47:00
+       com.silverstarapp.main.SilverStarAppMain        4  -  Transfer Funds     12-11-20 03:47:00
+       com.silverstarapp.main.SilverStarAppMain        5  -  Apply for a new Account     12-11-20 03:47:00
+       com.silverstarapp.main.SilverStarAppMain        
+Enter 0 to return to main menu.     12-11-20 03:47:00
+       com.silverstarapp.main.SilverStarAppMain   User selection: 4     12-11-20 03:47:07
+       com.silverstarapp.main.SilverStarAppMain   Account for withdrawal:      12-11-20 03:47:07
+       com.silverstarapp.main.SilverStarAppMain   
+Please enter account number:      12-11-20 03:47:07
+       com.silverstarapp.main.SilverStarAppMain   Account number entered: 100003     12-11-20 03:47:11
+       com.silverstarapp.main.SilverStarAppMain   Is customer account evaluated TRUE.     12-11-20 03:47:11
+       com.silverstarapp.main.SilverStarAppMain   Is customer account evaluated TRUE.     12-11-20 03:47:11
+       com.silverstarapp.main.SilverStarAppMain   Is customer account evaluated FALSE.     12-11-20 03:47:11
+       com.silverstarapp.main.SilverStarAppMain   User DAO getAccount preparedStatement: SELECT balance, approveddate, lastmodifieddate FROM silver_star_banking.accounts where account_id = 100003.     12-11-20 03:47:12
+       com.silverstarapp.main.SilverStarAppMain   Account for deposit:      12-11-20 03:47:12
+       com.silverstarapp.main.SilverStarAppMain   
+Please enter account number:      12-11-20 03:47:12
+       com.silverstarapp.main.SilverStarAppMain   Account number entered: 100019     12-11-20 03:47:14
+       com.silverstarapp.main.SilverStarAppMain   User DAO getAccountNoID preparedStatement: SELECT balance, approveddate, lastmodifieddate FROM silver_star_banking.accounts where account_id = 100019.     12-11-20 03:47:14
+       com.silverstarapp.main.SilverStarAppMain   
+Please enter transfer amount:      12-11-20 03:47:14
+       com.silverstarapp.main.SilverStarAppMain   Transfer amount entered: 156.32     12-11-20 03:47:20
+       com.silverstarapp.main.SilverStarAppMain   Is customer account evaluated TRUE.     12-11-20 03:47:20
+       com.silverstarapp.main.SilverStarAppMain   Is customer account evaluated TRUE.     12-11-20 03:47:20
+       com.silverstarapp.main.SilverStarAppMain   Is customer account evaluated FALSE.     12-11-20 03:47:20
+       com.silverstarapp.main.SilverStarAppMain   User DAO debitAccount preparedStatement: UPDATE silver_star_banking.accounts SET balance = balance - 156.32 WHERE account_id = 100003.     12-11-20 03:47:20
+       com.silverstarapp.main.SilverStarAppMain   Is customer account evaluated TRUE.     12-11-20 03:47:21
+       com.silverstarapp.main.SilverStarAppMain   Is customer account evaluated TRUE.     12-11-20 03:47:21
+       com.silverstarapp.main.SilverStarAppMain   Is customer account evaluated FALSE.     12-11-20 03:47:21
+       com.silverstarapp.main.SilverStarAppMain   User DAO getAccount preparedStatement: SELECT balance, approveddate, lastmodifieddate FROM silver_star_banking.accounts where account_id = 100003.     12-11-20 03:47:21
+       com.silverstarapp.main.SilverStarAppMain   User DAO setAccountHistory preparedStatement:  INSERT INTO silver_star_banking.accounthistory (transaction_id, account_id, transaction_value, balance, transaction_time) values (default, 100003, -156.32, 2061.18, now()).     12-11-20 03:47:21
+       com.silverstarapp.main.SilverStarAppMain   User DAO setModifiedDate preparedStatement: UPDATE silver_star_banking.accounts  SET lastModifiedDate = now()  WHERE account_id = 100003.     12-11-20 03:47:21
+       com.silverstarapp.main.SilverStarAppMain   User DAO depositAccount preparedStatement: UPDATE silver_star_banking.accounts SET balance = balance + 156.32 WHERE account_id = 100019.     12-11-20 03:47:21
+       com.silverstarapp.main.SilverStarAppMain   User DAO getAccountNoID preparedStatement: SELECT balance, approveddate, lastmodifieddate FROM silver_star_banking.accounts where account_id = 100019.     12-11-20 03:47:21
+       com.silverstarapp.main.SilverStarAppMain   User DAO setModifiedDate preparedStatement: UPDATE silver_star_banking.accounts  SET lastModifiedDate = now()  WHERE account_id = 100019.     12-11-20 03:47:21
+       com.silverstarapp.main.SilverStarAppMain   User DAO setAccountHistory preparedStatement:  INSERT INTO silver_star_banking.accounthistory (transaction_id, account_id, transaction_value, balance, transaction_time) values (default, 100019, 156.32, 530.59, now()).     12-11-20 03:47:22
+       com.silverstarapp.main.SilverStarAppMain   User DAO setModifiedDate preparedStatement: UPDATE silver_star_banking.accounts  SET lastModifiedDate = now()  WHERE account_id = 100019.     12-11-20 03:47:22
+       com.silverstarapp.main.SilverStarAppMain   
+Transfer successful.     12-11-20 03:47:22
+       com.silverstarapp.main.SilverStarAppMain   Debit account number 100003 current balance: $2,061.18     12-11-20 03:47:22
+       com.silverstarapp.main.SilverStarAppMain   Deposit account number 100019 current balance: $530.59     12-11-20 03:47:22
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:47:22
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:47:22
+       com.silverstarapp.main.SilverStarAppMain        Welcome Tim     12-11-20 03:47:22
+       com.silverstarapp.main.SilverStarAppMain        Choose Option Below - Please enter single digit 1-5      12-11-20 03:47:22
+       com.silverstarapp.main.SilverStarAppMain        ===================================================== 
+     12-11-20 03:47:22
+       com.silverstarapp.main.SilverStarAppMain        1  -  View Account Balance     12-11-20 03:47:22
+       com.silverstarapp.main.SilverStarAppMain        2  -  Deposit Funds     12-11-20 03:47:22
+       com.silverstarapp.main.SilverStarAppMain        3  -  Withdraw Funds     12-11-20 03:47:22
+       com.silverstarapp.main.SilverStarAppMain        4  -  Transfer Funds     12-11-20 03:47:22
+       com.silverstarapp.main.SilverStarAppMain        5  -  Apply for a new Account     12-11-20 03:47:22
+       com.silverstarapp.main.SilverStarAppMain        
+Enter 0 to return to main menu.     12-11-20 03:47:22
+       com.silverstarapp.main.SilverStarAppMain   User selection: 1     12-11-20 03:47:41
+       com.silverstarapp.main.SilverStarAppMain   
+Please enter account number:      12-11-20 03:47:41
+       com.silverstarapp.main.SilverStarAppMain   Account number entered: 100019     12-11-20 03:47:47
+       com.silverstarapp.main.SilverStarAppMain   Is customer account evaluated TRUE.     12-11-20 03:47:47
+       com.silverstarapp.main.SilverStarAppMain   Is customer account evaluated TRUE.     12-11-20 03:47:47
+       com.silverstarapp.main.SilverStarAppMain   Is customer account evaluated FALSE.     12-11-20 03:47:47
+       com.silverstarapp.main.SilverStarAppMain   User DAO getAccount preparedStatement: SELECT balance, approveddate, lastmodifieddate FROM silver_star_banking.accounts where account_id = 100019.     12-11-20 03:47:47
+       com.silverstarapp.main.SilverStarAppMain   Account number: 100019
+-----------------------------------------------------------------------
+             Balance                       Approved Date                       Last Modified 
+             $530.59                                             Tuesday 10.11.2020 09:13:59
+     12-11-20 03:47:47
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:47:47
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:47:47
+       com.silverstarapp.main.SilverStarAppMain        Welcome Tim     12-11-20 03:47:47
+       com.silverstarapp.main.SilverStarAppMain        Choose Option Below - Please enter single digit 1-5      12-11-20 03:47:47
+       com.silverstarapp.main.SilverStarAppMain        ===================================================== 
+     12-11-20 03:47:47
+       com.silverstarapp.main.SilverStarAppMain        1  -  View Account Balance     12-11-20 03:47:47
+       com.silverstarapp.main.SilverStarAppMain        2  -  Deposit Funds     12-11-20 03:47:47
+       com.silverstarapp.main.SilverStarAppMain        3  -  Withdraw Funds     12-11-20 03:47:47
+       com.silverstarapp.main.SilverStarAppMain        4  -  Transfer Funds     12-11-20 03:47:47
+       com.silverstarapp.main.SilverStarAppMain        5  -  Apply for a new Account     12-11-20 03:47:47
+       com.silverstarapp.main.SilverStarAppMain        
+Enter 0 to return to main menu.     12-11-20 03:47:47
+       com.silverstarapp.main.SilverStarAppMain   User selection: 1     12-11-20 03:50:47
+       com.silverstarapp.main.SilverStarAppMain   
+Please enter account number:      12-11-20 03:50:47
+       com.silverstarapp.main.SilverStarAppMain   Account number entered: 1000019     12-11-20 03:50:52
+       com.silverstarapp.main.SilverStarAppMain   Account number 1000019 is not valid. Please try again.     12-11-20 03:50:52
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:50:52
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:50:52
+       com.silverstarapp.main.SilverStarAppMain        Welcome Tim     12-11-20 03:50:52
+       com.silverstarapp.main.SilverStarAppMain        Choose Option Below - Please enter single digit 1-5      12-11-20 03:50:52
+       com.silverstarapp.main.SilverStarAppMain        ===================================================== 
+     12-11-20 03:50:52
+       com.silverstarapp.main.SilverStarAppMain        1  -  View Account Balance     12-11-20 03:50:52
+       com.silverstarapp.main.SilverStarAppMain        2  -  Deposit Funds     12-11-20 03:50:52
+       com.silverstarapp.main.SilverStarAppMain        3  -  Withdraw Funds     12-11-20 03:50:52
+       com.silverstarapp.main.SilverStarAppMain        4  -  Transfer Funds     12-11-20 03:50:52
+       com.silverstarapp.main.SilverStarAppMain        5  -  Apply for a new Account     12-11-20 03:50:52
+       com.silverstarapp.main.SilverStarAppMain        
+Enter 0 to return to main menu.     12-11-20 03:50:52
+       com.silverstarapp.main.SilverStarAppMain   User selection: 1     12-11-20 03:51:02
+       com.silverstarapp.main.SilverStarAppMain   
+Please enter account number:      12-11-20 03:51:02
+       com.silverstarapp.main.SilverStarAppMain   Account number entered: 100019     12-11-20 03:51:04
+       com.silverstarapp.main.SilverStarAppMain   Is customer account evaluated TRUE.     12-11-20 03:51:05
+       com.silverstarapp.main.SilverStarAppMain   Is customer account evaluated TRUE.     12-11-20 03:51:05
+       com.silverstarapp.main.SilverStarAppMain   Is customer account evaluated FALSE.     12-11-20 03:51:05
+       com.silverstarapp.main.SilverStarAppMain   User DAO getAccount preparedStatement: SELECT balance, approveddate, lastmodifieddate FROM silver_star_banking.accounts where account_id = 100019.     12-11-20 03:51:05
+       com.silverstarapp.main.SilverStarAppMain   Account number: 100019
+-----------------------------------------------------------------------
+             Balance                       Approved Date                       Last Modified 
+             $530.59                                             Tuesday 10.11.2020 09:13:59
+     12-11-20 03:51:05
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:51:05
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:51:05
+       com.silverstarapp.main.SilverStarAppMain        Welcome Tim     12-11-20 03:51:05
+       com.silverstarapp.main.SilverStarAppMain        Choose Option Below - Please enter single digit 1-5      12-11-20 03:51:05
+       com.silverstarapp.main.SilverStarAppMain        ===================================================== 
+     12-11-20 03:51:05
+       com.silverstarapp.main.SilverStarAppMain        1  -  View Account Balance     12-11-20 03:51:05
+       com.silverstarapp.main.SilverStarAppMain        2  -  Deposit Funds     12-11-20 03:51:05
+       com.silverstarapp.main.SilverStarAppMain        3  -  Withdraw Funds     12-11-20 03:51:05
+       com.silverstarapp.main.SilverStarAppMain        4  -  Transfer Funds     12-11-20 03:51:05
+       com.silverstarapp.main.SilverStarAppMain        5  -  Apply for a new Account     12-11-20 03:51:05
+       com.silverstarapp.main.SilverStarAppMain        
+Enter 0 to return to main menu.     12-11-20 03:51:05
+       com.silverstarapp.main.SilverStarAppMain   User selection: 0     12-11-20 03:51:18
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:51:18
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:51:18
+       com.silverstarapp.main.SilverStarAppMain        Choose Option Below - Please enter digit 1, 2, or 3     12-11-20 03:51:18
+       com.silverstarapp.main.SilverStarAppMain        ===================================================== 
+     12-11-20 03:51:18
+       com.silverstarapp.main.SilverStarAppMain        1  -  Customer Login     12-11-20 03:51:18
+       com.silverstarapp.main.SilverStarAppMain        2  -  Employee Login     12-11-20 03:51:18
+       com.silverstarapp.main.SilverStarAppMain        3  -  Create a Silver Star User Account     12-11-20 03:51:18
+       com.silverstarapp.main.SilverStarAppMain        
+Enter 0 to exit the app.     12-11-20 03:51:18
+       com.silverstarapp.main.SilverStarAppMain   User selection: 1     12-11-20 03:51:24
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:51:24
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:51:24
+       com.silverstarapp.main.SilverStarAppMain        Please Login:     12-11-20 03:51:24
+       com.silverstarapp.main.SilverStarAppMain        ===================================================== 
+     12-11-20 03:51:24
+       com.silverstarapp.main.SilverStarAppMain        To return to the root menu please press Enter with no value.     12-11-20 03:51:24
+       com.silverstarapp.main.SilverStarAppMain   Please enter User Name:      12-11-20 03:51:24
+       com.silverstarapp.main.SilverStarAppMain   User name: Sally     12-11-20 03:51:29
+       com.silverstarapp.main.SilverStarAppMain   
+Please enter password:      12-11-20 03:51:29
+       com.silverstarapp.main.SilverStarAppMain   User password: password     12-11-20 03:51:32
+       com.silverstarapp.main.SilverStarAppMain   User DAO customerLogin preparedStatement: SELECT customer_id FROM silver_star_banking.customerlogins WHERE username = 'Sally' and pword = 'password' .     12-11-20 03:51:32
+       com.silverstarapp.main.SilverStarAppMain   User DAO setCustomer preparedStatement: SELECT customer_id, firstName, lastName, contact FROM silver_star_banking.customers WHERE customer_id = 2.     12-11-20 03:51:32
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:51:32
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:51:32
+       com.silverstarapp.main.SilverStarAppMain        Welcome Sally     12-11-20 03:51:32
+       com.silverstarapp.main.SilverStarAppMain        Choose Option Below - Please enter single digit 1-5      12-11-20 03:51:32
+       com.silverstarapp.main.SilverStarAppMain        ===================================================== 
+     12-11-20 03:51:32
+       com.silverstarapp.main.SilverStarAppMain        1  -  View Account Balance     12-11-20 03:51:32
+       com.silverstarapp.main.SilverStarAppMain        2  -  Deposit Funds     12-11-20 03:51:32
+       com.silverstarapp.main.SilverStarAppMain        3  -  Withdraw Funds     12-11-20 03:51:32
+       com.silverstarapp.main.SilverStarAppMain        4  -  Transfer Funds     12-11-20 03:51:32
+       com.silverstarapp.main.SilverStarAppMain        5  -  Apply for a new Account     12-11-20 03:51:32
+       com.silverstarapp.main.SilverStarAppMain        
+Enter 0 to return to main menu.     12-11-20 03:51:32
+       com.silverstarapp.main.SilverStarAppMain   User selection: 100000     12-11-20 03:51:35
+       com.silverstarapp.main.SilverStarAppMain   Please enter digits 0-5. Thank you.     12-11-20 03:51:35
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:51:35
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:51:35
+       com.silverstarapp.main.SilverStarAppMain        Welcome Sally     12-11-20 03:51:35
+       com.silverstarapp.main.SilverStarAppMain        Choose Option Below - Please enter single digit 1-5      12-11-20 03:51:35
+       com.silverstarapp.main.SilverStarAppMain        ===================================================== 
+     12-11-20 03:51:35
+       com.silverstarapp.main.SilverStarAppMain        1  -  View Account Balance     12-11-20 03:51:35
+       com.silverstarapp.main.SilverStarAppMain        2  -  Deposit Funds     12-11-20 03:51:35
+       com.silverstarapp.main.SilverStarAppMain        3  -  Withdraw Funds     12-11-20 03:51:35
+       com.silverstarapp.main.SilverStarAppMain        4  -  Transfer Funds     12-11-20 03:51:35
+       com.silverstarapp.main.SilverStarAppMain        5  -  Apply for a new Account     12-11-20 03:51:35
+       com.silverstarapp.main.SilverStarAppMain        
+Enter 0 to return to main menu.     12-11-20 03:51:35
+       com.silverstarapp.main.SilverStarAppMain   User selection: 1     12-11-20 03:51:38
+       com.silverstarapp.main.SilverStarAppMain   
+Please enter account number:      12-11-20 03:51:38
+       com.silverstarapp.main.SilverStarAppMain   Account number entered: 100000     12-11-20 03:51:40
+       com.silverstarapp.main.SilverStarAppMain   Is customer account evaluated TRUE.     12-11-20 03:51:40
+       com.silverstarapp.main.SilverStarAppMain   Is customer account evaluated TRUE.     12-11-20 03:51:40
+       com.silverstarapp.main.SilverStarAppMain   Is customer account evaluated TRUE.     12-11-20 03:51:40
+       com.silverstarapp.main.SilverStarAppMain   Is customer account evaluated TRUE.     12-11-20 03:51:40
+       com.silverstarapp.main.SilverStarAppMain   Is customer account evaluated TRUE.     12-11-20 03:51:40
+       com.silverstarapp.main.SilverStarAppMain   Is customer account evaluated FALSE.     12-11-20 03:51:40
+       com.silverstarapp.main.SilverStarAppMain   User DAO getAccount preparedStatement: SELECT balance, approveddate, lastmodifieddate FROM silver_star_banking.accounts where account_id = 100000.     12-11-20 03:51:40
+       com.silverstarapp.main.SilverStarAppMain   Account number: 100000
+-----------------------------------------------------------------------
+             Balance                       Approved Date                       Last Modified 
+           $9,932.17                                             Tuesday 10.11.2020 09:13:59
+     12-11-20 03:51:40
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:51:40
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:51:40
+       com.silverstarapp.main.SilverStarAppMain        Welcome Sally     12-11-20 03:51:40
+       com.silverstarapp.main.SilverStarAppMain        Choose Option Below - Please enter single digit 1-5      12-11-20 03:51:40
+       com.silverstarapp.main.SilverStarAppMain        ===================================================== 
+     12-11-20 03:51:40
+       com.silverstarapp.main.SilverStarAppMain        1  -  View Account Balance     12-11-20 03:51:40
+       com.silverstarapp.main.SilverStarAppMain        2  -  Deposit Funds     12-11-20 03:51:40
+       com.silverstarapp.main.SilverStarAppMain        3  -  Withdraw Funds     12-11-20 03:51:40
+       com.silverstarapp.main.SilverStarAppMain        4  -  Transfer Funds     12-11-20 03:51:40
+       com.silverstarapp.main.SilverStarAppMain        5  -  Apply for a new Account     12-11-20 03:51:40
+       com.silverstarapp.main.SilverStarAppMain        
+Enter 0 to return to main menu.     12-11-20 03:51:40
+       com.silverstarapp.main.SilverStarAppMain   User selection: 0     12-11-20 03:51:48
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:51:48
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:51:48
+       com.silverstarapp.main.SilverStarAppMain        Choose Option Below - Please enter digit 1, 2, or 3     12-11-20 03:51:48
+       com.silverstarapp.main.SilverStarAppMain        ===================================================== 
+     12-11-20 03:51:48
+       com.silverstarapp.main.SilverStarAppMain        1  -  Customer Login     12-11-20 03:51:48
+       com.silverstarapp.main.SilverStarAppMain        2  -  Employee Login     12-11-20 03:51:48
+       com.silverstarapp.main.SilverStarAppMain        3  -  Create a Silver Star User Account     12-11-20 03:51:48
+       com.silverstarapp.main.SilverStarAppMain        
+Enter 0 to exit the app.     12-11-20 03:51:48
+       com.silverstarapp.main.SilverStarAppMain   User selection: 0     12-11-20 03:51:48
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:56:40
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:56:40
+       com.silverstarapp.main.SilverStarAppMain        Choose Option Below - Please enter digit 1, 2, or 3     12-11-20 03:56:40
+       com.silverstarapp.main.SilverStarAppMain        ===================================================== 
+     12-11-20 03:56:40
+       com.silverstarapp.main.SilverStarAppMain        1  -  Customer Login     12-11-20 03:56:40
+       com.silverstarapp.main.SilverStarAppMain        2  -  Employee Login     12-11-20 03:56:40
+       com.silverstarapp.main.SilverStarAppMain        3  -  Create a Silver Star User Account     12-11-20 03:56:40
+       com.silverstarapp.main.SilverStarAppMain        
+Enter 0 to exit the app.     12-11-20 03:56:40
+       com.silverstarapp.main.SilverStarAppMain   User selection: 1     12-11-20 03:56:44
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:56:44
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:56:44
+       com.silverstarapp.main.SilverStarAppMain        Please Login:     12-11-20 03:56:44
+       com.silverstarapp.main.SilverStarAppMain        ===================================================== 
+     12-11-20 03:56:44
+       com.silverstarapp.main.SilverStarAppMain        To return to the root menu please press Enter with no value.     12-11-20 03:56:44
+       com.silverstarapp.main.SilverStarAppMain   Please enter User Name:      12-11-20 03:56:44
+       com.silverstarapp.main.SilverStarAppMain   User name: Tim     12-11-20 03:56:46
+       com.silverstarapp.main.SilverStarAppMain   
+Please enter password:      12-11-20 03:56:46
+       com.silverstarapp.main.SilverStarAppMain   User password: password     12-11-20 03:56:48
+       com.silverstarapp.main.SilverStarAppMain   User DAO customerLogin preparedStatement: SELECT customer_id FROM silver_star_banking.customerlogins WHERE username = 'Tim' and pword = 'password' .     12-11-20 03:56:48
+       com.silverstarapp.main.SilverStarAppMain   User DAO setCustomer preparedStatement: SELECT customer_id, firstName, lastName, contact FROM silver_star_banking.customers WHERE customer_id = 5.     12-11-20 03:56:48
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:56:48
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:56:48
+       com.silverstarapp.main.SilverStarAppMain        Welcome Tim     12-11-20 03:56:48
+       com.silverstarapp.main.SilverStarAppMain        Choose Option Below - Please enter single digit 1-5      12-11-20 03:56:48
+       com.silverstarapp.main.SilverStarAppMain        ===================================================== 
+     12-11-20 03:56:48
+       com.silverstarapp.main.SilverStarAppMain        1  -  View Account Balance     12-11-20 03:56:48
+       com.silverstarapp.main.SilverStarAppMain        2  -  Deposit Funds     12-11-20 03:56:48
+       com.silverstarapp.main.SilverStarAppMain        3  -  Withdraw Funds     12-11-20 03:56:48
+       com.silverstarapp.main.SilverStarAppMain        4  -  Transfer Funds     12-11-20 03:56:48
+       com.silverstarapp.main.SilverStarAppMain        5  -  Apply for a new Account     12-11-20 03:56:48
+       com.silverstarapp.main.SilverStarAppMain        
+Enter 0 to return to main menu.     12-11-20 03:56:48
+       com.silverstarapp.main.SilverStarAppMain   User selection: 1     12-11-20 03:56:52
+       com.silverstarapp.main.SilverStarAppMain   
+Please enter account number:      12-11-20 03:56:52
+       com.silverstarapp.main.SilverStarAppMain   Account number entered: 100019     12-11-20 03:57:00
+       com.silverstarapp.main.SilverStarAppMain   Is customer account evaluated TRUE.     12-11-20 03:57:00
+       com.silverstarapp.main.SilverStarAppMain   Is customer account evaluated TRUE.     12-11-20 03:57:00
+       com.silverstarapp.main.SilverStarAppMain   Is customer account evaluated FALSE.     12-11-20 03:57:00
+       com.silverstarapp.main.SilverStarAppMain   User DAO getAccount preparedStatement: SELECT balance, approveddate, lastmodifieddate FROM silver_star_banking.accounts where account_id = 100019.     12-11-20 03:57:00
+       com.silverstarapp.main.SilverStarAppMain   Account number: 100019
+-----------------------------------------------------------------------
+             Balance                       Approved Date                       Last Modified 
+             $530.59         Tuesday 10.11.2020 09:13:59        Thursday 12.11.2020 03:47:22
+     12-11-20 03:57:00
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:57:00
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:57:00
+       com.silverstarapp.main.SilverStarAppMain        Welcome Tim     12-11-20 03:57:00
+       com.silverstarapp.main.SilverStarAppMain        Choose Option Below - Please enter single digit 1-5      12-11-20 03:57:00
+       com.silverstarapp.main.SilverStarAppMain        ===================================================== 
+     12-11-20 03:57:00
+       com.silverstarapp.main.SilverStarAppMain        1  -  View Account Balance     12-11-20 03:57:00
+       com.silverstarapp.main.SilverStarAppMain        2  -  Deposit Funds     12-11-20 03:57:00
+       com.silverstarapp.main.SilverStarAppMain        3  -  Withdraw Funds     12-11-20 03:57:00
+       com.silverstarapp.main.SilverStarAppMain        4  -  Transfer Funds     12-11-20 03:57:00
+       com.silverstarapp.main.SilverStarAppMain        5  -  Apply for a new Account     12-11-20 03:57:00
+       com.silverstarapp.main.SilverStarAppMain        
+Enter 0 to return to main menu.     12-11-20 03:57:00
+       com.silverstarapp.main.SilverStarAppMain   User selection: 0     12-11-20 03:57:45
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:57:45
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:57:45
+       com.silverstarapp.main.SilverStarAppMain        Choose Option Below - Please enter digit 1, 2, or 3     12-11-20 03:57:45
+       com.silverstarapp.main.SilverStarAppMain        ===================================================== 
+     12-11-20 03:57:45
+       com.silverstarapp.main.SilverStarAppMain        1  -  Customer Login     12-11-20 03:57:45
+       com.silverstarapp.main.SilverStarAppMain        2  -  Employee Login     12-11-20 03:57:45
+       com.silverstarapp.main.SilverStarAppMain        3  -  Create a Silver Star User Account     12-11-20 03:57:45
+       com.silverstarapp.main.SilverStarAppMain        
+Enter 0 to exit the app.     12-11-20 03:57:45
+       com.silverstarapp.main.SilverStarAppMain   User selection: 0     12-11-20 03:57:46
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:58:38
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:58:38
+       com.silverstarapp.main.SilverStarAppMain        Choose Option Below - Please enter digit 1, 2, or 3     12-11-20 03:58:38
+       com.silverstarapp.main.SilverStarAppMain        ===================================================== 
+     12-11-20 03:58:38
+       com.silverstarapp.main.SilverStarAppMain        1  -  Customer Login     12-11-20 03:58:38
+       com.silverstarapp.main.SilverStarAppMain        2  -  Employee Login     12-11-20 03:58:38
+       com.silverstarapp.main.SilverStarAppMain        3  -  Create a Silver Star User Account     12-11-20 03:58:38
+       com.silverstarapp.main.SilverStarAppMain        
+Enter 0 to exit the app.     12-11-20 03:58:38
+       com.silverstarapp.main.SilverStarAppMain   User selection: 10     12-11-20 03:58:44
+       com.silverstarapp.main.SilverStarAppMain   Please enter contact in format 1231234567     12-11-20 03:58:44
+       com.silverstarapp.main.SilverStarAppMain   Please enter contact in format 1231234567     12-11-20 03:58:44
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:58:44
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:58:44
+       com.silverstarapp.main.SilverStarAppMain        Choose Option Below - Please enter digit 1, 2, or 3     12-11-20 03:58:44
+       com.silverstarapp.main.SilverStarAppMain        ===================================================== 
+     12-11-20 03:58:44
+       com.silverstarapp.main.SilverStarAppMain        1  -  Customer Login     12-11-20 03:58:44
+       com.silverstarapp.main.SilverStarAppMain        2  -  Employee Login     12-11-20 03:58:44
+       com.silverstarapp.main.SilverStarAppMain        3  -  Create a Silver Star User Account     12-11-20 03:58:44
+       com.silverstarapp.main.SilverStarAppMain        
+Enter 0 to exit the app.     12-11-20 03:58:44
+       com.silverstarapp.main.SilverStarAppMain   User selection: 1     12-11-20 03:58:53
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:58:53
+       com.silverstarapp.main.SilverStarAppMain        12-11-20 03:58:53
+       com.silverstarapp.main.SilverStarAppMain        Choose Option Below - Please enter digit 1, 2, or 3     12-11-20 03:58:53
+       com.silverstarapp.main.SilverStarAppMain        ===================================================== 
+     12-11-20 03:58:53
+       com.silverstarapp.main.SilverStarAppMain        1  -  Customer Login     12-11-20 03:58:53
+       com.silverstarapp.main.SilverStarAppMain        2  -  Employee Login     12-11-20 03:58:53
+       com.silverstarapp.main.SilverStarAppMain        3  -  Create a Silver Star User Account     12-11-20 03:58:53
+       com.silverstarapp.main.SilverStarAppMain        
+Enter 0 to exit the app.     12-11-20 03:58:53
+       com.silverstarapp.main.SilverStarAppMain   User selection: 10     12-11-20 03:58:56
+       com.silverstarapp.main.SilverStarAppMain   Please enter contact in format 1231234567     12-11-20 03:58:56
+       com.silverstarapp.main.SilverStarAppMain   Please enter contact in format 1231234567     12-11-20 03:58:56
+       

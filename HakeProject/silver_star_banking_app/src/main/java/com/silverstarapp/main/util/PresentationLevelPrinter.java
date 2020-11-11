@@ -1,6 +1,18 @@
 package com.silverstarapp.main.util;
 
+import com.silverstarapp.main.SilverStarAppMain;
+
+/* This Presentation printer class stores methods which are
+ * called by Silver Star App to print output to the user. 
+ */
+
+import com.silverstarapp.model.Customer;
+import com.silverstarapp.model.Employee;
+
 public class PresentationLevelPrinter {
+	
+	// systom.out.println is used for the purely decorative logo printers. Other
+	// outputs should be send to the appropriate logj4 appender.
 	
 	public static void  printSilverStarLogo() {
 		System.out.println("         /\\ ");
@@ -25,55 +37,49 @@ public class PresentationLevelPrinter {
 	}
 	
 	public static void printRootMenu() {
-		System.out.println();
-		System.out.println();
-		System.out.println("     Choose Option Below - Please enter digit 1, 2, or 3");
-		System.out.println("     ===================================================== \n");
-		System.out.println("     1  -  Customer Login");
-		System.out.println("     2  -  Employee Login");
-		System.out.println("     3  -  Create a Silver Star User Account");
-		System.out.println("     4  -  Exit Silver Star Banking Application");
+		SilverStarAppMain.log.info("");
+		SilverStarAppMain.log.info("");
+		SilverStarAppMain.log.info("     Choose Option Below - Please enter digit 1, 2, or 3");
+		SilverStarAppMain.log.info("     ===================================================== \n");
+		SilverStarAppMain.log.info("     1  -  Customer Login");
+		SilverStarAppMain.log.info("     2  -  Employee Login");
+		SilverStarAppMain.log.info("     3  -  Create a Silver Star User Account");
+		SilverStarAppMain.log.info("     \nEnter 0 to exit the app.");
 	}
 	
 	public static void printLoginMenu () {
-		System.out.println();
-		System.out.println();
-		System.out.println("     Please Login:");
-		System.out.println("     ===================================================== \n");
-		System.out.println("     To return to the root menu please press Enter with no value.");
+		SilverStarAppMain.log.info("");
+		SilverStarAppMain.log.info("");
+		SilverStarAppMain.log.info("     Please Login:");
+		SilverStarAppMain.log.info("     ===================================================== \n");
+		SilverStarAppMain.log.info("     To return to the root menu please press Enter with no value.");
 	}
 	
-	public static void printNewUserMenu () {
-		System.out.println();
-		System.out.println();
-		System.out.println("     Please Enter all required data. Follow entry with *Enter*");
-		System.out.println("     ============================================================= \n");
-		System.out.println("     1) First Name (required): ");
-	}
-	
-	public static void printEmployeeMenu () {
-		System.out.println();
-		System.out.println();
-		System.out.println("     Choose Option Below - Please enter digit 1, 2, or 3");
-		System.out.println("     ===================================================== \n");
-		System.out.println("     1  -  View Account Applications");
-		System.out.println("     2  -  View Customer Account");
-		System.out.println("     3  -  View Log Files");
-		System.out.println("     /nEnter 0 to return to main menu.");
+	public static void printEmployeeMenu (Employee employee) {
+		SilverStarAppMain.log.info("");
+		SilverStarAppMain.log.info("");
+		SilverStarAppMain.log.info("     Welcome " + employee.getFirstName());
+		SilverStarAppMain.log.info("     Choose Option Below - Please enter digit 1, 2, or 3");
+		SilverStarAppMain.log.info("     ===================================================== \n");
+		SilverStarAppMain.log.info("     1  -  View Account Applications");
+		SilverStarAppMain.log.info("     2  -  Approve Account Application");
+		SilverStarAppMain.log.info("     3  -  View Customer Account");
+		SilverStarAppMain.log.info("     \nEnter 0 to return to main menu.");
 		
 	}
 	
-	public static void printCustomerMenu () {
-		System.out.println();
-		System.out.println();
-		System.out.println("     Choose Option Below - Please enter single digit 1-5 ");
-		System.out.println("     ===================================================== \n");
-		System.out.println("     1  -  View Account Balance");
-		System.out.println("     2  -  Deposit Funds");
-		System.out.println("     3  -  Withdraw Funds");
-		System.out.println("     4  -  Transfer Funds");
-		System.out.println("     5  -  Apply for a new Account");
-		System.out.println("     /nEnter 0 to return to main menu.");
+	public static void printCustomerMenu (Customer customer) {
+		SilverStarAppMain.log.info("");
+		SilverStarAppMain.log.info("");
+		SilverStarAppMain.log.info("     Welcome " + customer.getFirstName());
+		SilverStarAppMain.log.info("     Choose Option Below - Please enter single digit 1-5 ");
+		SilverStarAppMain.log.info("     ===================================================== \n");
+		SilverStarAppMain.log.info("     1  -  View Account Balance");
+		SilverStarAppMain.log.info("     2  -  Deposit Funds");
+		SilverStarAppMain.log.info("     3  -  Withdraw Funds");
+		SilverStarAppMain.log.info("     4  -  Transfer Funds");
+		SilverStarAppMain.log.info("     5  -  Apply for a new Account");
+		SilverStarAppMain.log.info("     \nEnter 0 to return to main menu.");
 	}	
 	
 	
