@@ -112,7 +112,7 @@ public class EmpoloyeeDaoImpl implements EmployeeDAO {
 			if(resultSet.next()) {
 				int employeeID = resultSet.getInt("employee_ID"); 
 				employee = ownMethodCaller.setEmployee(employeeID);
-			}
+			} else SilverStarAppMain.log.info("Not a valid employee username or password. Please try again.");
 		} catch (ClassNotFoundException e) {
 			SilverStarAppMain.log.debug(e.getMessage());
 			throw new BusinessException("Internal error occured.. Kindly contact SYSADMIN");

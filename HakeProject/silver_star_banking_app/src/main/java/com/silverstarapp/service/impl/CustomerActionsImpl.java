@@ -35,8 +35,8 @@ public class CustomerActionsImpl implements CustomerActions {
 	
 	public boolean loginBusinessValid (Login login) {
 		boolean result = false;
-		if(login.getPassword().length() > 0 && login.getPassword().length() < 20 && login.getUserName().length() > 0 
-				&& login.getUserName().length() < 20) result = true;		
+		if(login.getPassword().length() > 0 && login.getPassword().length() <= 20 && login.getUserName().length() > 0 
+				&& login.getUserName().length() <= 20) result = true;		
 		return result;
 	}
 

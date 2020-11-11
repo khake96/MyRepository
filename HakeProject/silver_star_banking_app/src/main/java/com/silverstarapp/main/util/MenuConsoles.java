@@ -74,65 +74,146 @@ public    int customerMenu (Customer customer) {
      
 public     int getAccountNumber () {
     	 SilverStarAppMain.log.info("\nPlease enter account number: ");
-    	 int accountNumber = Integer.parseInt(scanner.nextLine());
-    	 SilverStarAppMain.log.debug("Account number entered: " + accountNumber);
+    	 int accountNumber = 0;
+    	 try {
+        	 accountNumber = Integer.parseInt(scanner.nextLine());
+        	 SilverStarAppMain.log.debug("Account number entered: " + accountNumber);	 
+ 	 	} catch (NumberFormatException e) {
+	 		SilverStarAppMain.log.info("Please enter numeric value only.");
+	 		SilverStarAppMain.log.debug(e.getMessage());
+	 	} catch (Exception e) {
+	 		SilverStarAppMain.log.info("Error with input. Please try again.");
+	 		SilverStarAppMain.log.debug(e.getMessage());
+	 	}
     	 return accountNumber;
      }
 
 public     int getAccountApplicationNumber () {
 	SilverStarAppMain.log.info("\nPlease enter account application number: ");
-	 int accountNumber = Integer.parseInt(scanner.nextLine());
-	 SilverStarAppMain.log.debug("Application account number entered: " + accountNumber);
-	 return accountNumber;
+	int applicationNumber = 0;
+	try {
+	 applicationNumber = Integer.parseInt(scanner.nextLine());
+	 SilverStarAppMain.log.debug("Application account number entered: " + applicationNumber);
+ 	} catch (NumberFormatException e) {
+ 		SilverStarAppMain.log.info("Please enter numeric value only.");
+ 		SilverStarAppMain.log.debug(e.getMessage());
+ 	} catch (Exception e) {
+ 		SilverStarAppMain.log.info("Error with input. Please try again.");
+ 		SilverStarAppMain.log.debug(e.getMessage());
+ 	}
+	 return applicationNumber;
 }
 
 public     int approveApplication () {
 	SilverStarAppMain.log.info("\nPlease enter 0 to deny and 1 to approve: ");
-	 int accountNumber = Integer.parseInt(scanner.nextLine());
-	 SilverStarAppMain.log.debug("Approval / Disapproval entered: " + accountNumber);
-	 return accountNumber;
+	int applicationNumber = 0;
+	try {
+	 applicationNumber = Integer.parseInt(scanner.nextLine());
+	 SilverStarAppMain.log.debug("Approval / Disapproval entered: " + applicationNumber);
+ 	} catch (NumberFormatException e) {
+ 		SilverStarAppMain.log.info("Please enter 0 or 1 only.");
+ 		SilverStarAppMain.log.debug(e.getMessage());
+ 	} catch (Exception e) {
+ 		SilverStarAppMain.log.info("Error with input. Please try again.");
+ 		SilverStarAppMain.log.debug(e.getMessage());
+ 	}
+	return applicationNumber;
 }
 
  public    double getDepositAmount () {
 	 SilverStarAppMain.log.info("\nPlease enter deposit amount: ");
-    	 double depositAmount = Double.parseDouble(scanner.nextLine());
-    	 SilverStarAppMain.log.debug("Deposit amount entered: " + depositAmount);
-    	 return depositAmount;
+	 double depositAmount = 0;
+	 try {
+		 depositAmount = Double.parseDouble(scanner.nextLine());
+    	 SilverStarAppMain.log.debug("Deposit amount entered: " + depositAmount);  	
+	 	} catch (NumberFormatException e) {
+	 		SilverStarAppMain.log.info("Please enter numeric value only.");
+	 		SilverStarAppMain.log.debug(e.getMessage());
+	 	} catch (Exception e) {
+	 		SilverStarAppMain.log.info("Error with input. Please try again.");
+	 		SilverStarAppMain.log.debug(e.getMessage());
+	 	}
+	 return depositAmount;
      }
  
  public    double getStartingBalance () {
 	 SilverStarAppMain.log.info("\nPlease enter intial balance amount: ");
-	 double depositAmount = Double.parseDouble(scanner.nextLine());
+	 double depositAmount = 0;
+	 try {
+	 depositAmount = Double.parseDouble(scanner.nextLine());
 	 SilverStarAppMain.log.debug("Starting balance entered: " + depositAmount);
+	 	} catch (NumberFormatException e) {
+	 		SilverStarAppMain.log.info("Please enter numeric value only.");
+	 		SilverStarAppMain.log.debug(e.getMessage());
+	 	} catch (Exception e) {
+	 		SilverStarAppMain.log.info("Error with input. Please try again.");
+	 		SilverStarAppMain.log.debug(e.getMessage());
+	 	}
 	 return depositAmount;
  }
      
 public     double getWithdrawAmount () {
 	SilverStarAppMain.log.info("\nPlease enter withdraw amount: ");
-    	 double withdrawAmount = Double.parseDouble(scanner.nextLine());
-    	 return withdrawAmount;
-     }
+	double withdrawAmount = 0;
+	try {
+    	 withdrawAmount = Double.parseDouble(scanner.nextLine());
+ 	} catch (NumberFormatException e) {
+ 		SilverStarAppMain.log.info("Please enter numeric value only.");
+ 		SilverStarAppMain.log.debug(e.getMessage());
+ 	} catch (Exception e) {
+ 		SilverStarAppMain.log.info("Error with input. Please try again.");
+ 		SilverStarAppMain.log.debug(e.getMessage());
+ 	}
+	return withdrawAmount;
+}
      
  public    double getTransferAmount() {
 	 SilverStarAppMain.log.info("\nPlease enter transfer amount: ");
-    	 double transferAmount = Double.parseDouble(scanner.nextLine());
+	 double transferAmount = 0;
+	 try {
+    	 transferAmount = Double.parseDouble(scanner.nextLine());
     	 SilverStarAppMain.log.debug("Transfer amount entered: " + transferAmount);
+	 	} catch (NumberFormatException e) {
+	 		SilverStarAppMain.log.info("Please enter numeric value only.");
+	 		SilverStarAppMain.log.debug(e.getMessage());
+	 	} catch (Exception e) {
+	 		SilverStarAppMain.log.info("Error with input. Please try again.");
+	 		SilverStarAppMain.log.debug(e.getMessage());
+	 	}
     	 return transferAmount;
-     }
+   }
      
 public     double getIncome() {
 	SilverStarAppMain.log.info("\nPlease enter gross yearly income: ");
-    	 double income = Double.parseDouble(scanner.nextLine());
-    	 SilverStarAppMain.log.debug("Income amount entered: " + income);
-    	 return income;
-    	 }
+	double income = 0;
+	try {
+    	income = Double.parseDouble(scanner.nextLine());
+    	SilverStarAppMain.log.debug("Income amount entered: " + income);
+ 	} catch (NumberFormatException e) {
+ 		SilverStarAppMain.log.info("Please enter numeric value only.");
+ 		SilverStarAppMain.log.debug(e.getMessage());
+ 	} catch (Exception e) {
+ 		SilverStarAppMain.log.info("Error with input. Please try again.");
+ 		SilverStarAppMain.log.debug(e.getMessage());
+ 	}   	 
+    return income;
+ }
      
  public    double getExpenses() {
 	 SilverStarAppMain.log.info("\nPlease enter yearly expenses: ");
-    	 double expenses = Double.parseDouble(scanner.nextLine());
+	 double expenses = 0;
+	 try {
+    	 expenses = Double.parseDouble(scanner.nextLine());
     	 SilverStarAppMain.log.debug("Expenses amount entered: " + expenses);
+	 	} catch (NumberFormatException e) {
+	 		SilverStarAppMain.log.info("Please enter numeric value only.");
+	 		SilverStarAppMain.log.debug(e.getMessage());
+	 	} catch (Exception e) {
+	 		SilverStarAppMain.log.info("Error with input. Please try again.");
+	 		SilverStarAppMain.log.debug(e.getMessage());
+	 	}
     	 return expenses;
-    	 }
+   }
 
 public User getUser() {
 	 User user = new User(); 

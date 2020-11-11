@@ -124,9 +124,10 @@ public class SilverStarAppMain {
 								}
 								case 4: { // Transfer Funds
 									List<Account> accountList = new ArrayList();
+									int accountNumber = 0;
 									try {
 										log.info("Account for withdrawal: ");
-										int accountNumber = menu.getAccountNumber();
+										accountNumber = menu.getAccountNumber();
 										Account debitAccount = customerActions.getAccount(customer.getId(), accountNumber);
 										// Check if account is valid.
 										if (debitAccount.getAccountNo()!=0) {
@@ -149,7 +150,9 @@ public class SilverStarAppMain {
 									} catch (BusinessException b) {
 										log.warn(b.getMessage());
 										break customerMenu;
-									}
+									} catch (IndexOutOfBoundsException e) { 
+										log.warn(e.getMessage());
+										log.info("Account number "+ accountNumber + "insufficient funds. Please try again.");}
 									break;
 
 								}		
