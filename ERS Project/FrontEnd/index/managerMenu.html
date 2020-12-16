@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="C:\Users\kevin\Documents\Revature Training\ERS Project\project1-khake96\FrontEnd\css\bootstrap.css">
+    <script src="ers.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>Revature ERS Manager Menu</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">REVATURE ERS</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <span id="managerUserFirstName"></span>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto"> 
+          </ul>
+          <form class="form-inline my-2 my-lg-0"></form>
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Options</a>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="index.html">Logout</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Help</a>
+                    </div>
+                  </li> 
+            </ul>
+          </form>
+        </div>
+      </nav>
+      <div class="container-fluid">
+        <div class="row" style="padding:25px">
+          <div class="col-sm-6" >
+            <div class="card border-primary mb-3" style="max-width: 20rem;">
+                <div class="card-header">Request Reimbursement</div>
+                <div class="card-body">
+                    <button type="button" class="btn btn-primary btn-lg btn-block open-button" id="newRequestBtn" onclick="openForm()">New Request</button>
+                    <div class="form-popup" id="myForm">
+                        <form action="/action_page.php" class="form-container">
+                            <fieldset>
+                              <legend>Submit Request</legend>
+                              <div class="form-group row">
+                                <div class="input-group col-sm-10"> 
+                                    <label for="dollarAmount">Input Reimbursement Amount</label>
+                                    <span class="input-group-addon-mod">$</span>
+                                    <input type="number" value="1000.00" min="0" data-number-to-fixed="2" data-number-stepfactor="100" class="form-control currency" id="dollarAmount" required/>
+                                </div> 
+                              <div class="form-group col-sm-10">
+                                <label for="reimbursementType">Type Select</label>
+                                <select class="form-control" id="reimbursementType" style="padding-left:15px;" required>
+                                  <option>1 Lodging</option>
+                                  <option>2 Travel</option>
+                                  <option>3 Food</option>
+                                  <option>4 Other</option>
+                                </select>
+                              </div>
+                              <div class="form-group col-sm-10">
+                                <label for="details">Enter Details</label>
+                                <textarea class="form-control" id="details" rows="3" maxlength=250 spellcheck="false" style="padding-left:15px;" required></textarea>
+                            </div>
+                              <div class="form-group col-sm-10">
+                                <label for="receipt">Upload Reciept Image</label>
+                                <input type="file" class="form-control-file" id="receipt" aria-describedby="fileHelp">
+                                <small id="fileHelp" class="form-text text-muted">Please upload a file in .jpg or .pdf format.</small>
+                              </div>
+                              <div class="form-group col-sm-10">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="button" class="btn btn-secondary cancel" onclick="closeForm()">Cancel</button>
+                              </div>
+                            </fieldset>
+                          </form>
+                      </div>
+                </div>
+              </div>
+          </div>
+          <div class="col-sm-6" >
+            <div class="card border-primary mb-3" style="max-width: 20rem;">
+                <div class="card-header">Request Status</div>
+                <div class="card-body">
+                    <a href="ResultsTable.html" target="_blank"></a>
+                       <button type="button" id="viewReimbBtn" class="btn btn-primary btn-lg btn-block open-button"><a href=ResultsTable.html target="_blank">View My Requests</a></button>
+                    </a>
+                  </div>
+              </div>
+          </div>
+        </div>
+        <div class="row" style="padding:0px 25px 25px 25px">
+            <div class="col-sm-6" >
+                <div class="card border-primary mb-3" style="max-width: 20rem;">
+                    <div class="card-header">Request Approval</div>
+                    <div class="card-body">
+                        <button type="button" id="viewReimbBtn" class="btn btn-primary btn-lg btn-block open-button"><a href=ResultsTable.html target="_blank">Approve/Deny Requests</a></button>
+                    </div>
+                  </div>
+              </div>
+              <div class="col-sm-6" >
+                <div class="card border-primary mb-3" style="max-width: 20rem;">
+                    <div class="card-header">Request History</div>
+                    <div class="card-body">
+                        <button type="button" class="btn btn-primary btn-lg btn-block open-button" id="viewRequestBtn" onclick="openViewForm()">View Requests</button>
+                        <div class="form-popup" id="myViewForm">
+                            <form action="/action_page.php" class="form-container">
+                                <fieldset>
+                                  <legend>View Requests</legend>
+                                  <div class="form-group col-sm-12" id="viewAllRequestBtns">
+                                    <label for="viewEmployeeBtn">Choose Request Set</label>
+                                    <div class="form-group col-sm-12">
+                                        <input type="radio" id="viewAllRadio" name="viewRequest" value="viewAll" onclick="closeViewEmployeeForm()">
+                                        <label for="viewAllRadio">View All</label><br>
+                                        <input type="radio" id="byEmployeeRadio" name="viewRequest" value="byEmployee" onclick="openViewEmployeeForm()">
+                                        <label for="byEmployeeRadio">By Employee</label><br>
+                                    </div>
+                                  </div>                                 
+                                  <div class="form-popup" id="myViewEmployeeForm" style="padding-bottom: 20px;">
+                                    <form action="/action_page.php" class="form-container" >
+                                      <label for="byEmployee">Enter Employee Username or ID</label>
+                                      <input type="text" class="form-control" id="byEmployee" maxlength=100 style="padding-left:15px;" placeholder="EmployeeID" required></input>
+                                    </form>                                       
+                                  </div>
+                                  <div class="form-group col-sm-10">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="button" class="btn btn-secondary cancel" onclick="closeViewForm(), closeViewEmployeeForm()">Cancel</button>
+                                  </div>
+                                  </div>
+                                </fieldset>
+                              </form>
+                          </div>
+                    </div>
+                  </div>
+              </div>
+        </div>
+      </div>
+      <script src="ers.js"></script>
+</body>
+</html>
