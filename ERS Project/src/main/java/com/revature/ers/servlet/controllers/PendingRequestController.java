@@ -1,7 +1,6 @@
 package com.revature.ers.servlet.controllers;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.revature.ers.model.Request;
+import com.revature.ers.model.PendingDTO;
 import com.revature.ers.model.User;
 import com.revature.ers.service.UserActions;
 import com.revature.ers.service.impl.UserActionsImpl;
@@ -28,13 +27,13 @@ public class PendingRequestController {
 		
 		if((boolean) ses.getAttribute("loggedIn")) {
 			if(req.getMethod().equals("GET")) {
-				List<Request> requestList = new ArrayList<Request>();
-				requestList = userActions.getPendingRequests(user);
-				String json = mapper.writeValueAsString(requestList);
+				List<PendingDTO> pendingList = null;
+				pendingList = userActions.getPendingRequests(user);
+				String json = mapper.writeValueAsString(pendingList);
 				System.out.println(json);
 				res.getWriter().print(json);
 				
-				if(requestList.get(0).getReimbId() != 0) {
+				if(pendingList.get(0).getReimbId() != 0) {
 					res.setStatus(200);
 				} else {
 					res.setStatus(401);

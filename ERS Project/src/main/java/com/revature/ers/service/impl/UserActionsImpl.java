@@ -6,6 +6,8 @@ import java.util.List;
 import com.revature.ers.DAO.DAO;
 import com.revature.ers.DAO.impl.DaoImpl;
 import com.revature.ers.model.Login;
+import com.revature.ers.model.PendingDTO;
+import com.revature.ers.model.ProcessRequestDTO;
 import com.revature.ers.model.Request;
 import com.revature.ers.model.RequestDTO;
 import com.revature.ers.model.User;
@@ -30,9 +32,11 @@ public class UserActionsImpl implements UserActions {
 		return requestList;
 	}
 	
+	@SuppressWarnings("rawtypes")
 	@Override
-	public List<Request> getPendingRequests(User manager) {
-		List<Request> requestList = new ArrayList<Request>();
+	public List<PendingDTO> getPendingRequests(User manager) {
+		@SuppressWarnings("unchecked")
+		List<PendingDTO> requestList = new ArrayList();
 		if(logicChecks.isManager(manager)) {
 			requestList = actions.getPendingRequests(manager);
 		}
@@ -41,14 +45,14 @@ public class UserActionsImpl implements UserActions {
 		
 	// Revature ERS Manager DAO insert objects
 	@Override
-	public Request processRequest(User manager, Request request, boolean approved) {
-		Request requestProcess = null;
+	public int processRequest(ArrayList<ProcessRequestDTO> processList, User manager) {
+		int changeCount = 0;
 		if(logicChecks.isManager(manager)) {
-			requestProcess = actions.processRequest(manager, request, approved);
+			changeCount = actions.processRequest(processList, manager);
 		} else {
 			System.out.println("User is not a manager." + manager.toString());
 		}
-		return requestProcess;
+		return changeCount;
 	}
 
 // Revature ERS Shared DAO operations - manager and employee

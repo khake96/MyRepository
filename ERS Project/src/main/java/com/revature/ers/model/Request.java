@@ -16,9 +16,15 @@ public class Request {
 	private int reimbStatusId;
 	private int reimbTypeId;
 	
-	
-	public Request() {
+	public Request(int reimbId, double reimbAmount, Timestamp requestDate,
+			String reimbDescription, int reimbAuthor, int reimbTypeId) {
 		super();
+		this.reimbId = reimbId;
+		this.reimbAmount = reimbAmount;
+		this.requestDate = requestDate;
+		this.reimbDescription = reimbDescription;
+		this.reimbAuthor = reimbAuthor;
+		this.reimbTypeId = reimbTypeId;
 	}
 
 
@@ -37,6 +43,8 @@ public class Request {
 		this.reimbStatusId = reimbStatusId;
 		this.reimbTypeId = reimbTypeId;
 	}
+	
+
 
 	
 	public Request(double reimbAmount, Timestamp processedDate, Timestamp requestDate,
@@ -60,6 +68,10 @@ public class Request {
 		this.reimbDescription = requestDTO.getReimbDescription();
 		this.reimbAuthor = requestDTO.getReimbAuthor();
 		this.reimbTypeId = requestDTO.getReimbTypeId();
+	}
+	
+	public Request() {
+		super();
 	}
 
 	@Override

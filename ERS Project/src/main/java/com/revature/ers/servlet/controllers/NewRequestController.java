@@ -23,7 +23,6 @@ public class NewRequestController {
 			throws IOException {
 		
 		HttpSession ses = req.getSession(false);
-		System.out.println(ses.getAttribute("user"));
 		
 		if((boolean) ses.getAttribute("loggedIn")) {
 			

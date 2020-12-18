@@ -13,6 +13,8 @@ import com.revature.ers.DAO.DAO;
 import com.revature.ers.DAO.PostgresSqlConnection;
 import com.revature.ers.DAO.SearchQueries;
 import com.revature.ers.model.Login;
+import com.revature.ers.model.PendingDTO;
+import com.revature.ers.model.ProcessRequestDTO;
 import com.revature.ers.model.Request;
 import com.revature.ers.model.User;
 
@@ -28,6 +30,8 @@ public class DaoImpl implements DAO {
 			com.revature.ers.model.RevatureErsMain.log.debug("Users DAO setModifiedDate preparedStatement: "+ preparedStatement + ".");
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while(resultSet.next()) {
+				
+
 				Request request = new Request(resultSet.getInt("reimb_id"), resultSet.getDouble("reimb_amount"), 
 					resultSet.getTimestamp("reimb_resolved"), resultSet.getTimestamp("reimb_submitted"), 
 					resultSet.getString("reimb_description"), resultSet.getBlob("reimb_receipt"), 
@@ -70,55 +74,67 @@ public class DaoImpl implements DAO {
 	}
 
 	@Override
-	public List<Request> getPendingRequests(User manager) {
-		@SuppressWarnings({ "unchecked", "rawtypes" })
-		List<Request> reimbPendingRequests = new ArrayList();
+	public List<PendingDTO> getPendingRequests(User manager) {
+		List<PendingDTO> pendingList = new ArrayList<PendingDTO>();
 		try (Connection connection = PostgresSqlConnection.getConnection()){
 			String sql = SearchQueries.VIEW_PENDING_REQUESTS;
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setInt(1, 1);	
+			preparedStatement.setInt(1, manager.getiD());	
 			com.revature.ers.model.RevatureErsMain.log.debug("DAO getPendingRequests preparedStatement: "+ preparedStatement + ".");
-			ResultSet resultSet = preparedStatement.executeQuery();	
+			ResultSet resultSet = preparedStatement.executeQuery();
 			while(resultSet.next()) {
-				Request request = new Request(resultSet.getInt("reimb_id"), resultSet.getDouble("reimb_amount"), 
-					resultSet.getTimestamp("reimb_resolved"), resultSet.getTimestamp("reimb_submitted"), 
-					resultSet.getString("reimb_description"), resultSet.getBlob("reimb_receipt"), 
-					resultSet.getInt("reimb_author"), resultSet.getInt("reimb_resolver"), 
-					resultSet.getInt("reimb_status_id"), resultSet.getInt("reimb_type_id"));
-				reimbPendingRequests.add(request); 
+//				public Request(int reimbId, double reimbAmount, Timestamp requestDate,
+//				String reimbDescription, int reimbAuthor, int reimbTypeId)
+				PendingDTO request = new PendingDTO(resultSet.getInt("reimb_id"), 
+					resultSet.getDouble("reimb_amount"), 
+					resultSet.getTimestamp("reimb_submitted"), 
+					resultSet.getString("reimb_description"), 
+					resultSet.getInt("reimb_author"), 
+					resultSet.getInt("reimb_type_id"),
+					resultSet.getString("user_first_name"),
+					resultSet.getString("user_last_name"));		
+				pendingList.add(request); 
 			}
 		} catch (PSQLException e) {
 			com.revature.ers.model.RevatureErsMain.log.debug(e.getMessage());
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}
-		return reimbPendingRequests;
+		return pendingList;
 	}
 
 	@Override
-	public Request processRequest(User manager, Request request, boolean approved) {
-		int approval = 0;
-		if (approved) {
-			approval = 1; 
-		} else approval = 3;
-		try (Connection connection = PostgresSqlConnection.getConnection()){
-			String sql = SearchQueries.SET_REQUEST_STATUS;
-			PreparedStatement preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setInt(1, approval);	
-			preparedStatement.setInt(2, request.getReimbId());	
-			preparedStatement.setInt(3, manager.getiD());
-			com.revature.ers.model.RevatureErsMain.log.debug("DAO processRequest preparedStatement: "+ preparedStatement + ".");
-			int result = preparedStatement.executeUpdate();	
-			if (result==1) {
-				System.out.println("Set status successful.");
+	public int processRequest(ArrayList<ProcessRequestDTO> processList, User manager) {
+		int approval, returnValue = 0;
+		for (ProcessRequestDTO request:processList) {
+			if (request.isApproved) {
+				approval = 2; 
+			} else approval = 3;
+//			"UPDATE ers_reimb "
+//			+ " set reimb_status_id = ?, "
+//			+ " reimb_resolved = current_timestamp, "
+//			+ " reimb_resolver = ? "
+//			+ " where reimb_id = ? and reimb_author != ?;";
+			try (Connection connection = PostgresSqlConnection.getConnection()){
+				String sql = SearchQueries.SET_REQUEST_STATUS;
+				PreparedStatement preparedStatement = connection.prepareStatement(sql);
+				preparedStatement.setInt(1, approval);
+				preparedStatement.setInt(2, manager.getiD());
+				preparedStatement.setInt(3, request.getReimbId());	
+				preparedStatement.setInt(4, manager.getiD());
+				com.revature.ers.model.RevatureErsMain.log.debug("DAO processRequest preparedStatement: "+ preparedStatement + ".");
+				int result = preparedStatement.executeUpdate();	
+				if (result==1) {
+					returnValue++;
+					System.out.println("Set status successful.");
+				}
+			} catch (PSQLException e) {
+				com.revature.ers.model.RevatureErsMain.log.debug(e.getMessage());
+			} catch (SQLException e1) {
+				e1.printStackTrace();
 			}
-		} catch (PSQLException e) {
-			com.revature.ers.model.RevatureErsMain.log.debug(e.getMessage());
-		} catch (SQLException e1) {
-			e1.printStackTrace();
 		}
-		// need to execute request to pull fixed request to return
-		return request;
+			return returnValue;
 	} 
 	
 	public Request getLastRequestEntered() {

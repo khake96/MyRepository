@@ -1,8 +1,11 @@
 package com.revature.ers.DAO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.revature.ers.model.Login;
+import com.revature.ers.model.PendingDTO;
+import com.revature.ers.model.ProcessRequestDTO;
 import com.revature.ers.model.Request;
 import com.revature.ers.model.User;
 
@@ -12,10 +15,10 @@ public interface DAO {
 	
 	// Revature ERS Manager DAO read objects
 	public List<Request> getCompanyRequestHistory(User manager);
-	public List<Request> getPendingRequests(User manager);
+	public List<PendingDTO> getPendingRequests(User manager);
 	
 	// Revature ERS Manager DAO insert objects
-	public Request processRequest(User manager, Request request, boolean approved);
+	public int processRequest(ArrayList<ProcessRequestDTO> processList, User manager);
 
 // Revature ERS Shared DAO operations - manager and employee
 	public User	userLogin(Login loginUser);
