@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.revature.ers.servlet.controllers.GetRequestHistoryController;
 import com.revature.ers.servlet.controllers.LoginController;
 import com.revature.ers.servlet.controllers.LogoutController;
 import com.revature.ers.servlet.controllers.NewRequestController;
@@ -22,6 +23,7 @@ public class MasterServlet extends HttpServlet {
 	private RequestStatusController requestStatus = new RequestStatusController();
 	private ProcessRequestController processRequests = new ProcessRequestController();
 	private PendingRequestController pendingRequests = new PendingRequestController();
+	private GetRequestHistoryController requestHistory = new GetRequestHistoryController();
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) 
@@ -32,7 +34,8 @@ public class MasterServlet extends HttpServlet {
 			// Because all requests will hit this method, we are defaulting to not found and
 			// will override for success requests.
 			res.setStatus(404);			
-			final String URI = req.getRequestURI().replace("/revature_ers/", "");			
+			final String URI = req.getRequestURI().replace("/revature_ers/", "");	
+			System.out.println(URI);
 			switch (URI) {
 			case "login":
 				loginController.login(req, res);
@@ -51,6 +54,9 @@ public class MasterServlet extends HttpServlet {
 				break;
 			case "process":
 				processRequests.process(req, res);
+				break;
+			case "history":
+				requestHistory.getRequestHistory(req, res);
 				break;
 			}
 		}

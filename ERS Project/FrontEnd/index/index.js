@@ -17,8 +17,35 @@ function validateViewAllRequestsForm() {
   if(byAll==null && (employeeId>1000 || employeeId<100)) {
     $("#employyIdErrorModal").modal("show");
     return false;
-  } else requestHistoryFunc();
+  } else {
+    if (employeeId==0) {
+      getRequestHistory();
+    } else {
+      oneEmployeeHistory(employeeId);
+    }
+    
+  }
 };
+
+async function oneEmployeeHistory(employeeId) {
+    try {
+      resp = await fetch(url+'process',
+      {
+      method:'POST',
+      body: JSON.stringify(employeeId),
+      credentials:'include'
+      // Credentials:include will ensure that the cookie is captured for future fectch requests
+      // It will also require this value in order to send the cookie back.
+    });  
+  } 
+  catch(err) {
+    document.getElementById("serverErrorPara").innerHTML = err;
+    $("#serverErrorModal").modal("show"); 
+  }
+  if(resp.status===200) {
+  result = await resp.json();
+  }
+}
 
 function validateLoginForm() {
   let userName = document.getElementById("userName").value;
@@ -81,21 +108,28 @@ async function sendProcessRequest(array) {
     paragraph.innerHTML = "Invalid Login.";
       $("#loginErrorModal").modal("show");
   }
-}
+};
 
 function getRequestStatus() {
   // indicate what kind of table is needed
   let urlStatusRequest = url+"status";
   // call the getTable function
   let tableData = getTable(urlStatusRequest);
-}
+};
+
+function getRequestHistory() {
+  // indicate what kind of table is needed
+  let urlHistoryRequest = url+"history";
+  // call the getTable function
+  let tableData = getTable(urlHistoryRequest);
+};
 
 function getRequestsToProcess() {
   // indicate what kind of table is needed
   let urlProcessRequest = url+"pending";
   // call the getTable function
   let tableData = getTable(urlProcessRequest);
-}
+};
 
 async function getTable(urlSpecific) {
   // make a request for user table history to server
@@ -112,11 +146,13 @@ async function getTable(urlSpecific) {
         buildStatusTable(tableData);
         break;
       case (url+"process"):
-        // display success table for change of status
+        // Displays a success modal on completing process operation
         break;
       case (url+"pending"):
         buildProcessTable(tableData);
         break;
+      case (url+"history"):
+        buildHistoryTable(tableData);
     }
   document.getElementById("employee_page").style.display = "none";
   document.getElementById("manager_page").style.display = "none";
@@ -125,6 +161,9 @@ async function getTable(urlSpecific) {
 };
 
 function buildStatusTable(json) {
+
+  document.getElementById("tableDisplaySubmitButton1").style.display = "none";
+  document.getElementById("tableDisplaySubmitButton2").style.display = "none";
   
   let headerRow = document.createElement("tr");
   let hcell = document.createElement("th");
@@ -212,6 +251,9 @@ function buildStatusTable(json) {
 
 function buildProcessTable(json) {
 
+  document.getElementById("tableDisplaySubmitButton1").style.display = "block";
+  document.getElementById("tableDisplaySubmitButton2").style.display = "block";
+
     let count = 0; // global access so that other functions have access to it
     let headerRow = document.createElement("tr");
     let hcell = document.createElement("th");
@@ -235,7 +277,7 @@ function buildProcessTable(json) {
     headerRow.appendChild(hcell4);
 
     let hcell5 = document.createElement("th");
-    hcell5.innerHTML = "Employee ID and Name:"
+    hcell5.innerHTML = "Requestor ID and Name:"
     headerRow.appendChild(hcell5);
 
     let hcell6 = document.createElement("th");
@@ -299,6 +341,104 @@ function buildProcessTable(json) {
 
 };
 
+function buildHistoryTable(json) {
+
+  document.getElementById("tableDisplaySubmitButton1").style.display = "none";
+  document.getElementById("tableDisplaySubmitButton2").style.display = "none";
+
+  let headerRow = document.createElement("tr");
+  let hcell = document.createElement("th");
+  hcell.innerHTML = "Request ID"
+  headerRow.appendChild(hcell);
+
+  let hcell1 = document.createElement("th");
+  hcell1.innerHTML = "Amount"
+  headerRow.appendChild(hcell1);
+
+  let hcell2 = document.createElement("th");
+  hcell2.innerHTML = "Details"
+  headerRow.appendChild(hcell2);
+
+  let hcell3 = document.createElement("th");
+  hcell3.innerHTML = "Type"
+  headerRow.appendChild(hcell3);
+
+  let hcell4 = document.createElement("th");
+  hcell4.innerHTML = "Submitted Date"
+  headerRow.appendChild(hcell4);
+
+  let hcell5 = document.createElement("th");
+  hcell5.innerHTML = "Status"
+  headerRow.appendChild(hcell5);
+
+  let hcell8 = document.createElement("th");
+  hcell8.innerHTML = "Requestor ID and Name:"
+  headerRow.appendChild(hcell8);
+
+  let hcell6 = document.createElement("th");
+  hcell6.innerHTML = "Resolver ID and Name"
+  headerRow.appendChild(hcell6);
+
+  let hcell7 = document.createElement("th");
+  hcell7.innerHTML = "Resolved Date"
+  headerRow.appendChild(hcell7);
+  document.getElementById("displyTableHeader").appendChild(headerRow); 
+
+  for(let request of json){
+    console.log(request);
+    let row = document.createElement("tr");
+
+    let cell = document.createElement("td");
+    cell.innerHTML = request.reimbId;
+    row.appendChild(cell);
+    
+    let cell2 = document.createElement("td");
+    cell2.innerHTML = "$"+request.reimbAmount;
+    row.appendChild(cell2);
+
+    let cell3 = document.createElement("td");
+    cell3.innerHTML = request.reimbDescription;
+    row.appendChild(cell3);
+
+    let cell9 = document.createElement("td");
+    let reimbTypeAsString = getReimbTypeAsString(request.reimbTypeId);
+    cell9.innerHTML = reimbTypeAsString;
+    row.appendChild(cell9);
+
+    let cell5 = document.createElement("td");
+    cell5.innerHTML = getDateObjectFromTS(request.requestDate);
+    row.appendChild(cell5);
+    
+    let cell6 = document.createElement("td");
+    cell6.innerHTML = getReimbStatusAsString(request.reimbStatusId);
+    row.appendChild(cell6);
+
+    let cell1 = document.createElement("td");
+    cell1.innerHTML = request.reimbAuthor+": "+request.author_first_name+" "+request.author_last_name;
+    row.appendChild(cell1);
+
+    if(request.reimbStatusId == 1) {
+      let cell7 = document.createElement("td");
+      cell7.innerHTML =  "";
+      row.appendChild(cell7);
+
+      let cell8 = document.createElement("td");
+      cell8.innerHTML = "";
+      row.appendChild(cell8);
+    } else {
+      let cell7 = document.createElement("td");
+      cell7.innerHTML = request.reimbResolver+": "+request.process_first_name+" "+request.process_last_name;
+      row.appendChild(cell7);
+
+      let cell8 = document.createElement("td");
+      cell8.innerHTML = getDateObjectFromTS(request.processedDate);
+      row.appendChild(cell8);
+    }
+    document.getElementById("displayTableBody").appendChild(row);     
+  };
+
+};
+
 function getDateObjectFromTS(timestamp) {
   let ts_ms = timestamp;
   let date_ob = new Date(ts_ms);
@@ -309,7 +449,7 @@ function getDateObjectFromTS(timestamp) {
   let minutes = ("0" + date_ob.getMinutes()).slice(-2);
   let seconds = ("0" + date_ob.getSeconds()).slice(-2);
     return (month + "-" + date + "-" + year + " " + hours + ":" + minutes + ":" + seconds);
-  }
+};
 
 function getReimbTypeAsString(typeId) {
   let reimbType;
@@ -327,7 +467,7 @@ function getReimbTypeAsString(typeId) {
       reimbType = "Other";
   };
   return reimbType;
-}
+};
 
 function getReimbStatusAsString(statusId) {
   let reimbStatus;
@@ -343,13 +483,17 @@ function getReimbStatusAsString(statusId) {
       break;
   };
   return reimbStatus;
-}
+};
 
 async function newRequestFunc() {
   let resp;
-  let newRequest;
   let newReimbRequest; 
- 
+  let header = document.createElement("tr");
+  let toAdd = document.createDocumentFragment();
+  let body = document.createElement("tr");
+  let tableHeader = document.getElementById("displayTableModalHeader");
+  let tableBody = document.getElementById("displayTableModalBody");
+
   if(user.role === 2) {
       newReimbRequest = {
         reimbAmount: document.getElementById('managerReimbAmount').value,
@@ -374,26 +518,66 @@ async function newRequestFunc() {
   });
 
   if(resp.status === 200){
-    let newReimbResponse = await resp.json();
-    // openTableJumboPopup();
-    // display the new request and report as successfully entered 
-    let row = document.getElementById("successRowHeader");
+    // Clear the table if needed
+      try {
+        while(tableHeader.hasChildNodes()) {
+          tableHeader.removeChild(tableHeader.firstChild);
+        };
+        while(tableBody.hasChildNodes()) {
+          tableBody.removeChild(tableBody.firstChild);
+        }
+      } catch(err) {};
 
+    // Get data
+    let newReimbResponse = await resp.json();
+
+    // display the new request and report as successfully entered 
+    
+    let cell10 = document.createElement("th");
+    cell10.innerHTML = "Request ID";
+    header.appendChild(cell10);
+    
+    let cell11 = document.createElement("th");
+    cell11.innerHTML = "Requestor Name";
+    header.appendChild(cell11);
+
+    let cell12 = document.createElement("th");
+    cell12.innerHTML = "Amount";
+    header.appendChild(cell12);
+
+    let cell13 = document.createElement("th");
+    cell13.innerHTML = "Description";
+    header.appendChild(cell13);
+
+    let cell14 = document.createElement("th");
+    cell14.innerHTML = "Request Type";
+    header.appendChild(cell14);
+
+    let cell15 = document.createElement("th");
+    cell15.innerHTML = "Requested Date";
+    header.appendChild(cell15);
+
+    let cell16 = document.createElement("th");
+    cell16.innerHTML = "Status";
+    header.appendChild(cell16);
+    document.getElementById("displayTableModalHeader").appendChild(header);
+
+  
     let cell1 = document.createElement("td");
     cell1.innerHTML = newReimbResponse.reimbId;
-    row.appendChild(cell1);
+    body.appendChild(toAdd.appendChild(cell1));
     
     let cell = document.createElement("td");
     cell.innerHTML = (user.firstName+" "+user.lastName);
-    row.appendChild(cell);
+    body.appendChild(toAdd.appendChild(cell));
 
     let cell2 = document.createElement("td");
     cell2.innerHTML = (newReimbResponse.reimbAmount);
-    row.appendChild(cell2);
+    body.appendChild(toAdd.appendChild(cell2));
 
     let cell3 = document.createElement("td");
     cell3.innerHTML = newReimbResponse.reimbDescription;
-    row.appendChild(cell3);
+    body.appendChild(toAdd.appendChild(cell3));
 
     let cell4 = document.createElement("td");
     let reimbType;
@@ -411,7 +595,7 @@ async function newRequestFunc() {
         reimbType = "Other";
     }
     cell4.innerHTML = reimbType;
-    row.appendChild(cell4);
+    body.appendChild(toAdd.appendChild(cell4));
 
     let cell5 = document.createElement("td");
     // convert unix timestamp to milliseconds
@@ -419,17 +603,20 @@ async function newRequestFunc() {
     // initialize new Date object
     let date_ob = new Date(ts_ms);
     cell5.innerHTML = date_ob.toUTCString();
-    row.appendChild(cell5);
+    body.appendChild(toAdd.appendChild(cell5));
 
     let cell6 = document.createElement("td");
     cell6.innerHTML = "Pending";
-    row.appendChild(cell6);
+    body.appendChild(cell6);
+    document.getElementById("displayTableModalBody").appendChild(toAdd.appendChild(body));
+    document.getElementById("displayTableModalBody").appendChild(toAdd);
+
     $("#successTableModal").modal("show");
   } else {
     $("#genericErrorModal").modal("show");
     document.getElementById("generalErrorModalParagraph").innerHTML = "Request could not be processed. Please try again.";
   }
-}
+};
 
 async function loginFunc() {
 
@@ -482,62 +669,61 @@ async function loginFunc() {
       $("#loginErrorModal").modal("show");
   }
 
-}
+};
 
 async function logoutFunc() {
   let resp = await fetch(url+'logout', {
     method:'POST',
     credentials:'include'
 });
-}
+};
 
 function openForm() {
   document.getElementById("myForm").style.display = "block";
-}
+};
   
 function closeForm() {
   document.getElementById("myForm").style.display = "none";
-}
+};
 
 function openEmployeeForm() {
   document.getElementById("myEmployeeForm").style.display = "block";
-}
+};
   
 function closeEmployeeForm() {
   document.getElementById("myEmployeeForm").style.display = "none";
-}
+};
 
 function openViewForm() {
   document.getElementById("myViewForm").style.display = "block";
-}
+};
   
 function closeViewForm() {
   document.getElementById("myViewForm").style.display = "none";
-}
+};
 
 function openViewEmployeeForm() {
   document.getElementById("myViewEmployeeForm").style.display = "block";
-}
+};
   
 function closeViewEmployeeForm() {
   document.getElementById("myViewEmployeeForm").style.display = "none"; 
-}
+};
 
 function openTable() {
   document.getElementById("employee_page").style.display = "none";
   document.getElementById("manager_page").style.display = "none"; 
   document.getElementById("tableDisplay").style.display = "block";
-}
+};
   
-function closeTable() {
+function checkTable() {
   // Get data from the array
-  let header = document.getElementById("displyTableHeader");
   let body = document.getElementById("displayTableBody");
   let approvalArray = [];
   let requestId, isApproved, element;
   let count = body.childElementCount;
-  console.log(count);
-  if(document.getElementById("idLabel0")!=undefined){
+
+  if(count>0){
     for(let i = 0; i<count; i++) {
       element = {requestId, isApproved}; 
       element.requestId = document.getElementById("idLabel"+i).innerHTML;
@@ -551,10 +737,25 @@ function closeTable() {
         approvalArray.push(element);
       }
     }
-    console.log(approvalArray);
-    sendProcessRequest(approvalArray);
-  }
+    console.log(approvalArray.length);
+
+    if(approvalArray.length!=0){
+      console.log("Sending query.")
+      sendProcessRequest(approvalArray);
+      closeTable();
+    } else {
+      // Call modal
+      console.log("showing modal")
+      document.getElementById("generalErrorModalParagraph").innerHTML = "No approval status changes detected. Please try again."
+      $("#genericErrorModal").modal("show");
+    }
+  } 
+};
+
+function closeTable() {
   // Turn off table display
+  let header = document.getElementById("displyTableHeader");
+  let body = document.getElementById("displayTableBody");
   document.getElementById("tableDisplay").style.display = "none";
   document.getElementById("login_navbar").style.display = "none";
   // Remove previous table load
@@ -570,7 +771,6 @@ function closeTable() {
   } else {
     document.getElementById("manager_page").style.display = "block"; 
   }
-}
-
+};
 
 

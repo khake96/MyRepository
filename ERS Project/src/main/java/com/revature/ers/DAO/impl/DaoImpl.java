@@ -12,6 +12,7 @@ import org.postgresql.util.PSQLException;
 import com.revature.ers.DAO.DAO;
 import com.revature.ers.DAO.PostgresSqlConnection;
 import com.revature.ers.DAO.SearchQueries;
+import com.revature.ers.model.HistoryDTO;
 import com.revature.ers.model.Login;
 import com.revature.ers.model.PendingDTO;
 import com.revature.ers.model.ProcessRequestDTO;
@@ -21,29 +22,56 @@ import com.revature.ers.model.User;
 public class DaoImpl implements DAO {
 
 	@Override
-	public List<Request> getCompanyRequestHistory(User manager) {
+	public List<HistoryDTO> getCompanyRequestHistory(User manager) {
 		@SuppressWarnings({ "rawtypes", "unchecked" })
-		List<Request> reimbRequestCompanyHistory = new ArrayList();
+		List<HistoryDTO> reimbRequestCompanyHistory = new ArrayList();
+		@SuppressWarnings({ "unchecked", "rawtypes" })
+		List<HistoryDTO> updateResolverList = new ArrayList();
 		try (Connection connection = PostgresSqlConnection.getConnection()) {
 			String sql = SearchQueries.VIEW_COMPANY_REQUESTS_HISTORY;
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			com.revature.ers.model.RevatureErsMain.log.debug("Users DAO setModifiedDate preparedStatement: "+ preparedStatement + ".");
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while(resultSet.next()) {
-				
-
-				Request request = new Request(resultSet.getInt("reimb_id"), resultSet.getDouble("reimb_amount"), 
-					resultSet.getTimestamp("reimb_resolved"), resultSet.getTimestamp("reimb_submitted"), 
-					resultSet.getString("reimb_description"), resultSet.getBlob("reimb_receipt"), 
-					resultSet.getInt("reimb_author"), resultSet.getInt("reimb_resolver"), 
-					resultSet.getInt("reimb_status_id"), resultSet.getInt("reimb_type_id"));
+				HistoryDTO request = new HistoryDTO(resultSet.getInt("reimb_id"), 
+					resultSet.getDouble("reimb_amount"), 
+					resultSet.getTimestamp("reimb_resolved"), 
+					resultSet.getTimestamp("reimb_submitted"), 
+					resultSet.getString("reimb_description"), 
+					resultSet.getInt("reimb_author"), 
+					resultSet.getInt("reimb_resolver"), 
+					resultSet.getInt("reimb_status_id"), 
+					resultSet.getInt("reimb_type_id"),
+					resultSet.getString("user_last_name"),
+					resultSet.getString("user_first_name"));
 				reimbRequestCompanyHistory.add(request); 
-			} 
+			}
+			// Get resolver names and add to the HistoryDTO objects
+			String sql2 = SearchQueries.ADD_RESOLVER_TO_HISTORY;
+			PreparedStatement preparedStatement2 = connection.prepareStatement(sql2);
+			com.revature.ers.model.RevatureErsMain.log.debug("Users DAO setModifiedDate preparedStatement: "+ preparedStatement2 + ".");
+			ResultSet resultSet2 = preparedStatement2.executeQuery();
+			while(resultSet2.next()) {
+				HistoryDTO request = new HistoryDTO(resultSet.getInt("reimb_id"), 
+					resultSet.getString("user_last_name"),
+					resultSet.getString("user_first_name"));
+				updateResolverList.add(request); 
+			}			
+			while(resultSet2.next()) {
+				for(HistoryDTO entry: reimbRequestCompanyHistory) {
+					for(HistoryDTO updateEntry: updateResolverList) {
+						if (updateEntry.reimbId == entry.reimbId) {
+							entry.process_first_name = updateEntry.process_first_name;
+							entry.process_last_name = updateEntry.process_last_name;
+						}
+					}
+				}	
+			}
 		} catch (PSQLException e) {
 			com.revature.ers.model.RevatureErsMain.log.debug(e.getMessage());
 		} catch (SQLException e1) {
 			e1.printStackTrace();
-		}
+		}		
 		return reimbRequestCompanyHistory;		
 	} 
 

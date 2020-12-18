@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="C:\Users\kevin\Documents\Revature Training\STS Workspaces\VSC Workspace\ERSFrontEnd\css\bootstrap.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>   
+    <link rel="stylesheet" href="C:\Users\kevin\Documents\Revature Training\ERS Project\FrontEnd\css\bootstrap.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Revature ERS</title>
 </head>
@@ -255,8 +255,8 @@
       <div class="container-fluid">
         <div class="row" style="padding:25px">
           <div class="form-group col-sm-10">
-            <button type="submit" class="btn btn-primary" id="tableDisplaySubmitButton1" onclick="closeTable()">Submit</button>
-            <button type="button" class="btn btn-secondary cancel" id="tableDisplayCloseButton1" onclick="closeTable()">Cancel</button>
+            <button type="submit" class="btn btn-primary" id="tableDisplaySubmitButton1" onclick="checkTable()">Submit</button>
+            <button type="button" class="btn btn-secondary cancel" id="tableDisplayCloseButton1" onclick="closeTable()">Close</button>
           </div>
         </div>
         <div class="row" style="padding:25px">
@@ -268,8 +268,8 @@
           </table>
         </div>
         <div class="form-group col-sm-10">
-          <button type="submit" class="btn btn-primary" id="tableDisplaySubmitButton2" onclick="closeTable()">Submit</button>
-          <button type="button" class="btn btn-secondary cancel" id="tableDisplayCloseButton2" onclick="closeTable()">Cancel</button>
+          <button type="submit" class="btn btn-primary" id = "tableDisplaySubmitButton2" onclick="checkTable()">Submit</button>
+          <button type="button" class="btn btn-secondary cancel" id="tableDisplayCloseButton2" onclick="closeTable()">Close</button>
         </div>
       </div> 
     </div>
@@ -324,6 +324,14 @@
               </button>
             </div>
             <div class="modal-body">
+              <div class="row" style="padding:25px">
+                <table class="table table-hover table-striped">
+                  <thead id = "displayTableModalHeader">
+                  </thead>
+                  <tbody id="displayTableModalBody">
+                  </tbody>
+                </table>
+              </div>>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

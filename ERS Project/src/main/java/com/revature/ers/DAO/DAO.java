@@ -3,6 +3,7 @@ package com.revature.ers.DAO;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.revature.ers.model.HistoryDTO;
 import com.revature.ers.model.Login;
 import com.revature.ers.model.PendingDTO;
 import com.revature.ers.model.ProcessRequestDTO;
@@ -14,7 +15,7 @@ public interface DAO {
 // Manager DAO Interface method declarations
 	
 	// Revature ERS Manager DAO read objects
-	public List<Request> getCompanyRequestHistory(User manager);
+	public List<HistoryDTO> getCompanyRequestHistory(User manager);
 	public List<PendingDTO> getPendingRequests(User manager);
 	
 	// Revature ERS Manager DAO insert objects

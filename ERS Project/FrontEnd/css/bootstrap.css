@@ -5936,7 +5936,7 @@ a.close.disabled {
 
 .modal-dialog {
   position: relative;
-  width: auto;
+  width: 100;
   margin: 0.5rem;
   pointer-events: none;
 }
@@ -10807,4 +10807,8 @@ legend {
   width:25px;
   font-size:large;
   text-align:center;
+}
+
+.disappearOnCommand {
+ display: block;
 }

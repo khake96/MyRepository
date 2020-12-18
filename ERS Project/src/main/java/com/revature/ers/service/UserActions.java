@@ -3,6 +3,7 @@ package com.revature.ers.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.revature.ers.model.HistoryDTO;
 import com.revature.ers.model.Login;
 import com.revature.ers.model.PendingDTO;
 import com.revature.ers.model.ProcessRequestDTO;
@@ -15,7 +16,8 @@ public interface UserActions {
 	// Manager DAO Interface method declarations
 	
 		// Revature ERS Manager DAO read objects
-		public List<Request> getCompanyRequestHistory(User manager);
+		public List<HistoryDTO> getCompanyRequestHistory(User manager);
+		public List<HistoryDTO> getCompanyRequestHistory(User user, Integer employeeId);
 		public List<PendingDTO> getPendingRequests(User manager);
 		
 		// Revature ERS Manager DAO insert objects
@@ -27,6 +29,7 @@ public interface UserActions {
 		public Request updateRequest(User user, Request request);
 		public Request insertReceipt(Request request, int receiptImage);
 		public List<Request> getSingleEmployeeHistory(User employee);
+		
 
 }
 		

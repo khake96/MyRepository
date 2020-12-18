@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.revature.ers.DAO.DAO;
 import com.revature.ers.DAO.impl.DaoImpl;
+import com.revature.ers.model.HistoryDTO;
 import com.revature.ers.model.Login;
 import com.revature.ers.model.PendingDTO;
 import com.revature.ers.model.ProcessRequestDTO;
@@ -23,9 +24,9 @@ public class UserActionsImpl implements UserActions {
 	
 	// Revature ERS Manager DAO read objects
 	@Override
-	public List<Request> getCompanyRequestHistory(User manager) {
+	public List<HistoryDTO> getCompanyRequestHistory(User manager) {
 		@SuppressWarnings({ })
-		List<Request> requestList = new ArrayList<Request>();
+		List<HistoryDTO> requestList = new ArrayList<HistoryDTO>();
 		if(logicChecks.isManager(manager) ) {
 			requestList = actions.getCompanyRequestHistory(manager);
 		}

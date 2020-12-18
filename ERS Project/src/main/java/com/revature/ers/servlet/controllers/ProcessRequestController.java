@@ -10,8 +10,6 @@ import javax.servlet.http.HttpSession;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.cfg.MapperBuilder;
-import com.revature.ers.model.ProcessArrayDTO;
 import com.revature.ers.model.ProcessRequestDTO;
 import com.revature.ers.model.User;
 import com.revature.ers.service.UserActions;
@@ -24,7 +22,6 @@ public class ProcessRequestController {
 	User user = null;
 	private int returnCount = 0;
 
-	@SuppressWarnings("unchecked")
 	public void process(HttpServletRequest req, HttpServletResponse res) 
 			throws IOException {
 		

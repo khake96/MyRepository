@@ -2,11 +2,21 @@ package com.revature.ers.DAO;
 
 public class SearchQueries {
 	
-	public static final String VIEW_COMPANY_REQUESTS_HISTORY = "select reimb_id, reimb_amount, reimb_submitted, reimb_resolved, "
-			+ " reimb_description, reimb_receipt, reimb_receipt, reimb_author, reimb_resolver, reimb_status_id, reimb_type_id "
+	public static final String VIEW_COMPANY_REQUESTS_HISTORY = "select ers_reimb.reimb_id, ers_reimb.reimb_amount, "
+			+ "	ers_reimb.reimb_submitted, ers_reimb.reimb_resolved, "
+			+ "	ers_reimb.reimb_description, ers_reimb.reimb_receipt, ers_reimb.reimb_author, "
+			+ "	ers_reimb.reimb_resolver, ers_reimb.reimb_status_id, ers_reimb.reimb_type_id, "
+			+ "	ers_users.user_first_name, ers_users.user_last_name	"
 			+ "	from ers_reimb "
-			+ " where reimb_status_id != 1 "
-			+ "	order by reimb_submitted;";	
+			+ "	inner join ers_users"
+			+ "	on (ers_reimb.reimb_author = ers_users.ers_user_id)"
+			+ "order by ers_reimb.reimb_id;";
+	
+	public static final String ADD_RESOLVER_TO_HISTORY = "select ers_reimb.reimb_id, ers_users.user_first_name, ers_users.user_last_name	\r\n"
+			+ "			from ers_reimb  "
+			+ "			inner join ers_users "
+			+ "			on (ers_reimb.reimb_resolver = ers_users.ers_user_id)"
+			+ "			order by ers_reimb.reimb_id;";
 	
 	public static final String VIEW_SINGLE_EMPLOYEE_REQUEST_HISTORY = "select reimb_id, reimb_amount, reimb_submitted, reimb_resolved, "
 			+ " reimb_description, reimb_receipt, reimb_author, reimb_resolver, reimb_status_id, reimb_type_id "
