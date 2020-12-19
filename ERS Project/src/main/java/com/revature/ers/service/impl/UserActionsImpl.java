@@ -33,6 +33,16 @@ public class UserActionsImpl implements UserActions {
 		return requestList;
 	}
 	
+	@Override
+	public List<HistoryDTO> getEmployeeRequestHistory(User user, Integer employeeId) {
+		@SuppressWarnings({ })
+		List<HistoryDTO> requestList = new ArrayList<HistoryDTO>();
+		if(logicChecks.isManager(user) ) {
+			requestList = actions.getEmployeeRequestHistory(user, employeeId);
+		}
+		return requestList;
+	}
+	
 	@SuppressWarnings("rawtypes")
 	@Override
 	public List<PendingDTO> getPendingRequests(User manager) {
@@ -60,10 +70,15 @@ public class UserActionsImpl implements UserActions {
 	@Override
 	public User	userLogin(Login loginUser) {
 		User user = null;
+		String password = loginUser.getPassword();
+		String userName = loginUser.getUserName();
+		System.out.println("User password in UserActionsImpl: "+password);
 		if(logicChecks.isValidUserName(loginUser) 
-//				&&
-//				logicChecks.isValidPassword(loginUser)
+				&&
+				logicChecks.isValidPassword(loginUser)
 				) {
+				String encrypted = Utils.encrypt(password, userName);
+				loginUser.setPassword(encrypted);
 			user = actions.userLogin(loginUser);
 		} else {
 			System.out.println("Invalid login business criteria." + loginUser.toString());
@@ -95,13 +110,29 @@ public class UserActionsImpl implements UserActions {
 	public List<Request> getSingleEmployeeHistory(User employee) {
 		List<Request> statusList = new ArrayList<Request>();
 	
-		if(logicChecks.isValidUser(employee)) {
-			statusList = actions.getSingleEmployeeHistory(employee);
-		} else {
-			System.out.println("Invalid user. Cannot complete request.");
-			System.out.println("User: " + employee.toString());
+		try {
+			if(logicChecks.isValidUser(employee)) {
+				statusList = actions.getSingleEmployeeHistory(employee);
+			} else {
+				System.out.println("Invalid user. Cannot complete request.");
+				System.out.println("User: " + employee.toString());
+			}
+		} catch (NullPointerException e){
+			System.out.println("Caught exception: ");
+			e.printStackTrace();
 		}
+
 		return statusList;
+	}
+
+	@Override
+	public User getEmployeeByUserName(String userName) {
+		User user = null;
+		Login login = new Login(userName,"password");
+		if(logicChecks.isValidUserName(login)) {
+			user = actions.getUserByUserName(userName);
+		}
+		return user;
 	}
 
 }

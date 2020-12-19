@@ -12,10 +12,28 @@ public class SearchQueries {
 			+ "	on (ers_reimb.reimb_author = ers_users.ers_user_id)"
 			+ "order by ers_reimb.reimb_id;";
 	
+	public static final String VIEW_EMPLOYEE_REQUESTS_HISTORY = "select ers_reimb.reimb_id, ers_reimb.reimb_amount, "
+			+ "	ers_reimb.reimb_submitted, ers_reimb.reimb_resolved, "
+			+ "	ers_reimb.reimb_description, ers_reimb.reimb_receipt, ers_reimb.reimb_author, "
+			+ "	ers_reimb.reimb_resolver, ers_reimb.reimb_status_id, ers_reimb.reimb_type_id, "
+			+ "	ers_users.user_first_name, ers_users.user_last_name	"
+			+ "	from ers_reimb "
+			+ "	inner join ers_users"
+			+ "	on (ers_reimb.reimb_author = ers_users.ers_user_id)"
+			+ " where ers_reimb.reimb_author = ?"
+			+ "order by ers_reimb.reimb_id;";
+	
 	public static final String ADD_RESOLVER_TO_HISTORY = "select ers_reimb.reimb_id, ers_users.user_first_name, ers_users.user_last_name	\r\n"
 			+ "			from ers_reimb  "
 			+ "			inner join ers_users "
 			+ "			on (ers_reimb.reimb_resolver = ers_users.ers_user_id)"
+			+ "			order by ers_reimb.reimb_id;";
+	
+	public static final String ADD_RESOLVER_TO_EMPLOYEE_HISTORY = "select ers_reimb.reimb_id, ers_users.user_first_name, ers_users.user_last_name	\r\n"
+			+ "			from ers_reimb  "
+			+ "			inner join ers_users "
+			+ "			on (ers_reimb.reimb_resolver = ers_users.ers_user_id)"
+			+ "         where ers_reimb.reimb_author = ?"
 			+ "			order by ers_reimb.reimb_id;";
 	
 	public static final String VIEW_SINGLE_EMPLOYEE_REQUEST_HISTORY = "select reimb_id, reimb_amount, reimb_submitted, reimb_resolved, "
@@ -59,5 +77,9 @@ public class SearchQueries {
 	public static final String LAST_REQUEST_ENTERED = "SELECT reimb_id, reimb_amount, reimb_submitted, reimb_resolved, reimb_description, " 
 			+" reimb_receipt, reimb_receipt, reimb_author, reimb_resolver, reimb_status_id, reimb_type_id "
 			+" FROM ers_reimb ORDER BY reimb_submitted DESC LIMIT 1; ";
+
+	public static final String GET_USER_BY_USERNAME = "select ers_user_id, user_first_name, user_last_name, user_role_id "
+			+ " from ers_users "
+			+ " where ers_users.ers_username = ?;";
 	
 }

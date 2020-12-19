@@ -57,7 +57,6 @@ public class MasterServlet extends HttpServlet {
 				break;
 			case "history":
 				requestHistory.getRequestHistory(req, res);
-				break;
 			}
 		}
 	

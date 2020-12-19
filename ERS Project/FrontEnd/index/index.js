@@ -13,6 +13,7 @@ document.getElementById("tableDisplay").style.display = "none";
 
 function validateViewAllRequestsForm() {
   let employeeId = document.getElementById("byEmployee").value;
+  console.log(employeeId);
   let byAll = document.getElementById("viewAllRadio").value;
   if(byAll==null && (employeeId>1000 || employeeId<100)) {
     $("#employyIdErrorModal").modal("show");
@@ -21,6 +22,7 @@ function validateViewAllRequestsForm() {
     if (employeeId==0) {
       getRequestHistory();
     } else {
+      console.log("in the else condition headed to oneEmployeeHistory");
       oneEmployeeHistory(employeeId);
     }
     
@@ -28,8 +30,9 @@ function validateViewAllRequestsForm() {
 };
 
 async function oneEmployeeHistory(employeeId) {
+  document.getElementById("tableEmployeeUserMessage").innerHTML="Results for: "+user.firstName+" "+user.lastName;
     try {
-      resp = await fetch(url+'process',
+      resp = await fetch(url+'history',
       {
       method:'POST',
       body: JSON.stringify(employeeId),
@@ -43,7 +46,8 @@ async function oneEmployeeHistory(employeeId) {
     $("#serverErrorModal").modal("show"); 
   }
   if(resp.status===200) {
-  result = await resp.json();
+  tableData = await resp.json();
+  buildHistoryTable(tableData);
   }
 }
 
@@ -135,6 +139,7 @@ async function getTable(urlSpecific) {
   // make a request for user table history to server
   document.getElementById("tableEmployeeUserMessage").innerHTML="Results for: "+user.firstName+" "+user.lastName;
   let resp;
+  console.log(urlSpecific);
   resp = await fetch(urlSpecific, {credentials: 'include'});
 
   if(resp.status === 200){
@@ -247,12 +252,18 @@ function buildStatusTable(json) {
     }
     document.getElementById("displayTableBody").appendChild(row);     
   };
+  document.getElementById("employee_page").style.display = "none";
+  document.getElementById("manager_page").style.display = "none";
+  document.getElementById("tableDisplay").style.display = "block"; 
 };
 
 function buildProcessTable(json) {
 
   document.getElementById("tableDisplaySubmitButton1").style.display = "block";
   document.getElementById("tableDisplaySubmitButton2").style.display = "block";
+  document.getElementById("employee_page").style.display = "none";
+  document.getElementById("manager_page").style.display = "none";
+  document.getElementById("tableDisplay").style.display = "block"; 
 
     let count = 0; // global access so that other functions have access to it
     let headerRow = document.createElement("tr");
@@ -345,6 +356,9 @@ function buildHistoryTable(json) {
 
   document.getElementById("tableDisplaySubmitButton1").style.display = "none";
   document.getElementById("tableDisplaySubmitButton2").style.display = "none";
+  document.getElementById("employee_page").style.display = "none";
+  document.getElementById("manager_page").style.display = "none";
+  document.getElementById("tableDisplay").style.display = "block"; 
 
   let headerRow = document.createElement("tr");
   let hcell = document.createElement("th");
@@ -385,7 +399,6 @@ function buildHistoryTable(json) {
   document.getElementById("displyTableHeader").appendChild(headerRow); 
 
   for(let request of json){
-    console.log(request);
     let row = document.createElement("tr");
 
     let cell = document.createElement("td");
@@ -485,8 +498,43 @@ function getReimbStatusAsString(statusId) {
   return reimbStatus;
 };
 
+// function getFile(isEmployee){
+//   let file;
+//   if (isEmployee="receipt") {
+//     file = document.getElementById("receipt").value;
+//   } else file = document.getElementById("receipt2").value;
+
+//   console.log(file); // see the FileList
+//   let BtnEle = document.querySelector(".Btn");
+//   let resEle = gdocument.querySelector(".result");
+//   BtnEle.addEventListener("click", () => {
+//      fetch("https://i.picsum.photos/id/222/300/300.jpg")
+//      .then(function (response) {
+//         return response.blob();
+//      })
+//      .then(function (blob) {
+//         resEle.innerHTML = "blob.size = " + blob.size + "<br>";
+//         resEle.innerHTML += "blob.type = " + blob.type + "<br>";
+//      });
+//   });
+  // manually create a new file obj for each File in the FileList
+
+//  let   fileObject = {
+//         'lastMod'    : file.lastModified,
+//         'lastModDate': file.lastModifiedDate,
+//         'name'       : file.name,
+//         'size'       : file.size,
+//         'type'       : file.type,
+//   }
+
+//   //stringify array
+//   console.log(JSON.stringify(fileObject));
+//   return file;
+// }
+
 async function newRequestFunc() {
   let resp;
+ // let receipt = getFile();
   let newReimbRequest; 
   let header = document.createElement("tr");
   let toAdd = document.createDocumentFragment();
@@ -501,8 +549,10 @@ async function newRequestFunc() {
         reimbAuthor: user.iD,    
         reimbTypeId: (document.getElementById("managerReimbursementType").selectedIndex+1)
      };
+     console.log(file);
      closeForm();
   } else {
+    let file = document.getElementById("receipt2");
     newReimbRequest = {
       reimbAmount: document.getElementById('employeeReimbAmount').value,
       reimbDescription: document.getElementById("employeeReimbDesc").value,

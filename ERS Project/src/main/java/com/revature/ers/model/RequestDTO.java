@@ -6,6 +6,8 @@ public class RequestDTO {
 	public String reimbDescription;
 	public int reimbAuthor;
 	public int reimbTypeId;
+//	public InputStream reimbReceipt;
+
 	
 	public RequestDTO(double reimbAmount, String reimbDescription, int reimbAuthor, int reimbTypeId) {
 		super();
@@ -13,6 +15,7 @@ public class RequestDTO {
 		this.reimbDescription = reimbDescription;
 		this.reimbAuthor = reimbAuthor;
 		this.reimbTypeId = reimbTypeId;
+//		this.reimbReceipt = reimbReceipt;
 	}
 
 	public RequestDTO() {
@@ -22,7 +25,7 @@ public class RequestDTO {
 	@Override
 	public String toString() {
 		return "RequestDTO [reimbAmount=" + reimbAmount + ", reimbDescription=" + reimbDescription + ", reimbAuthor="
-				+ reimbAuthor + ", reimbTypeId=" + reimbTypeId + "]";
+				+ reimbAuthor + ", reimbTypeId=" + reimbTypeId + "Receipt file: "+"]";
 	}
 
 	public double getReimbAmount() {
@@ -40,6 +43,14 @@ public class RequestDTO {
 	public int getReimbTypeId() {
 		return reimbTypeId;
 	}
+
+//	public InputStream getReceipt() {
+//		return reimbReceipt;
+//	}
+//
+//	public void setReceipt(InputStream receipt) {
+//		this.reimbReceipt = receipt;
+//	}
 	
 
 }

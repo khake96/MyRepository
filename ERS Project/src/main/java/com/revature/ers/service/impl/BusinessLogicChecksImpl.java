@@ -19,10 +19,10 @@ public class BusinessLogicChecksImpl implements BusinessLogicChecks {
 		boolean userNameIsValid = false;
 		String userName = loginUser.getUserName();
 		System.out.println(userName);
-//		String regex = "[^\\s]{8,50}";
-//		Pattern pattern = Pattern.compile(regex);
-//		Matcher matcher = pattern.matcher(userName);
-//		boolean matchFound = matcher.find();
+		String regex = "[\\s\\S]{8,50}";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(userName);
+		boolean matchFound = matcher.find();
 		if(userName.length()>7 && userName.length()<50) {
 			userNameIsValid = true;
 			System.out.println(userNameIsValid);
@@ -36,7 +36,7 @@ public class BusinessLogicChecksImpl implements BusinessLogicChecks {
 	public boolean isValidPassword(Login loginUser) {
 		boolean passwordIsValid = false;
 		String userPassword = loginUser.getPassword();
-		String regex = "[^\\w]{7,50}";
+		String regex = "[\\w\\W]{7,50}";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(userPassword);
 		boolean matchFound = matcher.find();
@@ -50,11 +50,9 @@ public class BusinessLogicChecksImpl implements BusinessLogicChecks {
 
 	@Override
 	public boolean isManager(User user) {
-		boolean isManager = false;
-		if(user.getRole()==2) {
-			isManager=true;
-		}
-		return isManager;
+		if(user.getRole() == 2) {
+			return true;
+		} else return false;
 	}
 	
 	// Business requirements: 
@@ -102,24 +100,24 @@ public class BusinessLogicChecksImpl implements BusinessLogicChecks {
 	public boolean isValidUser(User user) {
 		boolean userIsValid = false;
 		int userId = user.getiD();
-//		String userFirstName = user.getFirstName();
-//		String userLastName = user.getLastName();
+		String userFirstName = user.getFirstName();
+		String userLastName = user.getLastName();
 		int userRole = user.getRole();
-//		String regex = "[^\\s]{1,50}";
-//		Pattern pattern = Pattern.compile(regex);
-//		Matcher matcher = pattern.matcher(userFirstName);
-//		boolean matchFound = matcher.find();
-//		if(matchFound) {
-//			matcher = pattern.matcher(userLastName);
-//			matchFound = matcher.find();
-//			if(matchFound) {
+		String regex = "[\\s\\S]{1,50}";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(userFirstName);
+		boolean matchFound = matcher.find();
+		if(matchFound) {
+			matcher = pattern.matcher(userLastName);
+			matchFound = matcher.find();
+			if(matchFound) {
 				if(userId < 10000 && userId > 99) {
 					if(userRole > 0 && userRole < 3) {
 						userIsValid = true;
 					}
 				}
-//			}
-//		}			
+			}
+		}			
 		return userIsValid;
 	}
 

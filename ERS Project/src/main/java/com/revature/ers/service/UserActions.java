@@ -17,7 +17,7 @@ public interface UserActions {
 	
 		// Revature ERS Manager DAO read objects
 		public List<HistoryDTO> getCompanyRequestHistory(User manager);
-		public List<HistoryDTO> getCompanyRequestHistory(User user, Integer employeeId);
+		public List<HistoryDTO> getEmployeeRequestHistory(User user, Integer employeeId);
 		public List<PendingDTO> getPendingRequests(User manager);
 		
 		// Revature ERS Manager DAO insert objects
@@ -29,6 +29,7 @@ public interface UserActions {
 		public Request updateRequest(User user, Request request);
 		public Request insertReceipt(Request request, int receiptImage);
 		public List<Request> getSingleEmployeeHistory(User employee);
+		public User getEmployeeByUserName(String userName);
 		
 
 }
