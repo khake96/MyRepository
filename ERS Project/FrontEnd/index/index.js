@@ -13,7 +13,6 @@ document.getElementById("tableDisplay").style.display = "none";
 
 function validateViewAllRequestsForm() {
   let employeeId = document.getElementById("byEmployee").value;
-  console.log(employeeId);
   let byAll = document.getElementById("viewAllRadio").value;
   if(byAll==null && (employeeId>1000 || employeeId<100)) {
     $("#employyIdErrorModal").modal("show");
@@ -22,7 +21,6 @@ function validateViewAllRequestsForm() {
     if (employeeId==0) {
       getRequestHistory();
     } else {
-      console.log("in the else condition headed to oneEmployeeHistory");
       oneEmployeeHistory(employeeId);
     }
     
@@ -145,6 +143,7 @@ async function getTable(urlSpecific) {
   if(resp.status === 200){
     console.log(resp);
     let tableData = await resp.json();
+    console.log(tableData);
 
     switch(urlSpecific) {
       case (url+"status"):
@@ -622,7 +621,7 @@ async function newRequestFunc() {
     body.appendChild(toAdd.appendChild(cell));
 
     let cell2 = document.createElement("td");
-    cell2.innerHTML = (newReimbResponse.reimbAmount);
+    cell2.innerHTML = "$"+(newReimbResponse.reimbAmount);
     body.appendChild(toAdd.appendChild(cell2));
 
     let cell3 = document.createElement("td");

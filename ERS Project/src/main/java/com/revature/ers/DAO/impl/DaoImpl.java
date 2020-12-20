@@ -30,7 +30,7 @@ public class DaoImpl implements DAO {
 		try (Connection connection = PostgresSqlConnection.getConnection()) {
 			String sql = SearchQueries.VIEW_COMPANY_REQUESTS_HISTORY;
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
-			com.revature.ers.model.RevatureErsMain.log.debug("Users DAO setModifiedDate preparedStatement: "+ preparedStatement + ".");
+			com.revature.ers.model.RevatureErsMain.log.debug("Users DAO getCompanyRequestHistory preparedStatement: "+ preparedStatement + ".");
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while(resultSet.next()) {
 				HistoryDTO request = new HistoryDTO(resultSet.getInt("reimb_id"), 
@@ -45,17 +45,19 @@ public class DaoImpl implements DAO {
 					resultSet.getString("user_last_name"),
 					resultSet.getString("user_first_name"));
 				reimbRequestCompanyHistory.add(request); 
+				//System.out.println(request.toString());
 			}
 			// Get resolver names and add to the HistoryDTO objects
 			String sql2 = SearchQueries.ADD_RESOLVER_TO_HISTORY;
 			PreparedStatement preparedStatement2 = connection.prepareStatement(sql2);
-			com.revature.ers.model.RevatureErsMain.log.debug("Users DAO setModifiedDate preparedStatement: "+ preparedStatement2 + ".");
+			com.revature.ers.model.RevatureErsMain.log.debug("Users DAO ADD_RESOLVER_TO_HISTORY preparedStatement: "+ preparedStatement2 + ".");
 			ResultSet resultSet2 = preparedStatement2.executeQuery();
 			while(resultSet2.next()) {
 				HistoryDTO request = new HistoryDTO(resultSet2.getInt("reimb_id"), 
 					resultSet2.getString("user_last_name"),
 					resultSet2.getString("user_first_name"));
 				updateResolverList.add(request); 
+				//System.out.println(request);
 			}			
 
 				for(HistoryDTO entry: reimbRequestCompanyHistory) {
@@ -70,7 +72,7 @@ public class DaoImpl implements DAO {
 		} catch (PSQLException e) {
 			com.revature.ers.model.RevatureErsMain.log.debug(e.getMessage());
 		} catch (SQLException e1) {
-			e1.printStackTrace();
+			com.revature.ers.model.RevatureErsMain.log.debug(e1.getMessage());
 		}		
 		return reimbRequestCompanyHistory;		
 	} 
@@ -84,7 +86,7 @@ public class DaoImpl implements DAO {
 		try (Connection connection = PostgresSqlConnection.getConnection()) {
 			String sql = SearchQueries.VIEW_EMPLOYEE_REQUESTS_HISTORY;
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
-			com.revature.ers.model.RevatureErsMain.log.debug("Users DAO setModifiedDate preparedStatement: "+ preparedStatement + ".");
+			com.revature.ers.model.RevatureErsMain.log.debug("Users DAO getEmployeeRequestHistory preparedStatement: "+ preparedStatement + ".");
 			preparedStatement.setInt(1, employeeId);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while(resultSet.next()) {
@@ -104,7 +106,7 @@ public class DaoImpl implements DAO {
 			// Get resolver names and add to the HistoryDTO objects
 			String sql2 = SearchQueries.ADD_RESOLVER_TO_EMPLOYEE_HISTORY;
 			PreparedStatement preparedStatement2 = connection.prepareStatement(sql2);
-			com.revature.ers.model.RevatureErsMain.log.debug("Users DAO setModifiedDate preparedStatement: "+ preparedStatement2 + ".");
+			com.revature.ers.model.RevatureErsMain.log.debug("Users DAO ADD_RESOLVER_TO_EMPLOYEE_HISTORY preparedStatement: "+ preparedStatement2 + ".");
 			preparedStatement.setInt(1, employeeId);
 			ResultSet resultSet2 = preparedStatement2.executeQuery();
 			while(resultSet2.next()) {
@@ -117,7 +119,6 @@ public class DaoImpl implements DAO {
 				for(HistoryDTO entry: reimbRequestEmployeeHistory) {
 					for(HistoryDTO updateEntry: updateResolverList) {
 						if (updateEntry.reimbId == entry.reimbId) {
-							System.out.println("Second Result Set process name: "+updateEntry.process_first_name);
 							entry.process_first_name = updateEntry.process_first_name;
 							entry.process_last_name = updateEntry.process_last_name;
 						}
@@ -127,7 +128,7 @@ public class DaoImpl implements DAO {
 		} catch (PSQLException e) {
 			com.revature.ers.model.RevatureErsMain.log.debug(e.getMessage());
 		} catch (SQLException e1) {
-			e1.printStackTrace();
+			com.revature.ers.model.RevatureErsMain.log.debug(e1.getMessage());
 		}		
 		return reimbRequestEmployeeHistory;		
 	} 
@@ -153,7 +154,7 @@ public class DaoImpl implements DAO {
 		} catch (PSQLException e) {
 			com.revature.ers.model.RevatureErsMain.log.debug(e.getMessage());
 		} catch (SQLException e1) {
-			e1.printStackTrace();
+			com.revature.ers.model.RevatureErsMain.log.debug(e1.getMessage());
 		}
 		return reimbRequestSingleEmployeeHistory;
 	}
@@ -168,8 +169,6 @@ public class DaoImpl implements DAO {
 			com.revature.ers.model.RevatureErsMain.log.debug("DAO getPendingRequests preparedStatement: "+ preparedStatement + ".");
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while(resultSet.next()) {
-//				public Request(int reimbId, double reimbAmount, Timestamp requestDate,
-//				String reimbDescription, int reimbAuthor, int reimbTypeId)
 				PendingDTO request = new PendingDTO(resultSet.getInt("reimb_id"), 
 					resultSet.getDouble("reimb_amount"), 
 					resultSet.getTimestamp("reimb_submitted"), 
@@ -183,7 +182,7 @@ public class DaoImpl implements DAO {
 		} catch (PSQLException e) {
 			com.revature.ers.model.RevatureErsMain.log.debug(e.getMessage());
 		} catch (SQLException e1) {
-			e1.printStackTrace();
+			com.revature.ers.model.RevatureErsMain.log.debug(e1.getMessage());
 		}
 		return pendingList;
 	}
@@ -195,11 +194,6 @@ public class DaoImpl implements DAO {
 			if (request.isApproved) {
 				approval = 2; 
 			} else approval = 3;
-//			"UPDATE ers_reimb "
-//			+ " set reimb_status_id = ?, "
-//			+ " reimb_resolved = current_timestamp, "
-//			+ " reimb_resolver = ? "
-//			+ " where reimb_id = ? and reimb_author != ?;";
 			try (Connection connection = PostgresSqlConnection.getConnection()){
 				String sql = SearchQueries.SET_REQUEST_STATUS;
 				PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -211,12 +205,11 @@ public class DaoImpl implements DAO {
 				int result = preparedStatement.executeUpdate();	
 				if (result==1) {
 					returnValue++;
-					System.out.println("Set status successful.");
 				}
 			} catch (PSQLException e) {
 				com.revature.ers.model.RevatureErsMain.log.debug(e.getMessage());
 			} catch (SQLException e1) {
-				e1.printStackTrace();
+				com.revature.ers.model.RevatureErsMain.log.debug(e1.getMessage());
 			}
 		}
 			return returnValue;
@@ -227,7 +220,7 @@ public class DaoImpl implements DAO {
 		try (Connection connection = PostgresSqlConnection.getConnection()){
 			String sql = SearchQueries.LAST_REQUEST_ENTERED;
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
-			System.out.println("DAO getLastRequestEntered preparedStatement: "+ preparedStatement + ".");
+			com.revature.ers.model.RevatureErsMain.log.debug("DAO getLastRequestEntered preparedStatement: "+ preparedStatement + ".");
 			ResultSet resultSet = preparedStatement.executeQuery();	
 			while(resultSet.next()) {
 				lastRequestEntered = new Request(resultSet.getInt("reimb_id"), resultSet.getDouble("reimb_amount"), 
@@ -237,7 +230,7 @@ public class DaoImpl implements DAO {
 					resultSet.getInt("reimb_status_id"), resultSet.getInt("reimb_type_id"));
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			com.revature.ers.model.RevatureErsMain.log.debug(e.getMessage());
 		}
 		return lastRequestEntered;
 	}
@@ -248,23 +241,19 @@ public class DaoImpl implements DAO {
 		Request application = null;
 		try (Connection connection = PostgresSqlConnection.getConnection()){
 			String sql = SearchQueries.MAKE_NEW_REQUEST;
-//			String sql = "INSERT INTO ers_reimb(reimb_id, reimb_amount, reimb_submitted,"
-//			+ " reimb_description, reimb_receipt, reimb_status_id, reimb_author, reimb_type_id)"
-//			+ " VALUES (default, 3240.45, current_timestamp, 'Company picnic costs.' , null, 1, 106, 1);";
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setDouble(1, request.getReimbAmount());	
 			preparedStatement.setString(2, request.getReimbDescription());	
 			preparedStatement.setInt(3, request.getReimbAuthor());	
 			preparedStatement.setInt(4, request.getReimbTypeId());
-			System.out.println("DAO makeRequest preparedStatement: "+ preparedStatement + ".");
+			com.revature.ers.model.RevatureErsMain.log.debug("DAO makeRequest preparedStatement: "+ preparedStatement + ".");
 			int result = preparedStatement.executeUpdate();	
 			if (result==1) {
-				System.out.println("Set status successful.");
 			}
 		} catch (PSQLException e) {
 			com.revature.ers.model.RevatureErsMain.log.debug(e.getMessage());
 		} catch (SQLException e1) {
-			e1.printStackTrace();
+			com.revature.ers.model.RevatureErsMain.log.debug(e1.getMessage());
 		}
 		application = ownMethodCaller.getLastRequestEntered();
 		return application;
@@ -273,26 +262,22 @@ public class DaoImpl implements DAO {
 	@Override
 	public User userLogin(Login loginUser) {
 		User user = new User();
-		System.out.println(loginUser.toString());
 		try (Connection connection = PostgresSqlConnection.getConnection()){
 			String sql = SearchQueries.USER_LOGIN;
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, loginUser.getPassword());
 			preparedStatement.setString(2, loginUser.getUserName());
 			com.revature.ers.model.RevatureErsMain.log.debug("User Login preparedStatement: "+ preparedStatement + ".");
-			System.out.println("User Login preparedStatement: "+ preparedStatement);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			if(resultSet.next()) {
 				user.setiD(resultSet.getInt("ers_user_id"));
 				user.setFirstName(resultSet.getString("user_first_name"));
 				user.setLastName(resultSet.getString("user_last_name"));
 				user.setRole(resultSet.getInt("user_role_id"));
-			} else System.out.println("Not a valid employee username or password. Please try again.");
+			} else com.revature.ers.model.RevatureErsMain.log.debug("Not a valid employee username or password. Please try again.");
 		} catch (SQLException e) {
-			System.out.println(e.getMessage());
 			com.revature.ers.model.RevatureErsMain.log.debug(e.getMessage());
 		}
-		System.out.println(user.toString());
 		return user;
 	}
 
@@ -314,9 +299,8 @@ public class DaoImpl implements DAO {
 		} catch (PSQLException e) {
 			com.revature.ers.model.RevatureErsMain.log.debug(e.getMessage());
 		} catch (SQLException e1) {
-			e1.printStackTrace();
+			com.revature.ers.model.RevatureErsMain.log.debug(e1.getMessage());
 		}
-		
 		return request;
 	}
 
@@ -329,7 +313,7 @@ public class DaoImpl implements DAO {
 			String sql = SearchQueries.GET_USER_BY_USERNAME;
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, userName);	
-			com.revature.ers.model.RevatureErsMain.log.debug("DAO insertReceipt preparedStatement: "+ preparedStatement + ".");
+			com.revature.ers.model.RevatureErsMain.log.debug("DAO getUserByUserName preparedStatement: "+ preparedStatement + ".");
 			ResultSet resultSet = preparedStatement.executeQuery();	
 			while(resultSet.next()) {
 				user = new User(resultSet.getInt("ers_user_id"), 
@@ -340,7 +324,7 @@ public class DaoImpl implements DAO {
 		} catch (PSQLException e) {
 			com.revature.ers.model.RevatureErsMain.log.debug(e.getMessage());
 		} catch (SQLException e1) {
-			e1.printStackTrace();
+			com.revature.ers.model.RevatureErsMain.log.debug(e1.getMessage());
 		}		
 		return user;
 	}

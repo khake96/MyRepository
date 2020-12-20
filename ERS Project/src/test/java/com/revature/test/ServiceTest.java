@@ -20,15 +20,15 @@ public class ServiceTest {
 		
 		// Passing Test case values
 		Login validLogin = new Login("JennyTilson", "1595EIojie!!ko");
-		User validManager = new User(1, "Sally", "Johnson", 2);
-		User validManager2 = new User(1, "Sally", "Johnson", 1);
-		User validEmployee = new User(2,"Johnny", "Boorsma", 1);
+		User validManager = new User(124, "Sally", "Johnson", 2);
+		User validManager2 = new User(130, "Sally", "Johnson", 2);
+		User validEmployee = new User(103,"Johnny", "Boorsma", 1);
 		Request validRequest = new Request(1, 100.57, ts, ts, "This was for a hotel stay in New York in July.", null, 101, 102, 2, 3);
 		
 		// Invalid Test case values
 		Login loginNoUserName = new Login("", "wokpeowj3902;odpwk");
 		Login loginShortUserName = new Login("JorgeSt", "2093209032");
-		Login loginInvalidSymbolUserName = new Login("Jorgen15$","12345678");
+		Login loginInvalidSymbolUserName = new Login("Jorgen15{","12345678");
 		Login loginShortPassword = new Login("SamuelJorgan", "15@/o7");
 		Login loginLongPassword = new Login("SamuelJorgan", "123456789012345678901234567890123456789012345678901");
 		Login loginMultipleInvalid = new Login("Samuel", "123456789012345678901234567890123456789012345678901");
@@ -46,7 +46,7 @@ public class ServiceTest {
 				+ "a hotel stay in New York in July.This was for a hotel stay in New York in July.This was for a hotel stay in New York in July.This "
 				+ "was for a hotel stay in New York in July.This was for a hotel stay in New York in July.This was for a hotel stay in New York in "
 				+ "July.This was for a hotel stay in New York in July.This was for a hotel stay in New York in July.", null, 101, 102, 1, 3);
-		Request requestInvalidType = new Request(1, 100.57, ts, ts, "This was for a hotel stay in New York in July.", null, 101, 102, 101, 3);
+		Request requestInvalidType = new Request(1, 100.57, ts, ts, "This was for a hotel stay in New York in July.", null, 101, 102, 101, 5);
 		Request requestInvalidAuthorLow = new Request(1, 100.57, ts, ts, "This was for a hotel stay in New York in July.", null, 101, 102, 1, 0);
 		Request requestInvalidAuthorHigh = new Request(1, 100.57, ts, ts, "This was for a hotel stay in New York in July.", null, 101, 102, 1, 5);			
 
@@ -112,7 +112,7 @@ public class ServiceTest {
 		// Check invalid symbol username
 		@Test
 		public void testBusinessLogicChecksImplInvalidSymbolUserName() {
-			boolean result = userActions.isValidPassword(loginInvalidSymbolUserName);
+			boolean result = userActions.isValidUserName(loginInvalidSymbolUserName);
 			assertFalse(result);
 		}
 		
@@ -214,11 +214,11 @@ public class ServiceTest {
 			assertFalse(result);
 		}
 		
-		// Check is own request rejected
+		// Check is own request rejected 
 		@Test
 		public void testBusinessLogicChecksImplIsNotOwnRequest() {
 			boolean result = userActions.isNotOwnRequest(validManager2, validRequest);
-			assertFalse(result);
+			assertTrue(result);
 		}
 
 }

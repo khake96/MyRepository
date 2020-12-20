@@ -35,7 +35,7 @@ public class MasterServlet extends HttpServlet {
 			// will override for success requests.
 			res.setStatus(404);			
 			final String URI = req.getRequestURI().replace("/revature_ers/", "");	
-			System.out.println(URI);
+			com.revature.ers.model.RevatureErsMain.log.debug("URI: "+URI);
 			switch (URI) {
 			case "login":
 				loginController.login(req, res);
@@ -57,6 +57,10 @@ public class MasterServlet extends HttpServlet {
 				break;
 			case "history":
 				requestHistory.getRequestHistory(req, res);
+				break;
+			case "employeeHistory":
+				requestHistory.getRequestHistory(req, res);
+				break;
 			}
 		}
 	

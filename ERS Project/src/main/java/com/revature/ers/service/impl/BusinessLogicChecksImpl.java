@@ -18,15 +18,13 @@ public class BusinessLogicChecksImpl implements BusinessLogicChecks {
 	public boolean isValidUserName(Login loginUser){
 		boolean userNameIsValid = false;
 		String userName = loginUser.getUserName();
-		System.out.println(userName);
-		String regex = "[\\s\\S]{8,50}";
+		String regex = "[\\w]{8,50}";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(userName);
-		boolean matchFound = matcher.find();
-		if(userName.length()>7 && userName.length()<50) {
-			userNameIsValid = true;
-			System.out.println(userNameIsValid);
-		}			
+		boolean matchFound = matcher.matches();
+		if (matchFound && userName.length()>7 && userName.length()<50) {
+			userNameIsValid = true;	
+		}
 		return userNameIsValid;
 	}
 	
@@ -39,7 +37,7 @@ public class BusinessLogicChecksImpl implements BusinessLogicChecks {
 		String regex = "[\\w\\W]{7,50}";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(userPassword);
-		boolean matchFound = matcher.find();
+		boolean matchFound = matcher.matches();
 		if(matchFound) {
 			passwordIsValid = true;
 		}			
@@ -103,13 +101,13 @@ public class BusinessLogicChecksImpl implements BusinessLogicChecks {
 		String userFirstName = user.getFirstName();
 		String userLastName = user.getLastName();
 		int userRole = user.getRole();
-		String regex = "[\\s\\S]{1,50}";
+		String regex = "[\\s\\w]{1,50}";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(userFirstName);
-		boolean matchFound = matcher.find();
+		boolean matchFound = matcher.matches();
 		if(matchFound) {
 			matcher = pattern.matcher(userLastName);
-			matchFound = matcher.find();
+			matchFound = matcher.matches();
 			if(matchFound) {
 				if(userId < 10000 && userId > 99) {
 					if(userRole > 0 && userRole < 3) {

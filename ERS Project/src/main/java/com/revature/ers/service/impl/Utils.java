@@ -25,10 +25,10 @@ public class Utils {
 	            secretKey = new SecretKeySpec(key, "AES");
 	        } 
 	        catch (NoSuchAlgorithmException e) {
-	            e.printStackTrace();
+	        	com.revature.ers.model.RevatureErsMain.log.debug(e.getMessage());
 	        } 
 	        catch (UnsupportedEncodingException e) {
-	            e.printStackTrace();
+	        	com.revature.ers.model.RevatureErsMain.log.debug(e.getMessage());
 	        }
 	    }
 	 
@@ -43,7 +43,7 @@ public class Utils {
 	        } 
 	        catch (Exception e) 
 	        {
-	            System.out.println("Error while encrypting: " + e.toString());
+	        	com.revature.ers.model.RevatureErsMain.log.debug("Error encrypting: " +e.getMessage());
 	        }
 	        return null;
 	    }
@@ -59,7 +59,7 @@ public class Utils {
 	        } 
 	        catch (Exception e) 
 	        {
-	            System.out.println("Error while decrypting: " + e.toString());
+	        	com.revature.ers.model.RevatureErsMain.log.debug(e.getMessage());
 	        }
 	        return null;
 	    }

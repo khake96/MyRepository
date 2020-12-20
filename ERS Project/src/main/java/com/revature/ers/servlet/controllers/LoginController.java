@@ -32,12 +32,9 @@ public class LoginController {
 			}
 			
 			String body = new String(stringBuilder);
-			System.out.println(body);
 			Login login = mapper.readValue(body, Login.class);
-			System.out.println(login.toString());
 			user = userActions.userLogin(login);
 			String json = mapper.writeValueAsString(user);
-			System.out.println(json);
 			res.getWriter().print(json);
 			
 			if(user.getiD() != 0) {

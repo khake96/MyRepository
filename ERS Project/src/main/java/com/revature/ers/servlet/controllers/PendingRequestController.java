@@ -22,7 +22,6 @@ public class PendingRequestController {
 	public void getPendingRequests(HttpServletRequest req, HttpServletResponse res) 
 			throws IOException {
 		HttpSession ses = req.getSession(false);
-		System.out.println("From controller: "+ses.getAttribute("user"));
 		user = (User) ses.getAttribute("user");	
 		
 		if((boolean) ses.getAttribute("loggedIn")) {
@@ -30,7 +29,7 @@ public class PendingRequestController {
 				List<PendingDTO> pendingList = null;
 				pendingList = userActions.getPendingRequests(user);
 				String json = mapper.writeValueAsString(pendingList);
-				System.out.println(json);
+				//System.out.println(json);
 				res.getWriter().print(json);
 				
 				if(pendingList.get(0).getReimbId() != 0) {

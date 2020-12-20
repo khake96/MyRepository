@@ -41,10 +41,9 @@ public class ProcessRequestController {
 				
 				String body = new String(stringBuilder);
 				user = (User) ses.getAttribute("user");
-				System.out.println(body);
+				//System.out.println(body);
 				ArrayList<ProcessRequestDTO> processArray = mapper.readValue(body, new TypeReference<ArrayList<ProcessRequestDTO>>(){});
 				returnCount = userActions.processRequest(processArray, user);
-				// String json = mapper.writeValueAsString(returnCount);
 				res.getWriter().print(returnCount);
 				
 				if(returnCount!=0) {

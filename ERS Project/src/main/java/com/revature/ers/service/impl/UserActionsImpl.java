@@ -29,7 +29,8 @@ public class UserActionsImpl implements UserActions {
 		List<HistoryDTO> requestList = new ArrayList<HistoryDTO>();
 		if(logicChecks.isManager(manager) ) {
 			requestList = actions.getCompanyRequestHistory(manager);
-		}
+		} 	else com.revature.ers.model.RevatureErsMain.log.debug("Failed business logic company history request at manager: "+manager);
+
 		return requestList;
 	}
 	
@@ -39,7 +40,7 @@ public class UserActionsImpl implements UserActions {
 		List<HistoryDTO> requestList = new ArrayList<HistoryDTO>();
 		if(logicChecks.isManager(user) ) {
 			requestList = actions.getEmployeeRequestHistory(user, employeeId);
-		}
+		} else com.revature.ers.model.RevatureErsMain.log.debug("Failed business logic get employee history at user: "+user +"or at employeeId: "+employeeId);
 		return requestList;
 	}
 	
@@ -50,7 +51,7 @@ public class UserActionsImpl implements UserActions {
 		List<PendingDTO> requestList = new ArrayList();
 		if(logicChecks.isManager(manager)) {
 			requestList = actions.getPendingRequests(manager);
-		}
+		} else com.revature.ers.model.RevatureErsMain.log.debug("Failed business logic getPendingRequests at manager: "+manager);
 		return requestList;
 	}
 		
@@ -61,7 +62,7 @@ public class UserActionsImpl implements UserActions {
 		if(logicChecks.isManager(manager)) {
 			changeCount = actions.processRequest(processList, manager);
 		} else {
-			System.out.println("User is not a manager." + manager.toString());
+			com.revature.ers.model.RevatureErsMain.log.debug("Failed business logic processRequest: "+manager +" or process Request list.");
 		}
 		return changeCount;
 	}
@@ -72,7 +73,6 @@ public class UserActionsImpl implements UserActions {
 		User user = null;
 		String password = loginUser.getPassword();
 		String userName = loginUser.getUserName();
-		System.out.println("User password in UserActionsImpl: "+password);
 		if(logicChecks.isValidUserName(loginUser) 
 				&&
 				logicChecks.isValidPassword(loginUser)
@@ -81,7 +81,7 @@ public class UserActionsImpl implements UserActions {
 				loginUser.setPassword(encrypted);
 			user = actions.userLogin(loginUser);
 		} else {
-			System.out.println("Invalid login business criteria." + loginUser.toString());
+			com.revature.ers.model.RevatureErsMain.log.debug("Failed business logic userLogin at login: "+loginUser);
 		}
 	return user;
 	}
@@ -93,7 +93,7 @@ public class UserActionsImpl implements UserActions {
 		if(logicChecks.isValidRequest(requestObject)) {
 			returnRequest = actions.makeRequest(requestObject);
 		} else {
-			System.out.println("Invalid request business criteria." + request.toString());
+			com.revature.ers.model.RevatureErsMain.log.debug("Failed business logic makeRequest with request: "+request);
 		}
 		return returnRequest;
 	}
@@ -114,16 +114,14 @@ public class UserActionsImpl implements UserActions {
 			if(logicChecks.isValidUser(employee)) {
 				statusList = actions.getSingleEmployeeHistory(employee);
 			} else {
-				System.out.println("Invalid user. Cannot complete request.");
-				System.out.println("User: " + employee.toString());
+				com.revature.ers.model.RevatureErsMain.log.debug("Failed business logic singleEmployeeHistory at employee: "+employee);
 			}
 		} catch (NullPointerException e){
-			System.out.println("Caught exception: ");
-			e.printStackTrace();
+			com.revature.ers.model.RevatureErsMain.log.debug(e.getMessage());
 		}
-
 		return statusList;
 	}
+	
 
 	@Override
 	public User getEmployeeByUserName(String userName) {
@@ -131,7 +129,7 @@ public class UserActionsImpl implements UserActions {
 		Login login = new Login(userName,"password");
 		if(logicChecks.isValidUserName(login)) {
 			user = actions.getUserByUserName(userName);
-		}
+		} else com.revature.ers.model.RevatureErsMain.log.debug("Failed business logic getEmployeeByUSerName at userName: "+userName);
 		return user;
 	}
 

@@ -24,7 +24,6 @@ public class RequestStatusController {
 			throws IOException {
 		
 		HttpSession ses = req.getSession(false);
-		System.out.println("From controller: "+ses.getAttribute("user"));
 		user = (User) ses.getAttribute("user");
 		
 		if((boolean) ses.getAttribute("loggedIn")) {
@@ -32,7 +31,7 @@ public class RequestStatusController {
 				List<Request> requestList = new ArrayList<Request>();
 				requestList = userActions.getSingleEmployeeHistory(user);
 				String json = mapper.writeValueAsString(requestList);
-				System.out.println(json);
+				//System.out.println(json);
 				res.getWriter().print(json);
 				
 				if(requestList.get(0).getReimbId() != 0) {

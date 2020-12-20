@@ -27,31 +27,30 @@ public class GetRequestHistoryController {
 				throws IOException {
 
 		HttpSession ses = req.getSession(false);
-		System.out.println("From controller: "+ses.getAttribute("user"));
+		com.revature.ers.model.RevatureErsMain.log.debug("From controller: "+ses.getAttribute("user"));
 		user = (User) ses.getAttribute("user");
 		
 		if((boolean) ses.getAttribute("loggedIn")) {
 			if(req.getMethod().equals("GET")) {
-				List<HistoryDTO> requestList = new ArrayList<HistoryDTO>();
 				try {
+					List<HistoryDTO> requestList = new ArrayList<HistoryDTO>();
 					requestList = userActions.getCompanyRequestHistory(user);
 					response.setStatus(200);
+					//System.out.println("response: "+response);
+					String json = mapper.writeValueAsString(requestList);
+					response.getWriter().print(json);
+					//System.out.println(json);
 				}
 				catch(IndexOutOfBoundsException e) {
 					response.setStatus(401);
 					response.getWriter().print("Could not validate user, please try again.");
 				}
-				String json = mapper.writeValueAsString(requestList);
-				System.out.println("In controller after GET request processed: "+json);
-				response.getWriter().print(json);
-				System.out.println("After res.getWriter()");				
-				if(requestList.size()!=0) {
-					System.out.println("after requestlist sixe check and next to status.");
-					response.setStatus(200);
-				} else {
+				catch(IllegalStateException e) {
 					response.setStatus(401);
-					response.getWriter().print("Unable to proess request. Please try again.");
+					response.getWriter().print("System error, please try again.");
+					com.revature.ers.model.RevatureErsMain.log.debug(e.getMessage());
 				}
+
 			} else {
 				// One Employee was requested rather than all employees
 				String regex = "[\\s\\S]{8,50}";
@@ -72,7 +71,6 @@ public class GetRequestHistoryController {
 					employeeId = mapper.readValue(body, Integer.class);
 				}
 				List<HistoryDTO> requestList = new ArrayList<HistoryDTO>();
-				System.out.println("we are getting to the POST method processing.");
 				requestList = userActions.getEmployeeRequestHistory(user, employeeId);
 				String json = mapper.writeValueAsString(requestList);
 				response.getWriter().print(json);
