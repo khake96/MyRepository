@@ -102,18 +102,20 @@ public class DaoImpl implements DAO {
 					resultSet.getString("user_last_name"),
 					resultSet.getString("user_first_name"));
 				reimbRequestEmployeeHistory.add(request); 
+				System.out.println(request.reimbId);
 			}
 			// Get resolver names and add to the HistoryDTO objects
 			String sql2 = SearchQueries.ADD_RESOLVER_TO_EMPLOYEE_HISTORY;
 			PreparedStatement preparedStatement2 = connection.prepareStatement(sql2);
-			com.revature.ers.model.RevatureErsMain.log.debug("Users DAO ADD_RESOLVER_TO_EMPLOYEE_HISTORY preparedStatement: "+ preparedStatement2 + ".");
-			preparedStatement.setInt(1, employeeId);
+			preparedStatement2.setInt(1, employeeId);
+			System.out.println("Users DAO ADD_RESOLVER_TO_EMPLOYEE_HISTORY preparedStatement: "+ preparedStatement2 + ".");
 			ResultSet resultSet2 = preparedStatement2.executeQuery();
 			while(resultSet2.next()) {
 				HistoryDTO request = new HistoryDTO(resultSet2.getInt("reimb_id"), 
 					resultSet2.getString("user_last_name"),
 					resultSet2.getString("user_first_name"));
 				updateResolverList.add(request); 
+				System.out.println(request.getAuthor_first_name());
 			}			
 
 				for(HistoryDTO entry: reimbRequestEmployeeHistory) {

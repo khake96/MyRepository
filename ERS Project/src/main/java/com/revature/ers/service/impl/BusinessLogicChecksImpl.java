@@ -17,7 +17,15 @@ public class BusinessLogicChecksImpl implements BusinessLogicChecks {
 	@Override
 	public boolean isValidUserName(Login loginUser){
 		boolean userNameIsValid = false;
-		String userName = loginUser.getUserName();
+		String userName = null;
+		try {
+			userName = loginUser.getUserName();			
+		} catch (NullPointerException e) {
+			com.revature.ers.model.RevatureErsMain.log.debug("Business Logic check error with login: "+ loginUser.toString() + ".");
+		} catch (Exception e) {
+			com.revature.ers.model.RevatureErsMain.log.debug("Business Logic check error with login: "+ loginUser.toString() + ".");
+		}
+
 		String regex = "[\\w]{8,50}";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(userName);
@@ -48,9 +56,15 @@ public class BusinessLogicChecksImpl implements BusinessLogicChecks {
 
 	@Override
 	public boolean isManager(User user) {
-		if(user.getRole() == 2) {
-			return true;
-		} else return false;
+		boolean isManager = false;
+		try {
+			if(user.getRole() == 2) {
+				isManager =  true;
+			} else isManager = false;
+		} catch (NullPointerException e) {
+			com.revature.ers.model.RevatureErsMain.log.debug("Business Logic check error with user: "+ user.toString() + ".");
+		}
+		return isManager;
 	}
 	
 	// Business requirements: 
@@ -122,8 +136,14 @@ public class BusinessLogicChecksImpl implements BusinessLogicChecks {
 	@Override
 	public boolean isNotOwnRequest(User manager, Request request) {
 		boolean isNotOwnRequest = false;
-		if(manager.getiD()!=request.getReimbAuthor()) {
-			isNotOwnRequest = true;
+		try {
+			if(manager.getiD()!=request.getReimbAuthor()) {
+				isNotOwnRequest = true;
+			}
+		} catch (NullPointerException e) {
+			com.revature.ers.model.RevatureErsMain.log.debug("Business Logic check error with login: "+ request.toString() + ".");
+		} catch (Exception e) {
+			com.revature.ers.model.RevatureErsMain.log.debug("Business Logic check error with login: "+ request.toString() + ".");
 		}
 		return isNotOwnRequest;
 	}
