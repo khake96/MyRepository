@@ -1,4 +1,4 @@
-# Revature Employee Reimbursement System
+# Revature Expense Reimbursement System
 ## Project Description
 The Expense Reimbursement System (ERS) will manage the process of reimbursing employees 
 for expenses incurred while on company time. All employees in the company can login and 
